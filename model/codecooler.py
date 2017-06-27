@@ -12,4 +12,5 @@ class Codecooler:
     def get_last_name():
         return self.last_name
 
-    
+    def get_email():
+        return self.email
