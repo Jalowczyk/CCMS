@@ -23,3 +23,6 @@ class Codecooler:
 
     def set_last_name(last_name):
         self.last_name = last_name
+
+    def set_password(password):
+        self.password = password
