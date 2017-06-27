@@ -26,3 +26,6 @@ class Codecooler:
 
     def set_password(password):
         self.password = password
+
+    def set_email(email):
+        self.email = email
