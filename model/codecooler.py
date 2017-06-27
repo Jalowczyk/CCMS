@@ -9,4 +9,7 @@ class Codecooler:
     def get_first_name():
         return self.first_name
 
+    def get_last_name():
+        return self.last_name
+
     
