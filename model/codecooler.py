@@ -14,3 +14,8 @@ class Codecooler:
 
     def get_email():
         return self.email
+
+    def get_password():
+        return self.password
+
+        
