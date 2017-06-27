@@ -18,4 +18,5 @@ class Codecooler:
     def get_password():
         return self.password
 
-        
+    def set_first_name(first_name):
+        self.first_name = first_name
