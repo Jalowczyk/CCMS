@@ -5,3 +5,8 @@ class Codecooler:
         self.last_name = last_name
         self.email = email
         self.password = password
+
+    def get_first_name():
+        return self.first_name
+
+    
