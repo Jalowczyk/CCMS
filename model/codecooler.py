@@ -61,3 +61,18 @@ class Stuff(Employee):
         self.stuff.append(self)
 
 class Student(Codecooler):
+
+    students = []
+
+    def __init__(self):
+        self.submissions = []
+        self.attendance = []
+
+    
+    # + get_students(): list
+    # + add(): void
+    # + remove(): void
+    # + get_attendance(): void
+    # + get_submissions(): list
+    # + add_submission(submission): void
+    # + add_attendance(attendance): void
