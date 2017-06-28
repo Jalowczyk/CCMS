@@ -27,3 +27,11 @@ class Submission:
             grade: int
         """
         return self.grade
+
+    def get_assignment(self):
+        """Gets assignment atibute of instance
+
+        Returns
+            assignment: object of assignment class
+        """
+        return self.assignment
