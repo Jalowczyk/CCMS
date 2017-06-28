@@ -83,3 +83,6 @@ class Student(Codecooler):
 
     def get_submissions(self):
         return self.submissions
+
+    def add_submission(submission):
+        self.submissions.append(submission)
