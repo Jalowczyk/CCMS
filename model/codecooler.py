@@ -77,4 +77,6 @@ class Student(Codecooler):
 
     def remove(self):
         self.students.remove(self)
-    
+
+    def get_attendance(self):
+        return self.attendance
