@@ -48,4 +48,14 @@ class Menu:
         """
         Returns user input (str).
         """
-        return self.view.get_option(self.options) #zwraca str
+
+        return self.view.get_option(self.options)
+
+class EmployeeMenu(Menu):
+    """
+    Creates EmployeeMenu obj which inherits from Menu class
+
+    Class attributes:
+    options: list of options
+    """
+    options = ["view students list"] + Menu.options
