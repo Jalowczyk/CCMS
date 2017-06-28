@@ -20,3 +20,26 @@ class Menu:
     assignment_controller: AssignmentController obj
     """
     options = ["log out"]
+
+
+    def __init__(self, logged_user, view, user_input):
+        """
+        Creates Menu obj with instance attributes: logged_user, view, user_input
+        Parameters:
+        logged_user: Codecooler obj
+        view: View obj
+        user_input: UserInput obj
+        """
+        self.logged_user = logged_user
+        self.view = view
+        self.user_input = user_input
+        self.codecooler_controller = CodecoolerController()
+        self.attendance_controller = AttendanceController()
+        self.submission_controller = SubmissionController()
+        self.assignment_controller = AssignmentController()
+
+    def display_menu(self):
+        """
+        Displays menu.
+        """
+        self.view.display_menu(self, self.options)
