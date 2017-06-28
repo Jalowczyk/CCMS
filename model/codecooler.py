@@ -195,7 +195,7 @@ class Student(Codecooler):
         """
         return cls.students
 
-    def add(self):
+    def add_to_students(self):
         """
         Adds Student object to students list (class attribute).
         """
