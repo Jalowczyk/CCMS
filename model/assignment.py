@@ -24,3 +24,15 @@ class Assignment:
         self.description = description
         self.max_grade = max_grade
         self.submissons = []
+
+    @classmethod
+    def add_assignment(cls, assignment):
+        """Adds assignment object to class list
+
+        Parameter:
+            assignment: object of assignment class
+
+        Returns:
+            None
+        """
+        cls.assignments.append(assignment)
