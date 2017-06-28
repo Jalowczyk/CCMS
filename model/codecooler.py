@@ -59,3 +59,5 @@ class Stuff(Employee):
 
     def add_to_stuff(self):
         self.stuff.append(self)
+
+class Student(Codecooler):
