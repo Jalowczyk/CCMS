@@ -36,3 +36,14 @@ class Assignment:
             None
         """
         cls.assignments.append(assignment)
+
+    def add_submission(self, submisson):
+        """Add submisson connected to assignment object
+
+        Parameters:
+            submisson: object of submisson class
+
+        Returns:
+            None
+        """
+        self.submissons.append(submisson)
