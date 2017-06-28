@@ -71,11 +71,10 @@ class Student(Codecooler):
     @classmethod
     def get_students(cls):
         return cls.students
-        
-    # + get_students(): list
-    # + add(): void
-    # + remove(): void
-    # + get_attendance(): void
-    # + get_submissions(): list
-    # + add_submission(submission): void
-    # + add_attendance(attendance): void
+
+    def add(self):
+        self.students.append(self)
+
+    def remove(self):
+        self.students.remove(self)
+    
