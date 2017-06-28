@@ -127,4 +127,14 @@ class StaffMenu(EmployeeMenu):
     Creates StaffMenu obj which inherits from EmployeeMenu class.
     """
 
-    
+def handle_menu(self, user_choice):
+    """
+    Redirects to proper action in proper controller depending on the user_choice.
+
+    Parameters:
+    user_choice: str
+    """
+
+    if user_choice == "view students list":
+        self.codecooler_controller.view_codecoolers_action("students")
+  
