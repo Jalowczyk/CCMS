@@ -68,3 +68,22 @@ class ManagerMenu(EmployeeMenu):
     options: list of options
     """
     options = ["view mentors list", "add mentor", "remove mentor"] + EmployeeMenu.options
+
+    def handle_menu(self, user_choice):
+        """
+        Redirects to proper action in proper controller depending on the user_choice.
+
+        Parameters:
+        user_choice: str
+        """
+
+        if user_choice == "view students list":
+            self.codecooler_controller.view_codecoolers_action("students")
+        elif user_choice == "view mentors list":
+            self.codecooler_controller.view_codecoolers_action("mentors")
+        elif user_choice == "add mentor":
+            self.user_controller.add_codecooler_action("manager")
+        elif user_choice == "remove mentor":
+            self.user_controller.remove_codecooler_action("manager")
+        elif user_choice == "log out":
+            self.logged_user = None
