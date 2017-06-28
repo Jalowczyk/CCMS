@@ -1,7 +1,9 @@
-from controller/codecooler_controller import CodecoolerController
-from controller/attendance_controller import AttendanceController
-from controller/submission_controller import SubmissionController
-from view/view import View
+from ../controller/codecooler_controller import CodecoolerController
+from ../controller/attendance_controller import AttendanceController
+from ../controller/submission_controller import SubmissionController
+from ../controller/assignment_controller import AssignmentController
+from ../view/view import View
+from ../user_input/user_input import UserInput
 
 
 class Menu:
@@ -106,7 +108,7 @@ class MentorMenu(EmployeeMenu):
     """
 
     options = ["add assignment", "grade submission", "check attendance",
-               "add student", "edit student", "remove student"] + EmployeeMenu.options
+               "add student", "edit student", "remove student", "show attendances"] + EmployeeMenu.options
 
     def handle_menu(self, user_choice):
         """
