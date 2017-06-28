@@ -148,3 +148,18 @@ class Student(Menu):
     """
 
     options = ["submit assignment", "show assignments"] + Menu.options
+
+    def handle_menu(self, user_choice):
+        """
+        Redirects to proper action in proper controller depending on the user_choice.
+
+        Parameters:
+        user_choice: str
+        """
+
+        if user_choice == "submit assigment":
+            self.submission_controller.submit_assignment_action()
+        elif user_choice == "show assignments":
+            self.assignments_controller.view_assignments_action()
+        elif user_choice == "log out":
+            self.logged_user = None  
