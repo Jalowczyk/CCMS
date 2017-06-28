@@ -63,3 +63,11 @@ class Assignment:
             title: str
         """
         return self.description
+
+    def get_max_grade(self):
+        """Gets max_grade atribute of instance
+
+        Returns
+            max_grade: int
+        """
+        return self.max_grade
