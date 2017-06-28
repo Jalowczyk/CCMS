@@ -55,4 +55,7 @@ class Mentor(Employee):
 
 class Stuff(Employee):
 
-    
+    stuff = []
+
+    def add_to_stuff(self):
+        self.stuff.append(self)
