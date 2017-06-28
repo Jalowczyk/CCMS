@@ -43,3 +43,11 @@ class Submission:
             is_graded: bool
         """
         return self.is_graded
+
+    def get_solution(self):
+        """Gets solution atibute of instance
+
+        Returns
+            solution: str
+        """
+        return self.solution
