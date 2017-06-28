@@ -55,3 +55,11 @@ class Assignment:
             title: str
         """
         return self.title
+
+    def get_description(self):
+        """Gets title atribute of instance
+
+        Returns
+            title: str
+        """
+        return self.description
