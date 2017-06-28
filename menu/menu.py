@@ -87,3 +87,44 @@ class ManagerMenu(EmployeeMenu):
             self.user_controller.remove_codecooler_action("manager")
         elif user_choice == "log out":
             self.logged_user = None
+
+class MentorMenu(EmployeeMenu):
+    """
+    Creates MentorMenu obj which inherits from EmployeeMenu class.
+
+    Class attributes:
+    options: list of options
+    """
+
+    options = ["add assignment", "grade submission", "check attendance",
+               "add student", "edit student", "remove student"] + EmployeeMenu.options
+
+    def handle_menu(self, user_choice):
+        """
+        Redirects to proper action in proper controller depending on the user_choice.
+
+        Parameters:
+        user_choice: str
+        """
+
+        if user_choice == "add assigment":
+            self.assignment_controller.add_assignment_action()
+        elif user_choice == "grade submission":
+            self.submission_controller.grade_submission_action()
+        elif user_choice == "check attendance":
+            self.attendance_controller.check_attendance_action()
+        elif user_choice == "add student":
+            self.codecooler_controller.add_codecooler_action("mentor")
+        elif user_choice == "remove student":
+            self.user_controller.remove_codecooler_action("mentor")
+        elif user_choice == "view students list":
+            self.codecooler_controller.view_codecoolers_action("students")
+        elif user_choice == "log out":
+            self.logged_user = None
+
+class StaffMenu(EmployeeMenu):
+    """
+    Creates StaffMenu obj which inherits from EmployeeMenu class.
+    """
+
+    
