@@ -1,9 +1,9 @@
-from ../controller/codecooler_controller import CodecoolerController
-from ../controller/attendance_controller import AttendanceController
-from ../controller/submission_controller import SubmissionController
-from ../controller/assignment_controller import AssignmentController
-from ../view/view import View
-from ../user_input/user_input import UserInput
+from controller.codecooler_controller import CodecoolerController
+from controller.attendance_controller import AttendanceController
+from controller.submission_controller import SubmissionController
+from controller.assignment_controller import AssignmentController
+from view.view import View
+from user_input.user_input import UserInput
 
 
 class Menu:
