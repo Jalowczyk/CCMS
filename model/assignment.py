@@ -25,17 +25,16 @@ class Assignment:
         self.max_grade = max_grade
         self.submissons = []
 
-    @classmethod
-    def add_assignment(cls, assignment):
+    def add_to_assignments(self):
         """Adds assignment object to class list
 
         Parameter:
-            assignment: object of assignment class
+            self: object of assignment class
 
         Returns:
             None
         """
-        cls.assignments.append(assignment)
+        self.assignments.append(assignment)
 
     def add_submission(self, submisson):
         """Add submisson connected to assignment object
@@ -57,10 +56,10 @@ class Assignment:
         return self.title
 
     def get_description(self):
-        """Gets title atribute of instance
+        """Gets description atribute of instance
 
         Returns
-            title: str
+            description: str
         """
         return self.description
 
