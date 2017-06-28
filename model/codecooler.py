@@ -68,7 +68,10 @@ class Student(Codecooler):
         self.submissions = []
         self.attendance = []
 
-    
+    @classmethod
+    def get_students(cls):
+        return cls.students
+        
     # + get_students(): list
     # + add(): void
     # + remove(): void
