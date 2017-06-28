@@ -43,3 +43,9 @@ class Menu:
         Displays menu.
         """
         self.view.display_menu(self, self.options)
+
+    def get_user_input(self):
+        """
+        Returns user input (str).
+        """
+        return self.view.get_option(self.options) #zwraca str
