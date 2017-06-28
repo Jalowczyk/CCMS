@@ -49,3 +49,6 @@ class Mentor(Employee):
 
     def add_to_mentors(self):
         self.mentors.append(self)
+
+    def remove(self):
+        self.mentors.remove(self)
