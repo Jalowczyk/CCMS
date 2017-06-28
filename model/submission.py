@@ -1,13 +1,13 @@
 class Submission:
-"""Represents submissonn object
+    """Represents submissonn object
 
-instance atributes:
-    assignment: assignment class object
-    grade: None
-    solution: str
-    is_graded: bool
-        False by defult
-"""
+    instance atributes:
+        assignment: assignment class object
+        grade: None
+        solution: str
+        is_graded: bool
+            False by defult
+    """
 
     def __init__(self, assignment, solution):
         """Initialize submission object
@@ -19,3 +19,11 @@ instance atributes:
         self.grade = None
         self.solution = solution
         self.is_graded = False
+
+    def get_grade(self):
+        """Gets grade atribute of instance
+
+        Returns
+            grade: int
+        """
+        return self.grade
