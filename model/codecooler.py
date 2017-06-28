@@ -1,4 +1,4 @@
-class Codecooler:
+staffclass Codecooler:
     """
     Parent class for Employee and Student class.
 
@@ -149,21 +149,21 @@ class Mentor(Employee):
         """
         self.mentors.remove(self)
 
-class Stuff(Employee):
+class Staff(Employee):
     """
-    Creates Stuff object.
+    Creates Staff object.
 
     Class attributes:
-    stuff(list): list storing Stuff objects
+    staff(list): list storing Staff objects
     """
 
-    stuff = []
+    staff = []
 
-    def add_to_stuff(self):
+    def add_to_staff(self):
         """
-        Adds Stuff object to stuff list (class attribute).
+        Adds Staff object to staff list (class attribute).
         """
-        self.stuff.append(self)
+        self.staff.append(self)
 
 class Student(Codecooler):
     """
