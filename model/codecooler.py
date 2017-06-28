@@ -1,33 +1,92 @@
 class Codecooler:
+    "Parent class for Employee and Student class"
 
     def __init__(self, first_name, last_name, email, password):
+        """
+        Create Codecooler object with instance attributes: first_name, last_name,
+        email, password.
+
+        Parameters:
+        first_name: str
+        last_name: str
+        email: str
+        password: str
+        """
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
         self.password = password
 
-    def get_first_name():
+    def get_first_name(self):
+        """
+        Returns first_name instance attribute.
+
+        Returns:
+        first_name: str
+        """
         return self.first_name
 
-    def get_last_name():
+    def get_last_name(self):
+        """
+        Returns last_name instance attribute.
+
+        Returns:
+        last_name: str
+        """
         return self.last_name
 
-    def get_email():
+    def get_email(self):
+        """
+        Returns email instance attribute.
+
+        Returns:
+        email: str
+        """
         return self.email
 
-    def get_password():
+    def get_password(self):
+        """
+        Returns password instance attribute.
+
+        Returns:
+        password: str
+        """
         return self.password
 
-    def set_first_name(first_name):
+    def set_first_name(self, first_name):
+        """
+        Set first_name instance attribute to first_name parameter.
+
+        Parameters:
+        first_name: str
+        """
         self.first_name = first_name
 
-    def set_last_name(last_name):
+    def set_last_name(self, last_name):
+        """
+        Set last_name instance attribute to last_name parameter.
+
+        Parameters:
+        last_name: str
+        """
         self.last_name = last_name
 
-    def set_password(password):
+    def set_password(self, password):
+        """
+        Set password instance attribute to password parameter.
+
+        Parameters:
+        password: str
+        """
         self.password = password
 
     def set_email(email):
+        """
+        Set email instance attribute to email parameter.
+        
+        Parameters:
+        email: str
+        """
         self.email = email
 
 class Employee(Codecooler):
