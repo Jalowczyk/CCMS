@@ -46,3 +46,6 @@ class Mentor(Employee):
     @classmethod
     def get_mentors(cls):
         return cls.mentors
+
+    def add_to_mentors(self):
+        self.mentors.append(self)
