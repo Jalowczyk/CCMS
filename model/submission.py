@@ -35,3 +35,11 @@ class Submission:
             assignment: object of assignment class
         """
         return self.assignment
+
+    def get_is_graded(self):
+        """Gets is_grade atibute of instance
+
+        Returns
+            is_graded: bool
+        """
+        return self.is_graded
