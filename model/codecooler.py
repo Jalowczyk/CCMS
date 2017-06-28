@@ -111,6 +111,16 @@ class Manager(Employee):
 
     managers = []
 
+    @classmethod
+    def get_managers(cls):
+        """
+        Returns managers list (class attribute).
+
+        Returns:
+        mentors: list
+        """
+        return cls.managers
+
     def add_to_managers(self):
         """
         Adds Manager object to managers list (class attribute).
@@ -159,6 +169,16 @@ class Staff(Employee):
 
     staff = []
 
+    @classmethod
+    def get_staff(cls):
+        """
+        Returns mentors list (class attribute).
+
+        Returns:
+        mentors: list
+        """
+        return cls.staff
+
     def add_to_staff(self):
         """
         Adds Staff object to staff list (class attribute).
@@ -178,10 +198,11 @@ class Student(Codecooler):
 
     students = []
 
-    def __init__(self):
+    def __init__(self, first_name, last_name, email, password):
         """
         Creates Student obj.
         """
+        super().__init__(first_name, last_name, email, password)
         self.submissions = []
         self.attendance = []
 
