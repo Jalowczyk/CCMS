@@ -59,3 +59,12 @@ class EmployeeMenu(Menu):
     options: list of options
     """
     options = ["view students list"] + Menu.options
+
+class ManagerMenu(EmployeeMenu):
+    """
+    Creates ManagerMenu obj which inherits from EmployeeMenu class.
+
+    Class attributes:
+    options: list of options
+    """
+    options = ["view mentors list", "add mentor", "remove mentor"] + EmployeeMenu.options
