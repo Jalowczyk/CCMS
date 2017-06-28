@@ -47,3 +47,11 @@ class Assignment:
             None
         """
         self.submissons.append(submisson)
+
+    def get_title(self):
+        """Gets title atribute of instance
+
+        Returns
+            title: str
+        """
+        return self.title
