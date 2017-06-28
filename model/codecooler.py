@@ -84,5 +84,8 @@ class Student(Codecooler):
     def get_submissions(self):
         return self.submissions
 
-    def add_submission(submission):
+    def add_submission(self, submission):
         self.submissions.append(submission)
+
+    def add_attendance(self, attendance):
+        self.attendance.append(attendance)
