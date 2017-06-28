@@ -52,3 +52,7 @@ class Mentor(Employee):
 
     def remove(self):
         self.mentors.remove(self)
+
+class Stuff(Employee):
+
+    
