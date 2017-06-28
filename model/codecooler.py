@@ -80,3 +80,6 @@ class Student(Codecooler):
 
     def get_attendance(self):
         return self.attendance
+
+    def get_submissions(self):
+        return self.submissions
