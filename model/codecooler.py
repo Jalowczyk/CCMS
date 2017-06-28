@@ -36,5 +36,13 @@ class Manager(Employee):
 
     managers = []
 
-    def add():
-        managers.append(self)
+    def add_to_managers(self):
+        self.managers.append(self)
+
+class Mentor(Employee):
+
+    mentors = []
+
+    @classmethod
+    def get_mentors(cls):
+        return cls.mentors
