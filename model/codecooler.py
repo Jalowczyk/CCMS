@@ -1,4 +1,4 @@
-staffclass Codecooler:
+class Codecooler:
     """
     Parent class for Employee and Student class.
 
