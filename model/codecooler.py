@@ -29,3 +29,5 @@ class Codecooler:
 
     def set_email(email):
         self.email = email
+
+class Employee(Codecooler):
