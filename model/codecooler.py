@@ -31,3 +31,10 @@ class Codecooler:
         self.email = email
 
 class Employee(Codecooler):
+
+class Manager(Employee):
+
+    managers = []
+
+    def add():
+        managers.append(self)
