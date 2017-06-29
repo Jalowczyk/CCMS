@@ -51,13 +51,18 @@ class SubmissionController:
             submissions = self.get_submissions_from_assignment()
 
         self.view.show_submissions(submissions)
-        submission_index = self.user_input.get_index_input(len(submissions))
-        submission = submissions[submission_index]
-        message = "How much points you want to assign?"
-        self.view.show_message(message)
-        grade = self.user_input.get_numeric_input
-        submission.set_grade(grade)
-        submission.set_is_graded()
+        print(len(submissions))
+        if submissions:
+            submission_index = self.user_input.get_index_input(len(submissions))
+            submission = submissions[submission_index]
+            message = "How much points you want to assign?"
+            self.view.show_message(message)
+            grade = self.user_input.get_grade_input(submission)
+            submission.set_grade(grade)
+            submission.set_is_graded(True)
+        else:
+            message = "There are no submissions to grade."
+            self.view.show_message(message)
 
     def check_grade_action(self):
         """Shows grades of user_input
