@@ -108,7 +108,7 @@ class MentorMenu(EmployeeMenu):
     options: list of options
     """
 
-    options = ["add assignment", "grade submission", "check attendance",
+    options = ["add assignment", "show assignments", "grade submission", "check attendance",
                "add student", "edit student", "remove student", "show attendances"] + EmployeeMenu.options
 
     def handle_menu(self, user_choice):
@@ -122,6 +122,8 @@ class MentorMenu(EmployeeMenu):
 
         if user_choice == "add assignment":
             self.assignment_controller.add_assignment_action()
+        elif user_choice == "show assignments":
+            self.assignment_controller.show_assignments_details()
         elif user_choice == "grade submission":
             self.submission_controller.set_grade_action()
         elif user_choice == "check attendance":
