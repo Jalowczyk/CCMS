@@ -22,3 +22,8 @@ class TestAttendance(unittest.TestCase):
         with self.assertRaises(ValueError):
             Attendance(self.correct_date, self.student, None)
 
+    def test_addToAddendances_AttendancesListIncrements(self):
+        attendance = Attendance(self.correct_date, self.student, self.isPresent)
+        previous_attendances_lenght = len(Attendance.get_attendances())
+        attendance.add_to_attendances()
+        self.assertEqual(len(Attendance.get_attendances()), previous_attendances_lenght + 1)
