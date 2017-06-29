@@ -45,14 +45,14 @@ class Menu:
         Displays menu.
         """
 
-        self.view.display_menu(self, self.options)
+        self.view.show_menu_option(self.options)
 
     def get_user_input(self):
         """
         Returns user input (str).
         """
 
-        return self.input.get_option(self.options)
+        return self.user_input.get_option(self.options)
 
 
 class EmployeeMenu(Menu):
