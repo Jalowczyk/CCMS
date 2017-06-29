@@ -93,5 +93,5 @@ class Application:
             if email == codecooler.get_email() and password == codecooler.get_password():
                 return codecooler
             else:
-                self.view.view_error("\nWrong login or password!\n")
+                self.view.show_message("\nWrong login or password!\n")
                 return None
