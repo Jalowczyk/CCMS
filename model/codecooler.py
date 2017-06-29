@@ -88,7 +88,7 @@ class Codecooler:
         """
         self.password = password
 
-    def set_email(email):
+    def set_email(self, email):
         """
         Set email instance attribute to email parameter.
 
@@ -178,10 +178,11 @@ class Student(Codecooler):
 
     students = []
 
-    def __init__(self):
+    def __init__(self, first_name, last_name, email, password):
         """
         Creates Student obj.
         """
+        super().__init__(first_name, last_name, email, password)
         self.submissions = []
         self.attendance = []
 
