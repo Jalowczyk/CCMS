@@ -35,6 +35,7 @@ class Application:
         self.user_input = UserInput()
         self.view = View()
         self.path = "data/"
+        self.data_manager = DataManager(self.path)
 
 
     def handle_login(self):
@@ -48,7 +49,7 @@ class Application:
                 self.logged_user["logged_user"] = self.log_in()
             elif user_option == "exit":
                 self.is_running = False
-                break
+                return
 
     def handle_menu(self):
         """
@@ -64,12 +65,16 @@ class Application:
 
     def run(self):
         """
-        Entry method for the main module.
+        Entry method for the main module which read csv file at the beginning
+        and write to csv file at the end.
         """
+        self.data_manager.read_csv()
 
         while is_running:
             handle_login()
             handle_menu()
+
+        self.data_manager.write_csv()
 
     def log_in(self):
         """
