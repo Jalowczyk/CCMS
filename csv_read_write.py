@@ -257,3 +257,32 @@ def read_submissions_from_csv(file_name):
 
     except FileNotFoundError:
         raise FileNotFoundError('File' + file_name + 'doesn\'t exist')
+
+
+def write_submissions_to_csv(file_name):
+    '''
+    Save submissions data from list from class Assignment at the end of the program.
+
+    Every item is written to a separate line in the following format:
+    `assignment_title|student_email|solution|is_graded|grade'
+        str               str         str   True/False  None/int
+
+    Args:
+        file_name (str): name of the file
+
+    Returns:
+        void
+    '''
+    assignment_list = Assignment.get_assignments()
+
+    with open(file_name, "w") as file:
+        for assignment in assignment_list:
+            submission_list = assignment.get_submission()
+
+            for submission in submission_list:
+                row = [submission.assignment.title,
+                       submission.student.email,
+                       submission.solution,
+                       str(submission.is_graded),
+                       str(submission.grade)]
+                file.write('|'.join(row) + '\n')
