@@ -47,13 +47,6 @@ class Submission:
         """
         self.is_graded = is_graded
 
-        Returns
-            void:
-        """
-        self.grade = grade
-
-  
-
     def get_assignment(self):
         """Gets assignment attribute of instance
 
