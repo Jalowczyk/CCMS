@@ -81,29 +81,31 @@ class CodecoolerController:
         Returns:
             None
         """
-        message = 'Please provide user data:'
-        self.view.show_message(message)
         if person_role == "mentor":
             mentors = Mentor.get_mentors()
             self.view.show_codecoolers(mentors)
             option = self.user_input.get_index_input(len(mentors))
             mentor = mentors[option]
+            message = "Please provide user data"
+            self.view.show_message(message)
             data = self.user_input.get_codecooler_data()
-            mentor.set_name = data["name"]
-            mentor.set_surname = data["surname"]
-            mentor.set_email = data["email"]
-            mentor.set_password = data['password']
+            mentor.set_first_name(data[0])
+            mentor.set_last_name(data[1])
+            mentor.set_email(data[2])
+            mentor.set_password(data[3])
 
         elif person_role == "student":
             students = Student.get_students()
             self.view.show_codecoolers(students)
             option = self.user_input.get_index_input(len(students))
             student = students[option]
+            message = "Please provide user data"
+            self.view.show_message(message)
             data = self.user_input.get_codecooler_data()
-            student.set_name = data["name"]
-            student.set_surname = data["surname"]
-            student.set_email = data["email"]
-            student.set_password = data['password']
+            student.set_first_name(data[0])
+            student.set_last_name(data[1])
+            student.set_email(data[2])
+            student.set_password(data[3])
 
     def remove_codecooler_action(self, person_role):
         """Remove codecooler object from class list
