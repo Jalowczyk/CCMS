@@ -1,5 +1,3 @@
-import csv
-from datetime import date
 from model.attendance import *
 from model.codecooler import *
 from model.assignment import *
@@ -7,7 +5,7 @@ from model.submission import *
 
 
 def read_students_from_csv(file_name):
-    '''
+    """
     Create models and fill class lists with data from csv files at the begining of program
 
     Raises *FileNotFoundError* if a file doesn't exist.
@@ -20,7 +18,7 @@ def read_students_from_csv(file_name):
 
     Returns:
         void
-    '''
+    """
     try:
         codecooler_roles = {'Student': Student,
                             'Staff': Staff,
@@ -53,7 +51,7 @@ def read_students_from_csv(file_name):
 
 
 def write_codecoolers_to_csv(file_name):
-    '''
+    """
     Save codecoolers data from classes lists at the end of the program.
 
     Every item is written to a separate line in the following format:
@@ -64,7 +62,7 @@ def write_codecoolers_to_csv(file_name):
 
     Returns:
         void
-    '''
+    """
     codecoolers_list = (Student.get_students()
                         + Manager.get_managers()
                         + Mentor.get_mentors()
@@ -78,7 +76,7 @@ def write_codecoolers_to_csv(file_name):
 
 
 def read_attendances_from_csv(file_name):
-    '''
+    """
     Create models and fill Attendance class list with data from csv files at the begining of program.
 
     Raises *FileNotFoundError* if a file doesn't exist.
@@ -91,7 +89,7 @@ def read_attendances_from_csv(file_name):
 
     Returns:
         void
-    '''
+    """
     try:
         with open(file_name, "r") as file:
             lines = file.readlines()
@@ -120,7 +118,7 @@ def read_attendances_from_csv(file_name):
 
 
 def write_attendance_to_csv(file_name):
-    '''
+    """
     Save attendance data from class list at the end of the program.
 
     Every item is written to a separate line in the following format:
@@ -132,8 +130,8 @@ def write_attendance_to_csv(file_name):
 
     Returns:
         void
-    '''
-    attendances_list = Attendance.get_attendance()
+    """
+    attendances_list = Attendance.get_attendances()
     with open(file_name, "w") as file:
         for attendance in attendances_list:
             attendance_details = list(attendance.__dict__.values())
@@ -148,7 +146,7 @@ def write_attendance_to_csv(file_name):
 
 
 def read_assignments_from_csv(file_name):
-    '''
+    """
     Create models and fill Assignment class list with data from csv files at the begining of program.
 
     Raises *FileNotFoundError* if a file doesn't exist.
@@ -161,7 +159,7 @@ def read_assignments_from_csv(file_name):
 
     Returns:
         void
-    '''
+    """
     try:
         with open(file_name, "r") as file:
             lines = file.readlines()
@@ -178,7 +176,7 @@ def read_assignments_from_csv(file_name):
 
 
 def write_assignments_to_csv(file_name):
-    '''
+    """
     Save attendance data from class list at the end of the program.
 
     Every item is written to a separate line in the following format:
@@ -186,11 +184,9 @@ def write_assignments_to_csv(file_name):
 
     Args:
         file_name (str): name of the file
-        assignments_list (list of :obj: 'Assignments'): list of assignments objects
-
     Returns:
         void
-    '''
+    """
     assignments_list = Assignment.get_assignments()
     with open(file_name, "w") as file:
         for assignment in assignments_list:
@@ -204,7 +200,7 @@ def write_assignments_to_csv(file_name):
 
 
 def read_submissions_from_csv(file_name):
-    '''
+    """
     Create models and fill Assigment Submission class list with data from csv files at the begining of program.
 
     Raises *FileNotFoundError* if a file doesn't exist.
@@ -217,7 +213,7 @@ def read_submissions_from_csv(file_name):
 
     Returns:
         void
-    '''
+    """
     try:
         with open(file_name, "r") as file:
             lines = file.readlines()
@@ -255,7 +251,7 @@ def read_submissions_from_csv(file_name):
 
 
 def write_submissions_to_csv(file_name):
-    '''
+    """
     Save submissions data from list from class Assignment at the end of the program.
 
     Every item is written to a separate line in the following format:
@@ -267,7 +263,7 @@ def write_submissions_to_csv(file_name):
 
     Returns:
         void
-    '''
+    """
     assignment_list = Assignment.get_assignments()
 
     with open(file_name, "w") as file:
