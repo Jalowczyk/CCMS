@@ -80,6 +80,7 @@ class Assignment:
         return self.submissons
 
     @classmethod
+
     def get_assignments_list(cls):
         """Gets assignments atribute of class
 

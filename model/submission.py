@@ -64,11 +64,3 @@ class Submission:
             solution: str
         """
         return self.solution
-
-    def get_grade(self):
-        """Gets grade atibute of instance
-
-        Returns
-            grade: int
-        """
-        return self.grade
