@@ -26,16 +26,20 @@ class SubmissionController:
         """
         assignments = Assignment.get_assignments_list()
         self.view.show_assignments(assignments)
-        message = 'Choose assignment: '
-        self.view.show_message(message)
-        index = self.user_input.get_index_input(len(assignments))
-        assignment = assignments[index]
-        message = 'Please provide link to submit:'
-        self.view.show_message(message)
-        solution = self.user_input.get_text_input()
-        submission = Submission(self.session["logged_user"], assignment, solution)
-        assignment.add_submission(submission)
-        self.session["logged_user"].add_submission(submission)
+        if assignments:
+            message = 'Choose assignment: '
+            self.view.show_message(message)
+            index = self.user_input.get_index_input(len(assignments))
+            assignment = assignments[index]
+            message = 'Please provide link to submit:'
+            self.view.show_message(message)
+            solution = self.user_input.get_text_input()
+            submission = Submission(self.session["logged_user"], assignment, solution)
+            assignment.add_submission(submission)
+            self.session["logged_user"].add_submission(submission)
+        else:
+            message = 'There are no assignments.'
+            self.view.show_message(message)
 
     def set_grade_action(self):
         """Sets grade attribute of submission and set as graded
