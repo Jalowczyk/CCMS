@@ -102,6 +102,7 @@ class UserInput:
         codecooler_first_name: str
         codecooler_second_name: str
         codecooler_email: str
+        codecooler_password: str
         """
 
         codecooler_first_name = input("Enter first name: ")
