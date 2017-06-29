@@ -52,7 +52,7 @@ class Menu:
         Returns user input (str).
         """
 
-        return self.input.get_option(self.options)
+        return self.user_input.get_option(self.options)
 
 
 class EmployeeMenu(Menu):
