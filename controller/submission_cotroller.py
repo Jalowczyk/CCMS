@@ -19,39 +19,32 @@ class SumbmissionController:
 
         Returns: None
         """
-        solution = self.user_input.get_submission_solution()data
+        message = 'Please provide link to submit:'
+        self.view.show_message(message)
+        solution = self.user_input.get_text_input()
         submisson = Submisson(self.logged_student, assignment, solution)
         assignment.add_submission(submisson)
         self.logged_user.add_submission(submisson)
 
-    def get_assignment(self):
-        """Gets object of assignment class
-
-        Return: Assignment object
-        """
-        assignments = Assignment.get_assignments_list()
-        index = self.user_input.get_index_input(len(assignments))
-        assignment = assignments[index]
-        return assignment
-
-    def get_submission(self):
-        """Gets submission object from instance list of assignment
-
-        Returns: submission object
-        """
-        assignment = self.get_assignment()
-        submissions_list = assignment.get_submissions()
-        index = self.user_input.get_index_input(len(submissions_list))
-        submission = submissions_list[index]
-        return submission
-
     def set_grade_action(self):
-        """Sets grade atribute of submission and set as graded7
+        """Sets grade atribute of submission and set as graded
 
         Returns: None
         """
-        submission = get_submission
-        grade = self.user_input.get_grade()
+        options = ["Grade by student", "Grade by assignment"]
+        self.view.show_menu_option(options)
+        option = self.user_input.get_menu_input(options)
+        if option == option[0]:
+            submissons = self.grade_by_student_action()
+        elif option == option[1]:
+            submissons = self.grde_by_assignment_action()
+
+        self.view.show_submissions(submissons)
+        submission_index = self.user_input.get_index_input(len(submissons))
+        submission = submissons[submission_index]
+        message = "How much poits you want to assign?"
+        self.view.show_message(message)
+        grade = user_input.get_numeric_input
         submission.set_grade(grade)
         submission.set_is_graded()
 
@@ -62,3 +55,29 @@ class SumbmissionController:
         """
         submissions = self.logged_user.get_submission()
         self.view.show_grades(submissions)
+
+    def get_submissions_from_student(self):
+        """Gets submission instance list of Student object
+
+        Returns:
+            submissions: list of submissions object
+        """
+        students = Student.get_students()
+        self.view.show_codecoolers(students)
+        student_index = self.user_input.get_index_input(len(students))
+        student = students[student_index]
+        submissons = student.get_submissions()
+        return submissons
+
+    def get_submissions_from_assignment(self):
+        """Gets submission instance list of Assignment object
+
+        Returns:
+            submissions: list of submissions object
+        """
+        assignment = Assignment.get_assignments()
+        self.view.show_assignments(assignment)
+        assignment_index = self.user_input.get_index_input(len(assignments))
+        assignment = assignments[assignment_index]
+        submissons = assignment.get_submissions()
+        return submissons

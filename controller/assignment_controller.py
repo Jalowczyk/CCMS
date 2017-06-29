@@ -21,16 +21,6 @@ class AssignmentController:
         assignment = Assignment(data)
         assignment.add_to_assignments()
 
-    def get_assignments(self):
-        """Gets class list from Assignment
-
-        Returns:
-            assignment: list of Assignment object
-        """
-        assignments = Assignment.get_assignments_list()
-        self.view.show_assignments(assignments)
-        return assignments
-
     def get_assignment(self, assignments):
         """Gets assignment object form class list
 
@@ -38,8 +28,7 @@ class AssignmentController:
             assignment: list of Assignment object
         """
         index = self.user_input.get_index_input(len(assignments))
-        assignment = assignments[index]
-        return assignment
+        return assignments[index]
 
     def show_assignments_details(self):
         """Show details of assignment object
@@ -48,7 +37,8 @@ class AssignmentController:
             None
         """
         options = ['view details', 'back']
-        assignments = self.get_assignments
+        assignments = Assignment.get_assignments_list()
+        self.view.show_assignments(assignments)
         self.view.show_menu_option(options)
         option = self.user_input.get_menu_input(options)
         if option == options[0]:
