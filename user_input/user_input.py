@@ -39,4 +39,23 @@ class UserInput:
         else:
             return False
 
+    def get_login_input(self):
+        """
+        Returns email and password depending on user input.
+
+        Returns:
+        user_input_email: str
+        user_input_password: str
+        """
+
+        user_input_email = input("Enter your email: ")
+        while not user_input_email:
+            user_input_email = input("Enter your email: ")
+
+        user_input_password = getpass.getpass("Enter your password: ")
+        while not user_input_password:
+            user_input_password = getpass.getpass("Enter your password: ")
+
+        return user_input_email, user_input_password
+
     
