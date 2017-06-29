@@ -22,6 +22,7 @@ class CodecoolerController:
         Returns:
             None
         """
+        self.view.show_codecoolers(users_list)
         message = 'Please choose index of user:'
         self.view.show_message(message)
         user_index = self.user_input.get_index_input(len(users_list))
@@ -42,7 +43,7 @@ class CodecoolerController:
             mentors = Mentor.get_mentors()
             self.view.show_codecoolers(mentors)
             self.view.show_menu_option(options)
-            option = self.user_input.get_index_input(len(options))
+            option = self.user_input.get_option(options)
 
             if option == options[0]:
                 self.show_codecooler_details_action(mentors)
@@ -51,7 +52,7 @@ class CodecoolerController:
             students = Student.get_students()
             self.view.show_codecoolers(students)
             self.view.show_menu_option(options)
-            option = self.user_input.get_index_input(len(options))
+            option = self.user_input.get_option(options)
             if option == options[0]:
                 self.show_codecooler_details_action(students)
 
