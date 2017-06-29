@@ -116,7 +116,11 @@ class UserInput:
         while not codecooler_email:
             codecooler_second_name = input("Enter email: ")
 
-        return codecooler_first_name, codecooler_second_name, codecooler_email
+        codecooler_password = input("Enter password: ")
+        while not codecooler_password:
+            codecooler_password = input("Enter password: ")
+
+        return codecooler_first_name, codecooler_second_name, codecooler_email, codecooler_password
 
     def get_numeric_input(self):
         """
