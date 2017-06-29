@@ -44,6 +44,7 @@ class Application:
         """
 
         while not self.session["logged_user"]:
+            self.view.show_menu_option(self.options)
             user_option = self.user_input.get_option(self.options)
             if user_option == "log in":
                 self.session["logged_user"] = self.log_in()
