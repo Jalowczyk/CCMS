@@ -145,3 +145,35 @@ def write_attendance_to_csv(file_name):
 
             row = [str(date), email, is_present]
             file.write('|'.join(row) + '\n')
+
+
+def read_assignments_from_csv(file_name):
+    '''
+    Create models and fill Assignment class list with data from csv files at the begining of program.
+
+    Raises *FileNotFoundError* if a file doesn't exist.
+
+    Every item is written to a separate line in the following format:
+    `title|description|max_grade'
+
+    Args:
+        file_name (str): name of the file
+
+    Returns:
+        void
+    '''
+    try:
+        with open(file_name, "r") as file:
+            lines = file.readlines()
+        assignments_list = [element.replace("\n", "").split("|") for element in lines]
+        print(assignments_list)
+        for assignment in assignments_list:
+            title = assignment[0]
+            description = assignment[1]
+            max_grade = int(assignment[2])
+
+            new_assignment = Assignment(title, description, max_grade)
+            new_assignment.add_to_assignments()
+
+    except FileNotFoundError:
+        raise FileNotFoundError('File' + file_name + 'doesn\'t exist')
