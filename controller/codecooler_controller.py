@@ -4,6 +4,7 @@ from model.codecooler import Student
 
 class CodecoolerController:
 
+
     def __init__(self, view, user_input):
         self.view = view
         self.user_input = user_input
@@ -12,14 +13,23 @@ class CodecoolerController:
         options = ["show details", "back"]
 
         if user_role == "mentor":
-            self.view.show_codecooler(Mentor.get_mentors())
+            mentors = Mentor.get_mentors()
+            self.view.show_codecooler(mentors)
             self.view.show_menu_option(options)
             option = self.input.get_menu_input(options)
             if main option == options[0]:
-                returns ""  # To finish
+                mentor_index = self.user_input.get_record_by_index(len(mentors))
+                mentor = mentors[mentor_index]
+                self.viev.show_user_details(mentor)
         elif user_role == "student":
-            self.view.show_codecooler(Student.get_students())
-
+            students = Studet.get_students()
+            self.view.show_codecooler(students)
+            self.view.show_menu_option(options)
+            option = self.input.get_menu_input(options)
+            if option == options[0]:
+                student_index = self.user_input.get_record_by_index(len(students))
+                student = students[student_index]
+                self.viev.show_user_details(student)
 
     def add_codecooler_action(self, person_role):
         if person_role == "mentor":
@@ -39,7 +49,7 @@ class CodecoolerController:
             mentor.set_name = data["name"]
             mentor.set_surname = data["surname"]
             mentor.set_email = data["email"]
-            mentor.set_password = data["password"]
+
         elif person_role == "student":
             students = Student.get_students()
             self.view.show_codecoolers(students)
@@ -49,7 +59,6 @@ class CodecoolerController:
             student.set_name = data["name"]
             student.set_surname = data["surname"]
             student.set_email = data["email"]
-            student.set_password = data["password"]
 
     def remove_codecooler_action(self, person_role):
         if person_role == "mentor":
