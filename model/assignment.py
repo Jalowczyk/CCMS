@@ -71,7 +71,7 @@ class Assignment:
         """
         return self.max_grade
 
-    def get_submission(self):
+    def get_submissions(self):
         """Gets submissons atribute of instance
 
         Returns
