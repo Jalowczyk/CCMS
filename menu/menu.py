@@ -35,10 +35,10 @@ class Menu:
         self.logged_user = logged_user
         self.view = view
         self.user_input = user_input
-        self.codecooler_controller = CodecoolerController()
-        self.attendance_controller = AttendanceController()
-        self.submission_controller = SubmissionController()
-        self.assignment_controller = AssignmentController()
+        self.codecooler_controller = CodecoolerController(user_input, view)
+        self.attendance_controller = AttendanceController(user_input, view)
+        self.submission_controller = SubmissionController(user_input, view)
+        self.assignment_controller = AssignmentController(user_input, view)
 
     def display_menu(self):
         """
