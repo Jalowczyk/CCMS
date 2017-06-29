@@ -44,10 +44,10 @@ class SubmissionController:
         """
         options = ["Grade by student", "Grade by assignment"]
         self.view.show_menu_option(options)
-        option = self.user_input.get_menu_input(options)
-        if option == option[0]:
+        option = self.user_input.get_option(options)
+        if option == options[0]:
             submissions = self.get_submissions_from_student()
-        elif option == option[1]:
+        elif option == options[1]:
             submissions = self.get_submissions_from_assignment()
 
         self.view.show_submissions(submissions)
