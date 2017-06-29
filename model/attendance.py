@@ -31,3 +31,7 @@ class Attendance:
             void
         '''
         self.attendances.append(self)
+
+    @classmethod
+    def get_attendances(cls):
+        return cls.attendances
