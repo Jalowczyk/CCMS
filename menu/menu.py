@@ -37,7 +37,7 @@ class Menu:
         self.user_input = user_input
         self.codecooler_controller = CodecoolerController(user_input, view)
         self.attendance_controller = AttendanceController(user_input, view)
-        self.submission_controller = SubmissionController(user_input, view)
+        self.submission_controller = SubmissionController(logged_user, user_input, view)
         self.assignment_controller = AssignmentController(user_input, view)
 
     def display_menu(self):
@@ -86,13 +86,13 @@ class ManagerMenu(EmployeeMenu):
         """
 
         if user_choice == "view students list":
-            self.codecooler_controller.view_codecoolers_action("students")
+            self.codecooler_controller.show_codecooler_action("students")
         elif user_choice == "view mentors list":
-            self.codecooler_controller.view_codecoolers_action("mentors")
+            self.codecooler_controller.show_codecooler_action("mentors")
         elif user_choice == "add mentor":
-            self.user_controller.add_codecooler_action("mentor")
+            self.codecooler_controller.add_codecooler_action("mentor")
         elif user_choice == "remove mentor":
-            self.user_controller.remove_codecooler_action("mentor")
+            self.codecooler_controller.remove_codecooler_action("mentor")
         elif user_choice == "log out":
             self.logged_user = None
 
@@ -117,18 +117,18 @@ class MentorMenu(EmployeeMenu):
         user_choice: str
         """
 
-        if user_choice == "add assigment":
+        if user_choice == "add assignment":
             self.assignment_controller.add_assignment_action()
         elif user_choice == "grade submission":
-            self.submission_controller.grade_submission_action()
+            self.submission_controller.set_grade_action()
         elif user_choice == "check attendance":
             self.attendance_controller.check_attendance_action()
         elif user_choice == "add student":
             self.codecooler_controller.add_codecooler_action("student")
         elif user_choice == "remove student":
-            self.user_controller.remove_codecooler_action("student")
+            self.codecooler_controller.remove_codecooler_action("student")
         elif user_choice == "view students list":
-            self.codecooler_controller.view_codecoolers_action("students")
+            self.codecooler_controller.show_codecooler_action("students")
         elif user_choice == "log out":
             self.logged_user = None
 
@@ -148,11 +148,12 @@ class StaffMenu(EmployeeMenu):
         """
 
         if user_choice == "view students list":
-            self.codecooler_controller.view_codecoolers_action("students")
+            self.codecooler_controller.show_codecooler_action("students")
         elif user_choice == "log out":
             self.logged_user = None
 
-class Student(Menu):
+
+class StudentMenu(Menu):
     """
     Creates StudentMenu obj which inherits from Menu class.
 
@@ -171,9 +172,9 @@ class Student(Menu):
         user_choice: str
         """
 
-        if user_choice == "submit assigment":
-            self.submission_controller.submit_assignment_action()
+        if user_choice == "submit assignment":
+            self.submission_controller.add_submission_action()
         elif user_choice == "show assignments":
-            self.assignments_controller.view_assignments_action()
+            self.assignment_controller.show_assignments_details()
         elif user_choice == "log out":
             self.logged_user = None
