@@ -48,3 +48,12 @@ class Attendance:
         """
 
         return cls.attendances
+
+    def get_date(self):
+        return self.date
+
+    def get_student(self):
+        return self.student
+
+    def get_is_present(self):
+        return self.is_present

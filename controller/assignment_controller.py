@@ -45,6 +45,8 @@ class AssignmentController:
         self.view.show_menu_option(options)
         option = self.user_input.get_index_input(len(options))
         if option == 0:
+            message = 'Choose assignment:'
+            self.view.show_message(message)
             self.view.show_assignments(assignments)
             assignment = self.get_assignment(assignments)
             self.view.show_assignment_details(assignment)
