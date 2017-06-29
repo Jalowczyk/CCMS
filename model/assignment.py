@@ -26,14 +26,14 @@ class Assignment:
         self.submissons = []
 
     @classmethod
-    def get_assigments(cls):
+    def get_assignments(cls):
         """
-        Returns students list (class attribute).
+        Returns assignment list (class attribute).
 
         Returns:
-        students: list
+        assignment (list of :obj: 'Assignment'): list of assignment objects
         """
-        return cls.assigments
+        return cls.assignments
 
     def add_to_assignments(self):
         """Adds assignment object to class list
