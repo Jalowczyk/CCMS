@@ -1,4 +1,5 @@
 import unittest
+import unittest.mock
 
 from model.codecooler import *
 
@@ -113,7 +114,7 @@ class TestCodecooler(unittest.TestCase):
     def test_Codecooler_setMail_returnCorrectMail(self):
         codecooler = Codecooler("Old first name", "Old last name", "old@mail.com", "Oldpassword")
         mail = "mail@mail.pl"
-        codecooler.set_email()
+        codecooler.set_email(mail)
         self.assertEqual(codecooler.get_email(), mail)
 
     def test_Codecooler_setPassword_returnCorrectPassword(self):
@@ -133,3 +134,25 @@ class TestCodecooler(unittest.TestCase):
         mentor_to_remove.add_to_mentors()
         mentor_to_remove.remove()
         self.assertFalse(any([mentor == mentor_to_remove for mentor in Mentor.get_mentors()]))
+
+    def test_Student_afterInit_hasEmptyAttendanceList(self):
+        student = Student("Old first name", "Old last name", "old@mail.com", "Oldpassword")
+        self.assertEqual(len(student.get_attendance()), 0)
+
+    def test_Student_afterInit_hasEmptySubmissionList(self):
+        student = Student("Old first name", "Old last name", "old@mail.com", "Oldpassword")
+        self.assertEqual(len(student.get_submissions()), 0)
+
+    def test_StudentAddSubmission_SubmissionListIncrements(self):
+        student = Student("Old first name", "Old last name", "old@mail.com", "Oldpassword")
+        previous_submissions_length = len(student.get_submissions())
+        submission = unittest.mock.Mock()
+        student.add_submission(submission)
+        self.assertEqual(len(student.get_submissions()), previous_submissions_length+1)
+
+    def test_StudentAddAttendance_AttendaceListIncrements(self):
+        student = Student("Old first name", "Old last name", "old@mail.com", "Oldpassword")
+        previous_attendances_length = len(student.get_attendance())
+        attendance = unittest.mock.Mock()
+        student.add_attendance(attendance)
+        self.assertEqual(len(student.get_attendance()), previous_attendances_length+1)
