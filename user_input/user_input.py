@@ -80,4 +80,16 @@ class UserInput:
 
         return user_assignment_title, user_assignment_description, int(user_assignment_max_grade)
 
-    
+    def get_index_input(self, list_length):
+        """
+        Returns index depending on user input.
+
+        Returns:
+        user_input_index: int
+        """
+
+        user_input_index = input("Pick a number: ")
+        while not user_input_index.isnumeric() or int(user_input_index) not in range(1, list_length):
+            user_input_index = input("Pick a number: ")
+
+        return int(user_input_index)
