@@ -51,7 +51,9 @@ class View:
         """
 
         for index, submission in enumerate(submissions):
-            print("{}. {} {}".format(index + 1, submission.get_student().get_name(), submission.get_assignment.get_title()))
+            print("{}. {} {} {}".format(index + 1, submission.get_student().get_first_name(),
+                                        submission.get_student().get_last_name(),
+                                        submission.get_assignment().get_title()))
 
     def show_assignment_details(self, assignment):
         """
