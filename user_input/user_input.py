@@ -131,3 +131,15 @@ class UserInput:
             user_input_number = input("Enter a number: ")
 
         return int(user_input_number)
+
+    def get_text_imput(self):
+        """
+        Returns str depending on user input.
+
+        Returns:
+        user_input_text: str
+        """
+
+        user_input_text = input("Type here: ")
+
+        return user_input_text
