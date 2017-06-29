@@ -1,15 +1,15 @@
 class Assignment:
     """Represents assignment object
 
-    class atribute:
+    class attribute:
         assignment: list
             list of assignments objects
 
-    instance atributes:
+    instance attributes:
         title: str
         description: str
         max_grade: int
-        submissons: list
+        submissions: list
             list of submissions objects, connected to assignmnet
     """
 
@@ -23,7 +23,7 @@ class Assignment:
         self.title = title
         self.description = description
         self.max_grade = max_grade
-        self.submissons = []
+        self.submissions = []
 
     def add_to_assignments(self):
         """Adds assignment object to class list
@@ -36,19 +36,19 @@ class Assignment:
         """
         self.assignments.append(self)
 
-    def add_submission(self, submisson):
-        """Add submisson connected to assignment object
+    def add_submission(self, submission):
+        """Add submission connected to assignment object
 
         Parameters:
-            submisson: object of submisson class
+            submission: object of submission class
 
         Returns:
             None
         """
-        self.submissons.append(submisson)
+        self.submissions.append(submission)
 
     def get_title(self):
-        """Gets title atribute of instance
+        """Gets title attribute of instance
 
         Returns
             title: str
@@ -56,7 +56,7 @@ class Assignment:
         return self.title
 
     def get_description(self):
-        """Gets description atribute of instance
+        """Gets description attribute of instance
 
         Returns
             description: str
@@ -64,7 +64,7 @@ class Assignment:
         return self.description
 
     def get_max_grade(self):
-        """Gets max_grade atribute of instance
+        """Gets max_grade attribute of instance
 
         Returns
             max_grade: int
@@ -72,17 +72,16 @@ class Assignment:
         return self.max_grade
 
     def get_submissions(self):
-        """Gets submissons atribute of instance
+        """Gets submissions attribute of instance
 
         Returns
-            submisson: list of submisson class objects
+            submission: list of submission class objects
         """
-        return self.submissons
+        return self.submissions
 
     @classmethod
-
     def get_assignments_list(cls):
-        """Gets assignments atribute of class
+        """Gets assignments attribute of class
 
         Returns
             assignments = list of assignments class objects
