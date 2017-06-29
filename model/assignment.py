@@ -34,7 +34,7 @@ class Assignment:
         Returns:
             None
         """
-        self.assignments.append(assignment)
+        self.assignments.append(self)
 
     def add_submission(self, submisson):
         """Add submisson connected to assignment object
@@ -71,10 +71,19 @@ class Assignment:
         """
         return self.max_grade
 
-    def get_submission(self):
+    def get_submissions(self):
         """Gets submissons atribute of instance
 
         Returns
             submisson: list of submisson class objects
         """
         return self.submissons
+
+    @classmethod
+    def get_assignments_list(cls):
+        """Gets assignments atribute of class
+
+        Returns
+            assignments = list of assignments class objects
+        """
+        return cls.assignments
