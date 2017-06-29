@@ -1,4 +1,7 @@
 
+from datetime import date
+
+
 class Attendance:
     '''
     An object containing informations about students attendance.
@@ -31,3 +34,13 @@ class Attendance:
             void
         '''
         self.attendances.append(self)
+
+    @classmethod
+    def get_attendances(cls):
+        """
+        Returns attendances list (class attribute).
+
+        Returns:
+        attendances (list of :obj: 'Attendance'): list of attendances objects
+        """
+        return cls.attendances
