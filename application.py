@@ -1,7 +1,11 @@
-import sys
+from model.codecooler import *
+from user_input.user_input import UserInput
+from menu.menu import *
+from view.view import View
 
 
 class Application:
+    
 
     roles = {"Manager": ManagerMenu, "Staff": StaffMenu, "Mentor": MentorMenu,
              "Student": StudentMenu}
@@ -10,10 +14,11 @@ class Application:
 
     def __init__(self):
         self.is_running = True
-        self.user_input = UserInput()
-        self.view = View()
         self.session = {"logged_user": None}
         self.menu = None
+        self.user_input = UserInput()
+        self.view = View()
+        self.path = "data/"
 
 
     def handle_login(self):
@@ -35,6 +40,11 @@ class Application:
             user_choice = self.menu.get_user_input()
             self.menu.handle_menu(user_choice)
 
+    def run(self):
+
+        while is_running:
+            handle_login()
+            handle_menu()
 
     def log_in(self):
         email, password = self.user_input.get_login_input()
