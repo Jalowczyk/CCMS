@@ -2,8 +2,6 @@ from controller.codecooler_controller import CodecoolerController
 from controller.attendance_controller import AttendanceController
 from controller.submission_controller import SubmissionController
 from controller.assignment_controller import AssignmentController
-from view.view import View
-from user_input.user_input import UserInput
 
 
 class Menu:
@@ -151,7 +149,8 @@ class StaffMenu(EmployeeMenu):
 
         if user_choice == "view students list":
             self.codecooler_controller.view_codecoolers_action("students")
-
+        elif user_choice == "log out":
+            self.logged_user = None
 
 class Student(Menu):
     """
