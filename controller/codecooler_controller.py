@@ -38,7 +38,7 @@ class CodecoolerController:
         """
         options = ["show details", "back"]
 
-        if user_role == "mentors":
+        if user_role == "mentor":
             mentors = Mentor.get_mentors()
             print(mentors)
             self.view.show_codecoolers(mentors)
@@ -48,7 +48,7 @@ class CodecoolerController:
             if option == options[0]:
                 self.show_codecooler_details_action(mentors)
 
-        elif user_role == "students":
+        elif user_role == "student":
             students = Student.get_students()
             self.view.show_codecoolers(students)
             self.view.show_menu_option(options)
