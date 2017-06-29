@@ -33,13 +33,26 @@ class Submission:
     def set_grade(self, grade):
         """Sets grade attribute of instance
 
+
         Returns
             void:
         """
         self.grade = grade
 
-    def set_is_graded(self):
-        self.is_graded = True
+    def set_is_graded(self, is_graded):
+        """Sets is_graded attribute of instance
+
+        Returns
+            void:
+        """
+        self.is_graded = is_graded
+
+        Returns
+            void:
+        """
+        self.grade = grade
+
+  
 
     def get_assignment(self):
         """Gets assignment attribute of instance

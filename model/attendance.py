@@ -1,3 +1,9 @@
+
+
+from datetime import date
+
+
+
 class Attendance:
     """
     An object containing information about students attendance.
@@ -13,7 +19,7 @@ class Attendance:
         Attributes:
             date (:obj: 'Date'): date of attendance
             student (:obj: 'Student'): Student object
-            is present (bool): True for present, False for absent
+            is_present (bool): True for present, False for absent
 
         Returns:
             void
@@ -33,4 +39,12 @@ class Attendance:
 
     @classmethod
     def get_attendances(cls):
+
+        """
+        Returns attendances list (class attribute).
+
+        Returns:
+        attendances (list of :obj: 'Attendance'): list of attendances objects
+        """
+
         return cls.attendances

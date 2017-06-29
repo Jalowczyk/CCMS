@@ -114,6 +114,16 @@ class Manager(Employee):
 
     managers = []
 
+    @classmethod
+    def get_managers(cls):
+        """
+        Returns managers list (class attribute).
+
+        Returns:
+        mentors: list
+        """
+        return cls.managers
+
     def add_to_managers(self):
         """
         Adds Manager object to managers list (class attribute).
@@ -167,6 +177,16 @@ class Staff(Employee):
     """
 
     staff = []
+
+    @classmethod
+    def get_staff(cls):
+        """
+        Returns mentors list (class attribute).
+
+        Returns:
+        mentors: list
+        """
+        return cls.staff
 
     def add_to_staff(self):
         """
