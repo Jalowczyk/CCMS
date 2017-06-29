@@ -1,9 +1,3 @@
-from model.attendance import Attendance
-from model.codecooler import Codecooler
-from model.submission import Submission
-from model.assignment import Assignment
-
-
 class View:
     """
     Creates View obj.
