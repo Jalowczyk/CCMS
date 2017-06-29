@@ -40,7 +40,6 @@ class CodecoolerController:
 
         if user_role == "mentor":
             mentors = Mentor.get_mentors()
-            print(mentors)
             self.view.show_codecoolers(mentors)
             self.view.show_menu_option(options)
             option = self.user_input.get_index_input(len(options))
