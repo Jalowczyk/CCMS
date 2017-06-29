@@ -9,11 +9,24 @@ class Application:
     options = ["log in", "exit"]
 
     def __init__(self):
+        self.is_running = True
         self.user_input = user_input
         self.view = view
-        self.logged_user = {"logged_user": None}
+        self.session = {"logged_user": None}
+
+
+    def handle_login(self):
+
+        while not self.session["logged_user"]:
+            user_option = self.input.get_option(self.options)
+            if user_option == "log in":
+                self.logged_user["logged_user"] = self.log_in()
+            elif user_option == "exit":
+                self.is_running = False
+                break
 
     
+
 
     def log_in(self):
         email, password = self.user_input.get_login_input()
