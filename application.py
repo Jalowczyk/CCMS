@@ -2,6 +2,7 @@ from model.codecooler import *
 from user_input.user_input import UserInput
 from menu.menu import *
 from view.view import View
+from csv_read_write import *
 
 
 class Application:
@@ -34,7 +35,7 @@ class Application:
         self.menu = None
         self.user_input = UserInput()
         self.view = View()
-        self.path = "data/"
+        # self.filename = "data/"
         # self.data_manager = DataManager(self.path)
 
 
@@ -69,13 +70,19 @@ class Application:
         Entry method for the main module which read csv file at the beginning
         and write to csv file at the end.
         """
-        # self.data_manager.read_csv()
+        read_students_from_csv("codecoolers_data.csv")
+        read_attendances_from_csv("attendance.csv")
+        read_assignments_from_csv("assignments.csv")
+        read_submissions_from_csv("submissions.csv")
 
         while self.is_running:
             self.handle_login()
             self.handle_menu()
 
-        # self.data_manager.write_csv()
+        write_codecoolers_to_csv("codecoolers_data.csv")
+        write_attendance_to_csv("attendance.csv")
+        write_assignments_to_csv("assignments.csv")
+        write_submissions_to_csv("submissions.csv")
 
     def log_in(self):
         """
@@ -89,10 +96,8 @@ class Application:
         """
         email, password = self.user_input.get_login_input()
         codecoolers = Manager.get_managers() + Staff.get_staff() + Mentor.get_mentors() + Student.get_students()
-
         for codecooler in codecoolers:
             if email == codecooler.get_email() and password == codecooler.get_password():
                 return codecooler
-            else:
-                self.view.show_message("\nWrong login or password!\n")
-                return None
+        self.view.show_message("\nWrong login or password!\n")
+        return None
