@@ -50,3 +50,28 @@ def read_students_from_csv(file_name):
 
     except FileNotFoundError:
         raise FileNotFoundError('File' + file_name + 'doesn\'t exist')
+
+
+def write_codecoolers_to_csv(file_name):
+    '''
+    Save codecoolers data from classes lists at the end of the program.
+
+    Every item is written to a separate line in the following format:
+    `Role|first name|last name|email|password`
+
+    Args:
+        file_name (str): name of the file
+
+    Returns:
+        void
+    '''
+    codecoolers_list = (Student.get_students()
+                        + Manager.get_managers()
+                        + Mentor.get_mentors()
+                        + Staff.get_staff())
+    with open(file_name, "w") as file:
+        for codecooler in codecoolers_list:
+            codecooler_details = list(codecooler.__dict__.values())
+            row = [codecooler.__class__.__name__]
+            [row.append(detail) for detail in codecooler_details[0:4]]
+            file.write('|'.join(row) + '\n')
