@@ -52,7 +52,7 @@ class CodecoolerController:
             students = Student.get_students()
             self.view.show_codecoolers(students)
             self.view.show_menu_option(options)
-            option = self.user_input.get_index_input(len(options))
+            option = self.user_input.get_option(options)
             if option == options[0]:
                 self.show_codecooler_details_action(students)
 
