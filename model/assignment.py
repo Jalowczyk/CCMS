@@ -25,6 +25,16 @@ class Assignment:
         self.max_grade = max_grade
         self.submissons = []
 
+    @classmethod
+    def get_assigments(cls):
+        """
+        Returns students list (class attribute).
+
+        Returns:
+        students: list
+        """
+        return cls.assigments
+
     def add_to_assignments(self):
         """Adds assignment object to class list
 
