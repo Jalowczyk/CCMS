@@ -102,7 +102,6 @@ class UserInput:
         codecooler_first_name: str
         codecooler_second_name: str
         codecooler_email: str
-        codecooler_password: str
         """
 
         codecooler_first_name = input("Enter first name: ")
@@ -123,6 +122,20 @@ class UserInput:
 
         return codecooler_first_name, codecooler_second_name, codecooler_email, codecooler_password
 
+    def get_grade_input(self, submission):
+        """
+        Returns grade integer depending on user input.
+
+        Returns:
+        user_input_grade: int
+        """
+
+        user_input_grade = input("Enter a grade: ")
+        while not user_input_index.isnumeric() or int(user_input_grade) not in range(submission.get_assignment().get_max_grade() + 1):
+            user_input_grade = input("Enter a number: ")
+
+        return int(user_input_grade)
+
     def get_numeric_input(self):
         """
         Returns integer depending on user input.
@@ -132,7 +145,7 @@ class UserInput:
         """
 
         user_input_number = input("Enter a number: ")
-        while not user_input_number.isnumeric():
+        while not user_input_index.isnumeric():
             user_input_number = input("Enter a number: ")
 
         return int(user_input_number)
