@@ -58,4 +58,26 @@ class UserInput:
 
         return user_input_email, user_input_password
 
+    def get_assignment_data(self):
+        """
+        Returns assignment title, desctiption od maximum grade depending on user input.
+
+        Returns:
+        user_assignment_title: str
+        user_assignment_description: str
+        user_assignment_max_grade: int
+        """
+
+        user_assignment_title = input("Enter assignment title: ")
+        while not user_assignment_title:
+            user_assignment_title = input("Enter assignment title: ")
+
+        user_assignment_description = input("Enter assignment description: ")
+
+        user_assignment_max_grade = input("Enter assignment maximum grade: ")
+        while not user_assignment_max_grade.isnumeric() or int(user_assignment_max_grade) <= 0:
+            user_assignment_max_grade = input("Enter assignment maximum grade: ")
+
+        return user_assignment_title, user_assignment_description, int(user_assignment_max_grade)
+
     
