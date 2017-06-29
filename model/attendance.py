@@ -1,4 +1,3 @@
-
 class Attendance:
     '''
     An object containing informations about students attendance.

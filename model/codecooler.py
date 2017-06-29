@@ -101,6 +101,7 @@ class Employee(Codecooler):
     """
     Codecooler's child class which creates Employee's object.
     """
+    pass
 
 class Manager(Employee):
     """
