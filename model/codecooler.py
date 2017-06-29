@@ -88,7 +88,7 @@ class Codecooler:
         """
         self.password = password
 
-    def set_email(email):
+    def set_email(self, email):
         """
         Set email instance attribute to email parameter.
 
@@ -102,7 +102,7 @@ class Employee(Codecooler):
     Codecooler's child class which creates Employee's object.
     """
     pass
-    
+
 class Manager(Employee):
     """
     Employee's child class.
