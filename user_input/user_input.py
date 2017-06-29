@@ -16,7 +16,7 @@ class UserInput:
         """
 
         user_input_number = int(input("\nPick an option (number): "))
-        while user_input_number not in range(len(options)):
+        while user_input_number not in range(len(options) + 1):
             user_input_number = int(input("\nPick an option (number): "))
 
         user_decision = options[user_input_number - 1]
