@@ -10,9 +10,9 @@ class CodecoolerController:
         input: objet of input class
     """
 
-    def __init__(self, view, user_input):
-        self.view = view
+    def __init__(self, user_input, viev):
         self.user_input = user_input
+        self.view = view
 
     def show_codecooler_details_action(self, users_list):
         """Show details of choosen user_input
