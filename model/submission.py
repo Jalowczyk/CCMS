@@ -29,13 +29,17 @@ class Submission:
             grade: int
         """
         return self.grade
-    
+
     def set_grade(self, grade):
         """Sets grade attribute of instance
-        
+
         Returns
             void:
         """
+        self.grade = grade
+
+    def set_is_graded(self):
+        self.is_graded = True
 
     def get_assignment(self):
         """Gets assignment atibute of instance
