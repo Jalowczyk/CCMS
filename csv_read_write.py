@@ -69,10 +69,14 @@ def write_codecoolers_to_csv(file_name):
                         + Staff.get_staff())
     with open(file_name, "w") as file:
         for codecooler in codecoolers_list:
-            codecooler_details = list(codecooler.__dict__.values())
-            row = [codecooler.__class__.__name__]
-            [row.append(detail) for detail in codecooler_details[0:4]]
-            file.write('|'.join(row) + '\n')
+            codecooler_class_name = codecooler.__class__.__name__
+            codecooler_first_name = codecooler.get_first_name()
+            codecooler_last_name = codecooler.get_last_name()
+            codecooler_email = codecooler.get_email()
+            codecooler_password = codecooler.get_password()
+            codecooler_data = [codecooler_class_name, codecooler_first_name, codecooler_last_name, codecooler_email,
+                               codecooler_password]
+            file.write('|'.join(codecooler_data) + '\n')
 
 
 def read_attendances_from_csv(file_name):
@@ -102,7 +106,7 @@ def read_attendances_from_csv(file_name):
             day = int(date_to_write[2])
             date_to_write = date(year, month, day)
 
-            is_present = bool(int(attendance[2]))
+            is_present = bool(attendance[2])
 
             email = attendance[1]
 
@@ -134,15 +138,11 @@ def write_attendance_to_csv(file_name):
     attendances_list = Attendance.get_attendances()
     with open(file_name, "w") as file:
         for attendance in attendances_list:
-            attendance_details = list(attendance.__dict__.values())
-            student_details = list(attendance_details[1].__dict__.values())
-
-            date = attendance_details[0]
-            email = student_details[2]
-            is_present = str(attendance_details[2])
-
-            row = [str(date), email, is_present]
-            file.write('|'.join(row) + '\n')
+            date = attendance.get_date()
+            student_email = attendance.get_student().get_email()
+            is_present = attendance.get_is_present()
+            attendance_data = [str(date), student_email, str(is_present)]
+            file.write('|'.join(attendance_data) + '\n')
 
 
 def read_assignments_from_csv(file_name):
@@ -190,13 +190,11 @@ def write_assignments_to_csv(file_name):
     assignments_list = Assignment.get_assignments()
     with open(file_name, "w") as file:
         for assignment in assignments_list:
-            assignments_details = list(assignment.__dict__.values())
-            title = assignments_details[0]
-            description = assignments_details[1]
-            max_grade = str(assignments_details[2])
-
-            row = [title, description, max_grade]
-            file.write('|'.join(row) + '\n')
+            title = assignment.get_title()
+            description = assignment.get_description()
+            max_grade = assignment.get_max_grade()
+            assignment_data = [title, description, str(max_grade)]
+            file.write('|'.join(assignment_data) + '\n')
 
 
 def read_submissions_from_csv(file_name):
@@ -268,12 +266,12 @@ def write_submissions_to_csv(file_name):
 
     with open(file_name, "w") as file:
         for assignment in assignment_list:
-            submission_list = assignment.get_submission()
-
+            submission_list = assignment.get_submissions()
             for submission in submission_list:
-                row = [submission.assignment.title,
-                       submission.student.email,
-                       submission.solution,
-                       str(submission.is_graded),
-                       str(submission.grade)]
-                file.write('|'.join(row) + '\n')
+                assignment_title = submission.get_assignment().get_title()
+                student_email = submission.get_student().get_email()
+                solution = submission.get_solution()
+                is_graded = submission.get_is_graded()
+                grade = submission.get_grade()
+                solution_data = [assignment_title, student_email, solution, str(is_graded), str(grade)]
+                file.write('|'.join(solution_data) + '\n')
