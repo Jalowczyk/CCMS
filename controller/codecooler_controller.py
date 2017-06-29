@@ -50,3 +50,18 @@ class CodecoolerController:
             student.set_surname = data["surname"]
             student.set_email = data["email"]
             student.set_password = data["password"]
+
+    def remove_codecooler_action(self, person_role):
+        if person_role == "mentor":
+            mentors = Mentor.get_mentors()
+            self.view.show_codecoolers(mentors)
+            option = self.input.get_record_by_index(len(mentors))
+            mentor = mentors[option]
+            Mentor.remove(mentor)
+
+        elif person_role == "student":
+            students = Student.get_students()
+            self.view.show_codecoolers(students)
+            option = self.input.get_record_by_index(len(students))
+            student = students[option]
+            Student.remove(student)
