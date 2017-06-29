@@ -122,3 +122,14 @@ class TestCodecooler(unittest.TestCase):
         codecooler.set_password(password)
         self.assertEqual(codecooler.get_password(), password)
 
+    def test_StudentRemove_StudentNotInStudentList(self):
+        student = Student("Old first name", "Old last name", "old@mail.com", "Oldpassword")
+        student.add_to_students()
+        student.remove()
+        self.assertFalse(any([stud == student for stud in Student.get_students()]))
+
+    def test_MentorRemove_MentorNotInMentorList(self):
+        mentor_to_remove = Mentor("Old first name", "Old last name", "old@mail.com", "Oldpassword")
+        mentor_to_remove.add_to_mentors()
+        mentor_to_remove.remove()
+        self.assertFalse(any([mentor == mentor_to_remove for mentor in Mentor.get_mentors()]))
