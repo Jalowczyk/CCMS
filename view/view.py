@@ -27,7 +27,7 @@ class View:
 
         for index, codecooler in enumerate(codecoolers):
             print("{}.{} {}: {}".format(index + 1, codecooler.get_first_name(),
-                                    codecooler.get_last_name(), get_email()))
+                                    codecooler.get_last_name(), codecooler.get_email()))
 
     def show_codecooler(self, codecooler):
         """
@@ -37,7 +37,7 @@ class View:
         """
 
         print("{} {}: {}".format(codecooler.get_first_name(),
-                                 codecooler.get_last_name(), get_email()))
+                                 codecooler.get_last_name(), codecooler.get_email()))
 
     def show_assignments(self, assignments):
         """
@@ -49,6 +49,16 @@ class View:
         for index, assignment in enumerate(assignments):
             print("{}. {}".format(index + 1, assignment.get_title()))
 
+    def show_submissions(self, submissions):
+        """
+        Prints assignments information.
+        Parameters:
+        assignments: list
+        """
+
+        for index, submission in enumerate(submissions):
+            print("{}. {} {}".format(index + 1, submission.get_student().get_name(), submission.get_assignment.get_title()))
+
     def show_assignment_details(self, assignment):
         """
         Prints specific assignment information.
@@ -58,7 +68,7 @@ class View:
 
         print("{}: {}".format("Title", assignment.get_title()))
         print("{}: {}".format("Maximum grade", assignment.get_max_grade()))
-        print("{}: {}".format("Desctiption", assignment.get_description()))
+        print("{}: {}".format("Description", assignment.get_description()))
 
     def show_message(self, message):
         """
