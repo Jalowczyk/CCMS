@@ -89,10 +89,10 @@ class UserInput:
         """
 
         user_input_index = input("Pick a number: ")
-        while not user_input_index.isnumeric() or int(user_input_index) not in range(1, list_length):
+        while not user_input_index.isnumeric() or int(user_input_index) not in range(1, list_length + 1):
             user_input_index = input("Pick a number: ")
 
-        return int(user_input_index)
+        return int(user_input_index) - 1
 
     def get_codecooler_data(self):
         """
@@ -117,3 +117,17 @@ class UserInput:
             codecooler_second_name = input("Enter email: ")
 
         return codecooler_first_name, codecooler_second_name, codecooler_email
+
+    def get_numeric_input(self):
+        """
+        Returns integer depending on user input.
+
+        Returns:
+        user_input_number: int
+        """
+
+        user_input_number = input("Enter a number: ")
+        while not user_input_index.isnumeric():
+            user_input_number = input("Enter a number: ")
+
+        return int(user_input_number)
