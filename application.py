@@ -60,7 +60,7 @@ class Application:
 
         if self.session["logged_user"]:
             role = self.session["logged_user"].__class__.__name__
-            self.menu = self.roles[role](self.session["logged_user"], self.view, self.user_input)
+            self.menu = self.roles[role](self.session, self.view, self.user_input)
             self.menu.display_menu()
             user_choice = self.menu.get_user_input()
             self.menu.handle_menu(user_choice)
