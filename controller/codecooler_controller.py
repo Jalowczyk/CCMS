@@ -24,7 +24,7 @@ class CodecoolerController:
         """
         message = 'Please choose index of user:'
         self.view.show_message(message)
-        user_index = self.user_input.get_record_by_index(len(users_list))
+        user_index = self.user_input.get_index_input(len(users_list))
         user = users_list[user_index]
         self.view.show_user_details(user)
 
@@ -83,7 +83,7 @@ class CodecoolerController:
         if person_role == "mentor":
             mentors = Mentor.get_mentors()
             self.view.show_codecoolers(mentors)
-            option = self.user_input.get_record_by_index(len(mentors))
+            option = self.user_input.get_index_input(len(mentors))
             mentor = mentors[option]
             data = self.user_input.get_codecooler_data()
             mentor.set_name = data["name"]
@@ -94,7 +94,7 @@ class CodecoolerController:
         elif person_role == "student":
             students = Student.get_students()
             self.view.show_codecoolers(students)
-            option = self.user_input.get_record_by_index(len(students))
+            option = self.user_input.get_index_input(len(students))
             student = students[option]
             data = self.user_input.get_codecooler_data()
             student.set_name = data["name"]
@@ -115,13 +115,13 @@ class CodecoolerController:
         if person_role == "mentor":
             mentors = Mentor.get_mentors()
             self.view.show_codecoolers(mentors)
-            option = self.input.get_record_by_index(len(mentors))
+            option = self.input.get_index_input(len(mentors))
             mentor = mentors[option]
             Mentor.remove(mentor)
 
         elif person_role == "student":
             students = Student.get_students()
             self.view.show_codecoolers(students)
-            option = self.input.get_record_by_index(len(students))
+            option = self.input.get_index_input(len(students))
             student = students[option]
             Student.remove(student)
