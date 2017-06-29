@@ -74,7 +74,7 @@ class ManagerMenu(EmployeeMenu):
     options: list of options
     """
 
-    options = ["view mentors list", "add mentor", "remove mentor"] + EmployeeMenu.options
+    options = ["view mentors list", "edit mentor", "add mentor", "remove mentor"] + EmployeeMenu.options
 
     def handle_menu(self, user_choice):
         """
@@ -93,8 +93,11 @@ class ManagerMenu(EmployeeMenu):
             self.codecooler_controller.add_codecooler_action("mentor")
         elif user_choice == "remove mentor":
             self.codecooler_controller.remove_codecooler_action("mentor")
+        elif user_choice == "edit mentor":
+            self.codecooler_controller.edit_codecooler_action("mentor")
         elif user_choice == "log out":
             self.session["logged_user"] = None
+
 
 
 class MentorMenu(EmployeeMenu):
