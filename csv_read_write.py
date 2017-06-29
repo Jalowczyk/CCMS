@@ -75,3 +75,45 @@ def write_codecoolers_to_csv(file_name):
             row = [codecooler.__class__.__name__]
             [row.append(detail) for detail in codecooler_details[0:4]]
             file.write('|'.join(row) + '\n')
+
+
+def read_attendances_from_csv(file_name):
+    '''
+    Create models and fill Attendance class list with data from csv files at the begining of program.
+
+    Raises *FileNotFoundError* if a file doesn't exist.
+
+    Every item is written to a separate line in the following format:
+    `email|date|X` X = 0 for absent, X = 1 for present
+
+    Args:
+        file_name (str): name of the file
+
+    Returns:
+        void
+    '''
+    try:
+        with open(file_name, "r") as file:
+            lines = file.readlines()
+        attendances_list = [element.replace("\n", "").split("|") for element in lines]
+
+        for attendance in attendances_list:
+            date_to_write = attendance[0].split('-')
+            year = int(date_to_write[0])
+            month = int(date_to_write[1])
+            day = int(date_to_write[2])
+            date_to_write = date(year, month, day)
+
+            is_present = int(attendance[2])
+
+            email = attendance[1]
+
+            students_list = Student.get_students()
+            for student in students_list:
+                if student.email == email:
+                    new_attendance = Attendance(date_to_write, student, is_present)
+                    new_attendance.add_to_attendances()
+                    student.add_attendance(new_attendance)
+
+    except FileNotFoundError:
+        raise FileNotFoundError('File' + file_name + 'doesn\'t exist')
