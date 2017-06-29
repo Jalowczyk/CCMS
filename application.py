@@ -3,16 +3,17 @@ import sys
 
 class Application:
 
-    roles = {"manager": ManagerMenu, "staff": StaffMenu, "mentor": MentorMenu,
-             "student": StudentMenu}
+    roles = {"Manager": ManagerMenu, "Staff": StaffMenu, "Mentor": MentorMenu,
+             "Student": StudentMenu}
 
     options = ["log in", "exit"]
 
     def __init__(self):
         self.is_running = True
-        self.user_input = user_input
-        self.view = view
+        self.user_input = UserInput()
+        self.view = View()
         self.session = {"logged_user": None}
+        self.menu = None
 
 
     def handle_login(self):
@@ -25,7 +26,14 @@ class Application:
                 self.is_running = False
                 break
 
-    
+    def handle_menu(self):
+
+        if self.session["logged_user"]:
+            role = self.session["logged_user"].__class__.__name__
+            self.menu = self.roles[role](self.session["logged_user"], self.view, self.user_input)
+            self.menu.display_menu()
+            user_choice = self.menu.get_user_input()
+            self.menu.handle_menu(user_choice)
 
 
     def log_in(self):
