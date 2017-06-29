@@ -166,7 +166,7 @@ class StudentMenu(Menu):
     options: list of Student obj
     """
 
-    options = ["submit assignment", "show assignments"] + Menu.options
+    options = ["submit assignment", "show assignments", "show grades"] + Menu.options
 
     def handle_menu(self, user_choice):
         """
@@ -181,5 +181,7 @@ class StudentMenu(Menu):
             self.submission_controller.add_submission_action()
         elif user_choice == "show assignments":
             self.assignment_controller.show_assignments_details()
+        elif user_choice == "show grades":
+            self.submission_controller.check_grade_action()
         elif user_choice == "log out":
             self.session["logged_user"] = None

@@ -64,7 +64,7 @@ class SubmissionController:
 
         Return: None
         """
-        submissions = self.session["logged_user"].get_submission()
+        submissions = self.session["logged_user"].get_submissions()
         self.view.show_grades(submissions)
 
     def get_submissions_from_student(self):
