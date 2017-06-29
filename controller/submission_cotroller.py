@@ -3,12 +3,13 @@ class SumbmissionController:
     def __init__(self, user_input, view, logged_user):
         self.user_input = user_input
         self.view = view
-        self.logged_student = logged_user
+        self.logged_user = logged_user
 
     def add_submission_action(self, assignment):
         solution = self.user_input.get_submission_solution()data
         submisson = Submisson(self.logged_student, assignment, solution)
         assignment.add_submission(submisson)
+        self.logged_user.add_submission(submisson)
 
     def get_assignment(self):
         assignments = Assignment.get_assignments_list()
@@ -27,4 +28,8 @@ class SumbmissionController:
         submission = get_submission
         grade = self.user_input.get_grade()
         submission.set_grade(grade)
-        submission.set_is_graded
+        submission.set_is_graded()
+
+    def check_grade_action(self):
+        submissions = self.logged_user.get_submission()
+        self.view.show_grades(submissions)
