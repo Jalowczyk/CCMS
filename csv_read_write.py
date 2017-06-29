@@ -117,3 +117,31 @@ def read_attendances_from_csv(file_name):
 
     except FileNotFoundError:
         raise FileNotFoundError('File' + file_name + 'doesn\'t exist')
+
+
+def write_attendance_to_csv(file_name):
+    '''
+    Save attendance data from class list at the end of the program.
+
+    Every item is written to a separate line in the following format:
+    `email|date|is_present` is_present = 0 for absent, is_present = 1 for present
+
+    Args:
+        file_name (str): name of the file
+        attendances_list (list of :obj: 'Attendance'): list of attendances objects
+
+    Returns:
+        void
+    '''
+    attendances_list = Attendance.get_attendance()
+    with open(file_name, "w") as file:
+        for attendance in attendances_list:
+            attendance_details = list(attendance.__dict__.values())
+            student_details = list(attendance_details[1].__dict__.values())
+
+            date = attendance_details[0]
+            email = student_details[2]
+            is_present = str(attendance_details[2])
+
+            row = [str(date), email, is_present]
+            file.write('|'.join(row) + '\n')
