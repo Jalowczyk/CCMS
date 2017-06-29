@@ -72,4 +72,16 @@ class View:
 
         print(RED + message + WHITE)
 
-    
+    def show_grades(self, submissions):
+        """
+        Prints student submissions grades.
+        Parameters:
+        submissions: list
+        """
+
+        for index, submission in enumerate(submissions):
+            assignment = submission.get_assignment().get_title()
+            if submission.get_grade():
+                print("{}. {}: {}".format(index + 1, assignment, submission.get_grade()))
+            else:
+                print("{}. {}: {}".format(index + 1, assignment, "not graded"))
