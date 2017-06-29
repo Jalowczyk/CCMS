@@ -14,3 +14,9 @@ class View:
 
         for index, assignment in enumerate(assignments):
             print("{}{} {}".format(index + 1, ".", assignment))
+
+    def show_assignment_details(self, assignment):
+
+        print("{}: {}".format("Title", assignment.get_title())
+        print("{}: {}".format("Maximum grade", assignment.get_max_grade())
+        print("{}: {}".format("Desctiption", assignment.get_description())
