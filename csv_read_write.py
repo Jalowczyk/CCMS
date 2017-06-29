@@ -177,3 +177,29 @@ def read_assignments_from_csv(file_name):
 
     except FileNotFoundError:
         raise FileNotFoundError('File' + file_name + 'doesn\'t exist')
+
+
+def write_assignments_to_csv(file_name):
+    '''
+    Save attendance data from class list at the end of the program.
+
+    Every item is written to a separate line in the following format:
+    `title|description|max_grade'
+
+    Args:
+        file_name (str): name of the file
+        assignments_list (list of :obj: 'Assignments'): list of assignments objects
+
+    Returns:
+        void
+    '''
+    assignments_list = Assignment.get_assignments()
+    with open(file_name, "w") as file:
+        for assignment in assignments_list:
+            assignments_details = list(assignment.__dict__.values())
+            title = assignments_details[0]
+            description = assignments_details[1]
+            max_grade = str(assignments_details[2])
+
+            row = [title, description, max_grade]
+            file.write('|'.join(row) + '\n')
