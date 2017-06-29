@@ -18,7 +18,6 @@ class UserInput:
         user_input_number = input("\nPick an option (number): ")
         while not user_input_number.isnumeric() or int(user_input_number) not in range(1, len(options) + 1):
             user_input_number = input("\nPick an option (number): ")
-
         user_decision = options[int(user_input_number) - 1]
         return user_decision
 
@@ -131,7 +130,7 @@ class UserInput:
         """
 
         user_input_grade = input("Enter a grade: ")
-        while not user_input_index.isnumeric() or int(user_input_grade) not in range(submission.get_assignment().get_max_grade() + 1):
+        while not user_input_grade.isnumeric() or int(user_input_grade) not in range(submission.get_assignment().get_max_grade() + 1):
             user_input_grade = input("Enter a number: ")
 
         return int(user_input_grade)
