@@ -31,6 +31,8 @@ class AttendanceController:
         students = Student.get_students()
         today_date = datatime.date.today()
         for student in students:
+            self.view.view_codecooler(student)
             is_present = self.user_input.get_boolean_input()
             attendance = Attendance(today_date, student, is_present)
             attendance.add_to_attendances()
+            student.add_attendance(attendance)
