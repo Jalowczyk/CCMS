@@ -15,11 +15,11 @@ class UserInput:
         user_decision: str
         """
 
-        user_input_number = int(input("\nPick an option (number): "))
-        while user_input_number not in range(len(options) + 1):
-            user_input_number = int(input("\nPick an option (number): "))
+        user_input_number = input("\nPick an option (number): ")
+        while not user_input_number.isnumeric() or int(user_input_number) not in range(1, len(options) + 1):
+            user_input_number = input("\nPick an option (number): ")
 
-        user_decision = options[user_input_number - 1]
+        user_decision = options[int(user_input_number) - 1]
         return user_decision
 
     def get_boolean_input(self):
@@ -127,12 +127,12 @@ class UserInput:
         """
 
         user_input_number = input("Enter a number: ")
-        while not user_input_number.isnumeric():
+        while not user_input_index.isnumeric():
             user_input_number = input("Enter a number: ")
 
         return int(user_input_number)
 
-    def get_text_imput(self):
+    def get_text_input(self):
         """
         Returns str depending on user input.
 
