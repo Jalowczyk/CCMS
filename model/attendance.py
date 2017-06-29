@@ -17,7 +17,7 @@ class Attendance:
         Attributes:
             date (:obj: 'Date'): date of attendance
             student (:obj: 'Student'): Student object
-            is present (bool): True for present, False for absent
+            is_present (bool): True for present, False for absent
 
         Returns:
             void
