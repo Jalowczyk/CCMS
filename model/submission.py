@@ -38,6 +38,9 @@ class Submission:
         """
         self.grade = grade
 
+    def set_is_graded(self):
+        self.is_graded = True
+
     def get_assignment(self):
         """Gets assignment atibute of instance
 
