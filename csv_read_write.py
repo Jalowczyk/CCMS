@@ -203,3 +203,57 @@ def write_assignments_to_csv(file_name):
 
             row = [title, description, max_grade]
             file.write('|'.join(row) + '\n')
+
+
+def read_submissions_from_csv(file_name):
+    '''
+    Create models and fill Assigment Submission class list with data from csv files at the begining of program.
+
+    Raises *FileNotFoundError* if a file doesn't exist.
+
+    `assignment_title|student_email|solution|is_graded|grade'
+        str               str         str   True/False  None/int
+
+    Args:
+        file_name (str): name of the file
+
+    Returns:
+        void
+    '''
+    try:
+        with open(file_name, "r") as file:
+            lines = file.readlines()
+        submissions_list = [element.replace("\n", "").split("|") for element in lines]
+
+        for submission in submissions_list:
+            assignment_title = submission[0]
+            student_mail = submission[1]
+            solution = submission[2]
+
+            if submission[3] == 'True':
+                is_graded = True
+            else:
+                is_graded = False
+
+            if submission[4] == 'None':
+                grade = None
+            else:
+                grade = int(submission[4])
+
+            assignment_list = Assignment.get_assignments()
+            students_list = Student.get_students()
+            print(assignment_list)
+            for assignment in assignment_list:
+                if assignment.title == assignment_title:
+                    print(assignment)
+                    for student in students_list:
+                        if student.email == student_mail:
+                            print(student.get_email())
+                            new_submission = Submission(student, assignment, solution)
+                            new_submission.set_is_graded(is_graded)
+                            new_submission.set_grade(grade)
+                            assignment.add_submission(new_submission)
+                            student.add_submission(new_submission)
+
+    except FileNotFoundError:
+        raise FileNotFoundError('File' + file_name + 'doesn\'t exist')
