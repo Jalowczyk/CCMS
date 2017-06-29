@@ -44,7 +44,7 @@ class Assignment:
         Returns:
             None
         """
-        self.assignments.append(assignment)
+        self.assignments.append(self)
 
     def add_submission(self, submisson):
         """Add submisson connected to assignment object
