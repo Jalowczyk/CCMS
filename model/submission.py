@@ -33,6 +33,7 @@ class Submission:
     def set_grade(self, grade):
         """Sets grade attribute of instance
 
+
         Returns
             void:
         """
@@ -46,8 +47,15 @@ class Submission:
         """
         self.is_graded = is_graded
 
+        Returns
+            void:
+        """
+        self.grade = grade
+
+  
+
     def get_assignment(self):
-        """Gets assignment atibute of instance
+        """Gets assignment attribute of instance
 
         Returns
             assignment: object of assignment class
@@ -55,7 +63,7 @@ class Submission:
         return self.assignment
 
     def get_is_graded(self):
-        """Gets is_grade atibute of instance
+        """Gets is_grade attribute of instance
 
         Returns
             is_graded: bool
@@ -63,17 +71,17 @@ class Submission:
         return self.is_graded
 
     def get_solution(self):
-        """Gets solution atibute of instance
+        """Gets solution attribute of instance
 
         Returns
             solution: str
         """
         return self.solution
 
-    def get_grade(self):
-        """Gets grade atibute of instance
+    def get_student(self):
+        """Gets student attribute of instance
 
         Returns
-            grade: int
+            student: Student obj
         """
-        return self.grade
+        return self.student
