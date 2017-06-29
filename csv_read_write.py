@@ -104,7 +104,7 @@ def read_attendances_from_csv(file_name):
             day = int(date_to_write[2])
             date_to_write = date(year, month, day)
 
-            is_present = int(attendance[2])
+            is_present = bool(int(attendance[2]))
 
             email = attendance[1]
 
@@ -166,12 +166,10 @@ def read_assignments_from_csv(file_name):
         with open(file_name, "r") as file:
             lines = file.readlines()
         assignments_list = [element.replace("\n", "").split("|") for element in lines]
-        print(assignments_list)
         for assignment in assignments_list:
             title = assignment[0]
             description = assignment[1]
             max_grade = int(assignment[2])
-
             new_assignment = Assignment(title, description, max_grade)
             new_assignment.add_to_assignments()
 
@@ -242,13 +240,10 @@ def read_submissions_from_csv(file_name):
 
             assignment_list = Assignment.get_assignments()
             students_list = Student.get_students()
-            print(assignment_list)
             for assignment in assignment_list:
                 if assignment.title == assignment_title:
-                    print(assignment)
                     for student in students_list:
                         if student.email == student_mail:
-                            print(student.get_email())
                             new_submission = Submission(student, assignment, solution)
                             new_submission.set_is_graded(is_graded)
                             new_submission.set_grade(grade)
