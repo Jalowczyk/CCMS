@@ -12,12 +12,12 @@ class SubmissionController:
         logged_user: object of Codecooler class
     """
 
-    def __init__(self, user_input, view, logged_user):
+    def __init__(self, session, user_input, view):
         """Instance initializer
         """
+        self.session = session
         self.user_input = user_input
         self.view = view
-        self.logged_user = logged_user
 
     def add_submission_action(self):
         """Adds submission to class list in Submission
@@ -33,9 +33,9 @@ class SubmissionController:
         message = 'Please provide link to submit:'
         self.view.show_message(message)
         solution = self.user_input.get_text_input()
-        submission = Submission(self.logged_user, assignment, solution)
+        submission = Submission(self.session["logged_user"], assignment, solution)
         assignment.add_submission(submission)
-        self.logged_user.add_submission(submission)
+        self.session["logged_user"].add_submission(submission)
 
     def set_grade_action(self):
         """Sets grade attribute of submission and set as graded
@@ -64,7 +64,7 @@ class SubmissionController:
 
         Return: None
         """
-        submissions = self.logged_user.get_submission()
+        submissions = self.session["logged_user"].get_submission()
         self.view.show_grades(submissions)
 
     def get_submissions_from_student(self):

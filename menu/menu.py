@@ -22,7 +22,7 @@ class Menu:
     """
     options = ["log out"]
 
-    def __init__(self, logged_user, view, user_input):
+    def __init__(self, session, view, user_input):
         """
         Creates Menu obj with instance attributes: logged_user, view,
                                                    user_input
@@ -32,12 +32,12 @@ class Menu:
         user_input: UserInput obj
         """
 
-        self.logged_user = logged_user
+        self.session = session
         self.view = view
         self.user_input = user_input
         self.codecooler_controller = CodecoolerController(user_input, view)
         self.attendance_controller = AttendanceController(user_input, view)
-        self.submission_controller = SubmissionController(logged_user, user_input, view)
+        self.submission_controller = SubmissionController(session, user_input, view)
         self.assignment_controller = AssignmentController(user_input, view)
 
     def display_menu(self):
@@ -94,7 +94,7 @@ class ManagerMenu(EmployeeMenu):
         elif user_choice == "remove mentor":
             self.codecooler_controller.remove_codecooler_action("mentor")
         elif user_choice == "log out":
-            self.logged_user = None
+            self.session["logged_user"] = None
 
 
 class MentorMenu(EmployeeMenu):
@@ -130,7 +130,7 @@ class MentorMenu(EmployeeMenu):
         elif user_choice == "view students list":
             self.codecooler_controller.show_codecooler_action("student")
         elif user_choice == "log out":
-            self.logged_user = None
+            self.session["logged_user"] = None
 
 
 class StaffMenu(EmployeeMenu):
@@ -150,7 +150,7 @@ class StaffMenu(EmployeeMenu):
         if user_choice == "view students list":
             self.codecooler_controller.show_codecooler_action("student")
         elif user_choice == "log out":
-            self.logged_user = None
+            self.session["logged_user"] = None
 
 
 class StudentMenu(Menu):
@@ -177,4 +177,4 @@ class StudentMenu(Menu):
         elif user_choice == "show assignments":
             self.assignment_controller.show_assignments_details()
         elif user_choice == "log out":
-            self.logged_user = None
+            self.session["logged_user"] = None
