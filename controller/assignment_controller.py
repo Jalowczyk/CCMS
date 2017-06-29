@@ -1,7 +1,10 @@
+from model.assignment import Assignment
+
+
 class AssignmentController:
     """Represents  AssignmentController objects
 
-    instance atributes:
+    instance attributes:
         user_input: objects of UserInput class
         view: objects of View class
     """
@@ -18,7 +21,7 @@ class AssignmentController:
             None
         """
         data = self.user_input.get_assignment_data()
-        assignment = Assignment(data)
+        assignment = Assignment(*data)
         assignment.add_to_assignments()
 
     def get_assignment(self, assignments):
