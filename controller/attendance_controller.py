@@ -1,6 +1,6 @@
 from model.attendance import Attendance
 from model.codecooler import Student
-import datatime
+import datetime
 
 
 class AttendanceController:
@@ -29,7 +29,7 @@ class AttendanceController:
         """
 
         students = Student.get_students()
-        today_date = datatime.date.today()
+        today_date = datetime.date.today()
         for student in students:
             self.view.show_codecooler(student)
             is_present = self.user_input.get_boolean_input()
