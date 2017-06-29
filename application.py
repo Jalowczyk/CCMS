@@ -1,8 +1,7 @@
-from model.codecooler import *
-from user_input.user_input import UserInput
 from menu.menu import *
+from read_write_csv.csv_read_write import *
+from user_input.user_input import UserInput
 from view.view import View
-from csv_read_write import *
 
 
 class Application:
@@ -18,7 +17,10 @@ class Application:
     menu: None/Menu obj
     user_input: UserInput obj
     view: View obj
-    path: str
+    codecooler_data_file_path: str
+    attendances_data_file_path: str
+    assignments_data_file_path: str
+    submissions_data_file_path: str
     """
 
     roles = {"Manager": ManagerMenu, "Staff": StaffMenu, "Mentor": MentorMenu,
@@ -35,8 +37,10 @@ class Application:
         self.menu = None
         self.user_input = UserInput()
         self.view = View()
-        # self.filename = "data/"
-        # self.data_manager = DataManager(self.path)
+        self.codecooler_data_file_path = "data/codecoolers_data.csv"
+        self.attendances_data_file_path = "data/attendance.csv"
+        self.assignments_data_file_path = "data/assignments.csv"
+        self.submissions_data_file_path = "data/submissions.csv"
 
 
     def handle_login(self):
@@ -70,19 +74,19 @@ class Application:
         Entry method for the main module which read csv file at the beginning
         and write to csv file at the end.
         """
-        read_students_from_csv("codecoolers_data.csv")
-        read_attendances_from_csv("attendance.csv")
-        read_assignments_from_csv("assignments.csv")
-        read_submissions_from_csv("submissions.csv")
+        read_students_from_csv(self.codecooler_data_file_path)
+        read_attendances_from_csv(self.attendances_data_file_path)
+        read_assignments_from_csv(self.assignments_data_file_path)
+        read_submissions_from_csv(self.submissions_data_file_path)
 
         while self.is_running:
             self.handle_login()
             self.handle_menu()
 
-        write_codecoolers_to_csv("codecoolers_data.csv")
-        write_attendance_to_csv("attendance.csv")
-        write_assignments_to_csv("assignments.csv")
-        write_submissions_to_csv("submissions.csv")
+        write_codecoolers_to_csv(self.codecooler_data_file_path)
+        write_attendance_to_csv(self.attendances_data_file_path)
+        write_assignments_to_csv(self.assignments_data_file_path)
+        write_submissions_to_csv(self.submissions_data_file_path)
 
     def log_in(self):
         """
