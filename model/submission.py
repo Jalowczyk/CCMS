@@ -36,6 +36,7 @@ class Submission:
         Returns
             void:
         """
+        self.grade = grade
 
     def get_assignment(self):
         """Gets assignment atibute of instance
@@ -60,11 +61,3 @@ class Submission:
             solution: str
         """
         return self.solution
-
-    def get_grade(self):
-        """Gets grade atibute of instance
-
-        Returns
-            grade: int
-        """
-        return self.grade

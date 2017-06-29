@@ -88,7 +88,7 @@ class Codecooler:
         """
         self.password = password
 
-    def set_email(email):
+    def set_email(self, email):
         """
         Set email instance attribute to email parameter.
 
