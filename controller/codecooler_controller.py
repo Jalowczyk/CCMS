@@ -6,19 +6,19 @@ class CodecoolerController:
     """Represeent CodecoolerController objects
 
     instance Attributes:
-        viev: object of viev class
-        input: objet of input class
+        view: object of view class
+        input: object of input class
     """
 
-    def __init__(self, user_input, viev):
+    def __init__(self, user_input, view):
         self.user_input = user_input
         self.view = view
 
     def show_codecooler_details_action(self, users_list):
-        """Show details of choosen user_input
+        """Show details of chosen user_input
 
         Parameters:
-            user_list: list of codecoolers class objects
+            users_list: list of codecoolers class objects
         Returns:
             None
         """
@@ -31,7 +31,7 @@ class CodecoolerController:
     def show_codecooler_action(self, user_role):
         """Show codecoolers and their details
 
-        Parmeters:
+        Parameters:
             user_role: str ("mentor" or "student")
         Returns:
             None
@@ -46,12 +46,12 @@ class CodecoolerController:
             if option == options[0]:
                 self.show_codecooler_details_action(mentors)
         elif user_role == "student":
-            students = Studet.get_students()
+            students = Student.get_students()
             self.view.show_codecoolers(students)
             self.view.show_menu_option(options)
             option = self.user_input.get_menu_input(options)
             if option == options[0]:
-                self.show_codecooler_details_action(student)
+                self.show_codecooler_details_action(students)
 
     def add_codecooler_action(self, person_role):
         """Create and add codecooler object to class list
@@ -61,25 +61,25 @@ class CodecoolerController:
         Returns:
             None
         """
-        message = 'Plese provide user data:'
+        message = 'Please provide user data:'
         self.view.show_message(message)
         if person_role == "mentor":
-            mentor = Mentor(self.user_input.get_codecooler_data())
-            mentor.add()
+            mentor = Mentor(*self.user_input.get_codecooler_data())
+            mentor.add_to_mentors()
         elif person_role == "student":
-            student = Student(self.user_input.get_codecooler_data())
-            student.add()
+            student = Student(*self.user_input.get_codecooler_data())
+            student.add_to_students()
 
     def edit_codecooler_action(self, person_role):
-        """Edits codecooler object atributes
+        """Edits codecooler object attributes
 
         Parmeters:
             user_role: str ("mentor" or "student")
         Returns:
             None
         """
-        message = 'Plese provide user data:'
-        self.self.view.show_message(message)
+        message = 'Please provide user data:'
+        self.view.show_message(message)
         if person_role == "mentor":
             mentors = Mentor.get_mentors()
             self.view.show_codecoolers(mentors)
@@ -105,12 +105,12 @@ class CodecoolerController:
     def remove_codecooler_action(self, person_role):
         """Remove codecooler object from class list
 
-        Parmeters:
-            user_role: str ("mentor" or "student")
+        Parameters:
+            person_role: str ("mentor" or "student")
         Returns:
             None
         """
-        message = 'Plese choose user to remove:'
+        message = 'Please choose user to remove:'
         self.view.show_message(message)
         if person_role == "mentor":
             mentors = Mentor.get_mentors()
