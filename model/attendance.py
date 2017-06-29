@@ -1,7 +1,3 @@
-from user_input.user_input import UserInput
-from controller.attendance_controller import AttendanceController
-
-
 class Attendance:
     '''
     An object containing informations about students attendance.
