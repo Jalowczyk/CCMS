@@ -97,11 +97,13 @@ class Codecooler:
         """
         self.email = email
 
+
 class Employee(Codecooler):
     """
     Codecooler's child class which creates Employee's object.
     """
     pass
+
 
 class Manager(Employee):
     """
@@ -117,6 +119,11 @@ class Manager(Employee):
         Adds Manager object to managers list (class attribute).
         """
         self.managers.append(self)
+
+    @classmethod
+    def get_managers(cls):
+        return cls.managers
+
 
 class Mentor(Employee):
     """
@@ -150,6 +157,7 @@ class Mentor(Employee):
         """
         self.mentors.remove(self)
 
+
 class Staff(Employee):
     """
     Creates Staff object.
@@ -165,6 +173,11 @@ class Staff(Employee):
         Adds Staff object to staff list (class attribute).
         """
         self.staff.append(self)
+
+    @classmethod
+    def get_staff(cls):
+        return cls.staff
+
 
 class Student(Codecooler):
     """
