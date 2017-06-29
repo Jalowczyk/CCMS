@@ -20,8 +20,8 @@ class View:
         """
 
         for index, codecooler in enumerate(codecoolers):
-            print("{}.{} {}: {}".format(index + 1, codecooler.get_first_name(),
-                                    codecooler.get_last_name(), codecooler.get_email()))
+            print("{}.{} {}".format(index + 1, codecooler.get_first_name(),
+                                    codecooler.get_last_name()))
 
     def show_codecooler(self, codecooler):
         """

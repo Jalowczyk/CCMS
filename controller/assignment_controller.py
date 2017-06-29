@@ -39,11 +39,12 @@ class AssignmentController:
         Returns:
             None
         """
-        options = ['view details', 'back']
+        options = ['To show details', 'back']
         assignments = Assignment.get_assignments_list()
         self.view.show_assignments(assignments)
         self.view.show_menu_option(options)
-        option = self.user_input.get_menu_input(options)
-        if option == options[0]:
+        option = self.user_input.get_index_input(len(options))
+        if option == 0:
+            self.view.show_assignments(assignments)
             assignment = self.get_assignment(assignments)
             self.view.show_assignment_details(assignment)

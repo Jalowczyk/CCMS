@@ -74,7 +74,7 @@ class ManagerMenu(EmployeeMenu):
     options: list of options
     """
 
-    options = ["view mentors list", "add mentor", "remove mentor"] + EmployeeMenu.options
+    options = ["view mentors list", "edit mentor", "add mentor", "remove mentor"] + EmployeeMenu.options
 
     def handle_menu(self, user_choice):
         """
@@ -86,15 +86,18 @@ class ManagerMenu(EmployeeMenu):
         """
 
         if user_choice == "view students list":
-            self.codecooler_controller.show_codecooler_action("students")
+            self.codecooler_controller.show_codecooler_action("student")
         elif user_choice == "view mentors list":
-            self.codecooler_controller.show_codecooler_action("mentors")
+            self.codecooler_controller.show_codecooler_action("mentor")
         elif user_choice == "add mentor":
             self.codecooler_controller.add_codecooler_action("mentor")
         elif user_choice == "remove mentor":
             self.codecooler_controller.remove_codecooler_action("mentor")
+        elif user_choice == "edit mentor":
+            self.codecooler_controller.edit_codecooler_action("mentor")
         elif user_choice == "log out":
             self.session["logged_user"] = None
+
 
 
 class MentorMenu(EmployeeMenu):
@@ -128,7 +131,7 @@ class MentorMenu(EmployeeMenu):
         elif user_choice == "remove student":
             self.codecooler_controller.remove_codecooler_action("student")
         elif user_choice == "view students list":
-            self.codecooler_controller.show_codecooler_action("students")
+            self.codecooler_controller.show_codecooler_action("student")
         elif user_choice == "log out":
             self.session["logged_user"] = None
 
@@ -148,7 +151,7 @@ class StaffMenu(EmployeeMenu):
         """
 
         if user_choice == "view students list":
-            self.codecooler_controller.show_codecooler_action("students")
+            self.codecooler_controller.show_codecooler_action("student")
         elif user_choice == "log out":
             self.session["logged_user"] = None
 
