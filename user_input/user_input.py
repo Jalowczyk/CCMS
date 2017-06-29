@@ -93,3 +93,27 @@ class UserInput:
             user_input_index = input("Pick a number: ")
 
         return int(user_input_index)
+
+    def get_codecooler_data(self):
+        """
+        Returns codecooler first name, last name and email depending on user input.
+
+        Returns:
+        codecooler_first_name: str
+        codecooler_second_name: str
+        codecooler_email: str
+        """
+
+        codecooler_first_name = input("Enter first name: ")
+        while not codecooler_first_name:
+            codecooler_first_name = input("Enter first name: ")
+
+        codecooler_second_name = input("Enter second name: ")
+        while not codecooler_second_name:
+            codecooler_second_name = input("Enter second name: ")
+
+        codecooler_email = input("Enter email: ")
+        while not codecooler_email:
+            codecooler_second_name = input("Enter email: ")
+
+        return codecooler_first_name, codecooler_second_name, codecooler_email
