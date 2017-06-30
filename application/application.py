@@ -1,12 +1,13 @@
-from menu.menu import *
-from read_write_csv.csv_read_write import *
-from user_input.user_input import UserInput
-from view.view import View
+from application.read_write_csv.csv_read_write import *
+from application.user_input.user_input import UserInput
+from application.view.view import View
+
+from application.menu.menu import *
 
 
 class Application:
     """
-    Creates Application obj.
+    Creates application obj.
     Class attributes:
     roles: dict
     options: list
@@ -30,17 +31,17 @@ class Application:
 
     def __init__(self):
         """
-        Creates Application obj.
+        Creates application obj.
         """
         self.is_running = True
         self.session = {"logged_user": None}
         self.menu = None
         self.user_input = UserInput()
         self.view = View()
-        self.codecooler_data_file_path = "data/codecoolers_data.csv"
-        self.attendances_data_file_path = "data/attendance.csv"
-        self.assignments_data_file_path = "data/assignments.csv"
-        self.submissions_data_file_path = "data/submissions.csv"
+        self.codecooler_data_file_path = "application/data/codecoolers_data.csv"
+        self.attendances_data_file_path = "application/data/attendance.csv"
+        self.assignments_data_file_path = "application/data/assignments.csv"
+        self.submissions_data_file_path = "application/data/submissions.csv"
 
 
     def handle_login(self):

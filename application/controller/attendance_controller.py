@@ -1,6 +1,8 @@
-from model.attendance import Attendance
-from model.codecooler import Student
 import datetime
+
+from application.model.codecooler import Student
+
+from application.model.attendance import Attendance
 
 
 class AttendanceController:

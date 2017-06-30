@@ -1,7 +1,8 @@
-from model.attendance import *
-from model.codecooler import *
-from model.assignment import *
-from model.submission import *
+from application.model.attendance import *
+from application.model.codecooler import *
+from application.model.submission import *
+
+from application.model.assignment import *
 
 
 def read_students_from_csv(file_name):

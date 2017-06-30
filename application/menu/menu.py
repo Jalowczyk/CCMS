@@ -1,7 +1,8 @@
-from controller.codecooler_controller import CodecoolerController
-from controller.attendance_controller import AttendanceController
-from controller.submission_controller import SubmissionController
-from controller.assignment_controller import AssignmentController
+from application.controller.attendance_controller import AttendanceController
+from application.controller.codecooler_controller import CodecoolerController
+from application.controller.submission_controller import SubmissionController
+
+from application.controller.assignment_controller import AssignmentController
 
 
 class Menu:

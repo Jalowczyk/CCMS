@@ -1,9 +1,10 @@
 import unittest
 from unittest.mock import Mock
 
-from model.assignment import Assignment
-from model.submission import Submission
-from model.codecooler import Student
+from application.model.codecooler import Student
+from application.model.submission import Submission
+
+from application.model.assignment import Assignment
 
 
 class TestAssignment(unittest.TestCase):
@@ -40,7 +41,7 @@ class TestAssignment(unittest.TestCase):
         submission_mock = Mock(Submission(Mock(Student), Mock(Assignment), "solution"))
         submission_desired_list = [submission_mock]
         assignment.add_submission(submission_mock)
-        self.assertListEqual(submission_desired_list, assignment.get_submission())
+        self.assertListEqual(submission_desired_list, assignment.get_submissions())
 
     def test_if_get_title_returns_proper_value(self):
         assignment_data = ("title", "description", 10)

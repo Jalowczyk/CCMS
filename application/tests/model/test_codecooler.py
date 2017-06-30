@@ -1,7 +1,7 @@
 import unittest
 import unittest.mock
 
-from model.codecooler import *
+from application.model.codecooler import *
 
 
 class TestCodecooler(unittest.TestCase):
@@ -60,13 +60,13 @@ class TestCodecooler(unittest.TestCase):
     def test_Staff_addToStaffs_addsStaffObjectToStaffList(self):
         staff = Staff("asdf", "asdf", "asdf@asdf.pl", "asdf")
         staff.add_to_staff()
-        self.assertEqual(Staff.get_staffs()[-1], staff)
+        self.assertEqual(Staff.get_staff()[-1], staff)
 
     def test_Staff_addToStaff_staffListIncrements(self):
-        first_length = len(Staff.get_staffs())
+        first_length = len(Staff.get_staff())
         staff = Staff("asdf", "asdf", "asdf@asdf.pl", "asdf")
         staff.add_to_staff()
-        self.assertEqual(len(Staff.get_staffs()), first_length + 1)
+        self.assertEqual(len(Staff.get_staff()), first_length + 1)
 
     def test_Manager_addToManagers_addsManagerObjectToManagerList(self):
         manager = Manager("asdf", "asdf", "asdf@asdf.pl", "asdf")

@@ -1,4 +1,4 @@
-from model.assignment import Assignment
+from application.model.assignment import Assignment
 
 
 class AssignmentController:

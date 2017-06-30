@@ -1,9 +1,10 @@
 import unittest
 from unittest.mock import Mock
 
-from model.assignment import Assignment
-from model.codecooler import Student
-from model.submission import Submission
+from application.model.codecooler import Student
+from application.model.submission import Submission
+
+from application.model.assignment import Assignment
 
 
 class TestSubmission(unittest.TestCase):

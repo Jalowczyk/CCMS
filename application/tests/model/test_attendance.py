@@ -1,8 +1,8 @@
+import datetime
 import unittest
 import unittest.mock
-import datetime
 
-from model.attendance import Attendance
+from application.model.attendance import Attendance
 
 
 class TestAttendance(unittest.TestCase):

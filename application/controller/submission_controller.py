@@ -1,6 +1,7 @@
-from model.assignment import Assignment
-from model.codecooler import Student
-from model.submission import Submission
+from application.model.codecooler import Student
+from application.model.submission import Submission
+
+from application.model.assignment import Assignment
 
 
 class SubmissionController:
@@ -9,7 +10,7 @@ class SubmissionController:
     Attributes:
         user_input: object of UserInput class
         view: object of View class
-        logged_user: object of Codecooler class
+        session: dict
     """
 
     def __init__(self, session, user_input, view):

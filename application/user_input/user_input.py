@@ -144,7 +144,7 @@ class UserInput:
         """
 
         user_input_number = input("Enter a number: ")
-        while not user_input_index.isnumeric():
+        while not user_input_number.isnumeric():
             user_input_number = input("Enter a number: ")
 
         return int(user_input_number)

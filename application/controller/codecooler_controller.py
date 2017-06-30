@@ -1,5 +1,5 @@
-from model.codecooler import Mentor
-from model.codecooler import Student
+from application.model.codecooler import Mentor
+from application.model.codecooler import Student
 
 
 class CodecoolerController:
