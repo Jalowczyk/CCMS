@@ -129,6 +129,8 @@ class MentorMenu(EmployeeMenu):
             self.attendance_controller.check_attendance_action()
         elif user_choice == "add student":
             self.codecooler_controller.add_codecooler_action("student")
+        elif user_choice == "edit student":
+            self.codecooler_controller.edit_codecooler_action("student")
         elif user_choice == "remove student":
             self.codecooler_controller.remove_codecooler_action("student")
         elif user_choice == "view students list":
