@@ -1,8 +1,8 @@
+from application.model.assignment import *
 from application.model.attendance import *
 from application.model.codecooler import *
 from application.model.submission import *
-
-from application.model.assignment import *
+from datetime import date
 
 
 def read_students_from_csv(file_name):

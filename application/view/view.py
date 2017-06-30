@@ -88,6 +88,7 @@ class View:
         for index, submission in enumerate(submissions):
             assignment = submission.get_assignment().get_title()
             if submission.get_grade():
-                print("{}. {}: {}/{}".format(index + 1, assignment, submission.get_grade(), submission.get_assignment().get_max_grade()))
+                print("{}. {}: {}/{}".format(index + 1, assignment, submission.get_grade(),
+                                             submission.get_assignment().get_max_grade()))
             else:
                 print("{}. {}: {}".format(index + 1, assignment, "not graded"))

@@ -148,11 +148,11 @@ class TestCodecooler(unittest.TestCase):
         previous_submissions_length = len(student.get_submissions())
         submission = unittest.mock.Mock()
         student.add_submission(submission)
-        self.assertEqual(len(student.get_submissions()), previous_submissions_length+1)
+        self.assertEqual(len(student.get_submissions()), previous_submissions_length + 1)
 
     def test_StudentAddAttendance_AttendanceListIncrements(self):
         student = Student("Old first name", "Old last name", "old@mail.com", "Oldpassword")
         previous_attendances_length = len(student.get_attendance())
         attendance = unittest.mock.Mock()
         student.add_attendance(attendance)
-        self.assertEqual(len(student.get_attendance()), previous_attendances_length+1)
+        self.assertEqual(len(student.get_attendance()), previous_attendances_length + 1)
