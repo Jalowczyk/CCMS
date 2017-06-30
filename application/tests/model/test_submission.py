@@ -61,3 +61,17 @@ class TestSubmission(unittest.TestCase):
         submission_data = (Mock(Student), Mock(Assignment), solution)
         submission = Submission(*submission_data)
         self.assertEqual(solution, submission.get_solution())
+
+    def test_if_set_is_graded_sets_proper_value(self):
+        assignment = Mock(Assignment)
+        submission_data = (Mock(Student), assignment, "solution")
+        submission = Submission(*submission_data)
+        submission.set_is_graded(True)
+        self.assertTrue(submission.get_is_graded())
+
+    def test_if_get_student_returns_proper_value(self):
+        solution = "solution"
+        student = Mock(Student)
+        submission_data = (student, Mock(Assignment), solution)
+        submission = Submission(*submission_data)
+        self.assertEqual(student, submission.get_student())
