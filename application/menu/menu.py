@@ -100,7 +100,6 @@ class ManagerMenu(EmployeeMenu):
             self.session["logged_user"] = None
 
 
-
 class MentorMenu(EmployeeMenu):
     """
     Creates MentorMenu obj which inherits from EmployeeMenu class.
@@ -110,7 +109,7 @@ class MentorMenu(EmployeeMenu):
     """
 
     options = ["add assignment", "show assignments", "grade submission", "check attendance",
-               "add student", "edit student", "remove student", "show attendances"] + EmployeeMenu.options
+               "add student", "edit student", "remove student"] + EmployeeMenu.options
 
     def handle_menu(self, user_choice):
         """
