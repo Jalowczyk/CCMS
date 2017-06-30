@@ -57,3 +57,15 @@ class TestAssignment(unittest.TestCase):
         assignment_data = ("title", "description", 10)
         assignment = Assignment(*assignment_data)
         self.assertEqual(assignment.get_max_grade(), 10)
+
+    def test_if_newAssigment_hasEmptySubmissionList(self):
+        assignment_data = ("title", "description", 10)
+        assignment = Assignment(*assignment_data)
+        submission_list_length = len(assignment.get_submissions())
+        self.assertEqual(submission_list_length, 0)
+
+    def test_if_AssigmentIsInAssigmentListAfterAdd(self):
+        assignment_data = ("title", "description", 10)
+        assignment = Assignment(*assignment_data)
+        assignment.add_to_assignments()
+        self.assertTrue(assignment in Assignment.get_assignments())

@@ -27,3 +27,7 @@ class TestAttendance(unittest.TestCase):
         previous_attendances_lenght = len(Attendance.get_attendances())
         attendance.add_to_attendances()
         self.assertEqual(len(Attendance.get_attendances()), previous_attendances_lenght + 1)
+
+    def test_get_isPresent_returnsCorrectValeuAfterSetIt(self):
+        attendance = Attendance(self.correct_date, self.student, self.isPresent)
+        self.assertEqual(attendance.get_is_present(), self.isPresent)
