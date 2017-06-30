@@ -1,8 +1,7 @@
+from application.menu.menu import *
 from application.read_write_csv.csv_read_write import *
 from application.user_input.user_input import UserInput
 from application.view.view import View
-
-from application.menu.menu import *
 
 
 class Application:
@@ -42,7 +41,6 @@ class Application:
         self.attendances_data_file_path = "application/data/attendance.csv"
         self.assignments_data_file_path = "application/data/assignments.csv"
         self.submissions_data_file_path = "application/data/submissions.csv"
-
 
     def handle_login(self):
         """

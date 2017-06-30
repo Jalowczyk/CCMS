@@ -1,7 +1,6 @@
+from application.model.assignment import Assignment
 from application.model.codecooler import Student
 from application.model.submission import Submission
-
-from application.model.assignment import Assignment
 
 
 class SubmissionController:

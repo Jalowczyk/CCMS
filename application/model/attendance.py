@@ -1,6 +1,3 @@
-from datetime import date
-
-
 class Attendance:
     """
     An object containing information about students attendance.
@@ -36,7 +33,6 @@ class Attendance:
 
     @classmethod
     def get_attendances(cls):
-
         """
         Returns attendances list (class attribute).
 

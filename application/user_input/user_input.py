@@ -1,5 +1,6 @@
 import getpass
 
+
 class UserInput:
     """
     Creates UserInput object.
@@ -130,7 +131,8 @@ class UserInput:
         """
 
         user_input_grade = input("Enter a grade: ")
-        while not user_input_grade.isnumeric() or int(user_input_grade) not in range(submission.get_assignment().get_max_grade() + 1):
+        while not user_input_grade.isnumeric() or int(user_input_grade) not in range(
+                        submission.get_assignment().get_max_grade() + 1):
             user_input_grade = input("Enter a number: ")
 
         return int(user_input_grade)
