@@ -53,7 +53,7 @@ class UserInput:
         """
 
         user_input_email = input("Enter your email: ")
-        while not user_input_email:
+        while not "@cc.pl" in codecooler_email:
             user_input_email = input("Enter your email: ")
 
         user_input_password = getpass.getpass("Enter your password: ")
@@ -122,9 +122,9 @@ class UserInput:
             codecooler_second_name = input("Enter second name: ")
 
         codecooler_email = input("Enter email: ")
-        while not codecooler_email:
-            self.view.show_message("\nThis field can't be empty.\n")
-            codecooler_second_name = input("Enter email: ")
+        while not "@cc.pl" in codecooler_email:
+            self.view.show_message("\nEmail should end with @cc.pl\n")
+            codecooler_email = input("Enter email: ")
 
         codecooler_password = input("Enter password: ")
         while not codecooler_password:
