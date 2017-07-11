@@ -72,17 +72,21 @@ class View:
                                         submission.get_assignment().get_title()])
 
         print(self.table)
-        
+
     def show_assignment_details(self, assignment):
         """
         Prints specific assignment information.
         Parameters:
         assignment: Assignment obj
         """
+        self.table.clear_rows()
+        self.table.field_names = ["Title", "Maximum grade", "Description"]
 
-        print("{}: {}".format("Title", assignment.get_title()))
-        print("{}: {}".format("Maximum grade", assignment.get_max_grade()))
-        print("{}: {}".format("Description", assignment.get_description()))
+        self.table.add_row([assignment.get_title(), assignment.get_max_grade(),
+                                    assignment.get_description()])
+
+        print(self.table)
+        
 
     def show_message(self, message):
         """
