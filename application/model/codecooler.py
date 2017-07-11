@@ -1,3 +1,5 @@
+import re
+
 class Codecooler:
     """
     Parent class for Employee and Student class.
@@ -28,6 +30,9 @@ class Codecooler:
             raise ValueError("Email can't be empty")
         if password == '':
             raise ValueError("password can't be empty")
+        propper_mail = re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", email)
+        if not propper_mail:
+            raise ValueError('Mail has to be: x@y.z type')
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
