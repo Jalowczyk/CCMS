@@ -29,6 +29,7 @@ class View:
             self.table.add_row([index + 1, codecooler.get_first_name(),
                                     codecooler.get_last_name()])
 
+        print(self.table)
 
     def show_codecooler(self, codecooler):
         """
@@ -40,6 +41,8 @@ class View:
         self.table.field_names = ["First name", "Last name", "E-mail"]
         self.table.add_row([codecooler.get_first_name(),
                                  codecooler.get_last_name(), codecooler.get_email()])
+        print(self.table)
+        
     def show_assignments(self, assignments):
         """
         Prints assignments information.
