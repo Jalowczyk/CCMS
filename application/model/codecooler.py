@@ -20,6 +20,14 @@ class Codecooler:
         email: str
         password: str
         """
+        if first_name == '':
+            raise ValueError("first_name can'be empty")
+        if last_name == '':
+            raise ValueError("last_name can'be empty")
+        if email == '':
+            raise ValueError("Email can't be empty")
+        if password == '':
+            raise ValueError("password can't be empty")
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
