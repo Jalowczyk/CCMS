@@ -18,6 +18,12 @@ class Attendance:
         Returns:
             void
         """
+        if date is None:
+            raise ValueError('date should be Datetime object')
+        if student is None:
+            raise ValueError("student should be Student Class object")
+        if is_present is None:
+            raise ValueError("is_present should be boolw")
         self.date = date
         self.student = student
         self.is_present = is_present

@@ -1,3 +1,5 @@
+from model.assignment import Assignment
+
 class Submission:
     """Represents submissonn object
 
@@ -16,6 +18,8 @@ class Submission:
         Returns
             None
         """
+        if not isinstance(assignment, Assignment):
+            raise TypeError("assignment is not Assignment instance")
         self.student = student
         self.assignment = assignment
         self.grade = None
@@ -37,6 +41,8 @@ class Submission:
         Returns
             void:
         """
+        if not grade.isnumeric():
+            raise TypeError("Grade has to be numeric")
         self.grade = grade
 
     def set_is_graded(self, is_graded):
