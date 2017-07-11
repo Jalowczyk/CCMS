@@ -1,12 +1,12 @@
-from prettytable import PrettyTable
+import texttable
 
 class View:
     """
     Creates View obj.
     """
     def __init__(self):
-        self.table = PrettyTable()
-
+        self.table = TextTable()
+        
     def show_menu_option(self, options):
         """
         Prints menu options.
@@ -22,13 +22,10 @@ class View:
         Parameters:
         codecoolers: list
         """
-        self.table.clear_rows()
-        self.table.field_names = ["Index", "First name", "Last name"]
 
         for index, codecooler in enumerate(codecoolers):
-            self.table.add_row([index + 1, codecooler.get_first_name(),
-                                    codecooler.get_last_name()])
-        print(self.table)
+            print("{}.{} {}".format(index + 1, codecooler.get_first_name(),
+                                    codecooler.get_last_name()))
 
     def show_codecooler(self, codecooler):
         """
@@ -36,11 +33,9 @@ class View:
         Parameters:
         codecooler: Codecooler obj
         """
-        self.table.clear_rows()
-        self.table.field_names = ["First name", "Last name", "E-mail"]
-        self.table.add_row([codecooler.get_first_name(),
-                                 codecooler.get_last_name(), codecooler.get_email()])
-        print(self.table)
+
+        print("{} {}: {}".format(codecooler.get_first_name(),
+                                 codecooler.get_last_name(), codecooler.get_email()))
 
     def show_assignments(self, assignments):
         """
@@ -48,13 +43,9 @@ class View:
         Parameters:
         assignments: list
         """
-        self.table.clear_rows()
-        self.table.field_names = ["Index", "Assignment's title"]
 
         for index, assignment in enumerate(assignments):
-            self.table.add_row([index + 1, assignment.get_title()])
-
-        print(self.table)
+            print("{}. {}".format(index + 1, assignment.get_title()))
 
     def show_submissions(self, submissions):
         """
@@ -62,16 +53,11 @@ class View:
         Parameters:
         assignments: list
         """
-        self.table.clear_rows()
-        self.table.field_names = ["Index", "Student's first name", "Student's last name",
-                                  "Assignment's title"]
 
         for index, submission in enumerate(submissions):
-            self.table.add_row([index + 1, submission.get_student().get_first_name(),
+            print("{}. {} {} {}".format(index + 1, submission.get_student().get_first_name(),
                                         submission.get_student().get_last_name(),
-                                        submission.get_assignment().get_title()])
-
-        print(self.table)
+                                        submission.get_assignment().get_title()))
 
     def show_assignment_details(self, assignment):
         """
@@ -79,14 +65,10 @@ class View:
         Parameters:
         assignment: Assignment obj
         """
-        self.table.clear_rows()
-        self.table.field_names = ["Title", "Maximum grade", "Description"]
 
-        self.table.add_row([assignment.get_title(), assignment.get_max_grade(),
-                                    assignment.get_description()])
-
-        print(self.table)
-
+        print("{}: {}".format("Title", assignment.get_title()))
+        print("{}: {}".format("Maximum grade", assignment.get_max_grade()))
+        print("{}: {}".format("Description", assignment.get_description()))
 
     def show_message(self, message):
         """
@@ -106,16 +88,11 @@ class View:
         Parameters:
         submissions: list
         """
-        self.table.clear_rows()
-        self.table.field_names = ["Index", "Assignment's title",
-                                  "Student's grade", "Maximum grade"]
 
         for index, submission in enumerate(submissions):
             assignment = submission.get_assignment().get_title()
             if submission.get_grade():
-                self.table.add_row([index + 1, assignment, submission.get_grade(),
-                                             submission.get_assignment().get_max_grade()])
+                print("{}. {}: {}/{}".format(index + 1, assignment, submission.get_grade(),
+                                             submission.get_assignment().get_max_grade()))
             else:
-                self.table.add_row([index + 1, assignment, "not graded",
-                                    submission.get_assignment().get_max_grade()])
-        print(self.table)
+                print("{}. {}: {}".format(index + 1, assignment, "not graded"))
