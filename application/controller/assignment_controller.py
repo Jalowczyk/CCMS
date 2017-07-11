@@ -23,6 +23,8 @@ class AssignmentController:
         data = self.user_input.get_assignment_data()
         assignment = Assignment(*data)
         assignment.add_to_assignments()
+        
+        self.view.show_message("New assignment added!")
 
     def get_assignment(self, assignments):
         """Gets assignment object form class list

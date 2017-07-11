@@ -73,6 +73,8 @@ class CodecoolerController:
             student = Student(*self.user_input.get_codecooler_data())
             student.add_to_students()
 
+        self.view.show_message("New Codecooler added!")
+
     def edit_codecooler_action(self, person_role):
         """Edits codecooler object attributes
 
@@ -107,6 +109,8 @@ class CodecoolerController:
             student.set_email(data[2])
             student.set_password(data[3])
 
+        self.view.show_message("Codecooler's data edited!")
+
     def remove_codecooler_action(self, person_role):
         """Remove codecooler object from class list
 
@@ -130,3 +134,5 @@ class CodecoolerController:
             option = self.user_input.get_index_input(len(students))
             student = students[option]
             Student.remove(student)
+
+        self.view.show_message("Codecooler removed!")

@@ -37,3 +37,5 @@ class AttendanceController:
             attendance = Attendance(today_date, student, is_present)
             attendance.add_to_attendances()
             student.add_attendance(attendance)
+
+        self.view.show_message("There are no more students!")
