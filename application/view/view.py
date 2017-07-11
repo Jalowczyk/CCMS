@@ -8,6 +8,7 @@ class View:
         Parameters:
         options: list
         """
+        print("Main menu: ")
         for index, option in enumerate(options):
             print("{}. {}".format(index + 1, option))
 
