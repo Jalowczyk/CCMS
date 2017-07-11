@@ -23,7 +23,7 @@ class Attendance:
         if student is None:
             raise ValueError("student should be Student Class object")
         if is_present is None:
-            raise ValueError("is_present should be bool")
+            raise ValueError("is_present should be boolw")
         self.date = date
         self.student = student
         self.is_present = is_present
