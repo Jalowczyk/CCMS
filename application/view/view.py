@@ -28,7 +28,7 @@ class View:
         for index, codecooler in enumerate(codecoolers):
             self.table.add_row([index + 1, codecooler.get_first_name(),
                                     codecooler.get_last_name()])
-        
+
 
     def show_codecooler(self, codecooler):
         """
@@ -36,10 +36,10 @@ class View:
         Parameters:
         codecooler: Codecooler obj
         """
-
-        print("{} {}: {}".format(codecooler.get_first_name(),
-                                 codecooler.get_last_name(), codecooler.get_email()))
-
+        self.table.clear_rows()
+        self.table.field_names = ["First name", "Last name", "E-mail"]
+        self.table.add_row([codecooler.get_first_name(),
+                                 codecooler.get_last_name(), codecooler.get_email()])
     def show_assignments(self, assignments):
         """
         Prints assignments information.
