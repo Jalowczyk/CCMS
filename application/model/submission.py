@@ -37,6 +37,8 @@ class Submission:
         Returns
             void:
         """
+        if not grade.isnumeric():
+            raise TypeError("Grade has to be numeric")
         self.grade = grade
 
     def set_is_graded(self, is_graded):
