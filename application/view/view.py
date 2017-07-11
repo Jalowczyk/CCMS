@@ -76,7 +76,7 @@ class View:
         RED = '\033[91m'
         WHITE = '\033[0m'
 
-        print(RED + message + WHITE)
+        print(RED + "\n" + message + "\n" + WHITE)
 
     def show_grades(self, submissions):
         """
