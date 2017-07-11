@@ -28,7 +28,6 @@ class View:
         for index, codecooler in enumerate(codecoolers):
             self.table.add_row([index + 1, codecooler.get_first_name(),
                                     codecooler.get_last_name()])
-
         print(self.table)
 
     def show_codecooler(self, codecooler):
@@ -42,16 +41,20 @@ class View:
         self.table.add_row([codecooler.get_first_name(),
                                  codecooler.get_last_name(), codecooler.get_email()])
         print(self.table)
-        
+
     def show_assignments(self, assignments):
         """
         Prints assignments information.
         Parameters:
         assignments: list
         """
+        self.table.clear_rows()
+        self.table.field_names = ["Index", "Assignment's title"]
 
         for index, assignment in enumerate(assignments):
-            print("{}. {}".format(index + 1, assignment.get_title()))
+            self.table.add_row([index + 1, assignment.get_title()])
+
+        print(self.table)
 
     def show_submissions(self, submissions):
         """
@@ -59,12 +62,17 @@ class View:
         Parameters:
         assignments: list
         """
+        self.table.clear_rows()
+        self.table.field_names = ["Index", "Student's first name", "Student's last name",
+                                  "Assignment's title"]
 
         for index, submission in enumerate(submissions):
-            print("{}. {} {} {}".format(index + 1, submission.get_student().get_first_name(),
+            self.table.add_row([index + 1, submission.get_student().get_first_name(),
                                         submission.get_student().get_last_name(),
-                                        submission.get_assignment().get_title()))
+                                        submission.get_assignment().get_title()])
 
+        print(self.table)
+        
     def show_assignment_details(self, assignment):
         """
         Prints specific assignment information.
