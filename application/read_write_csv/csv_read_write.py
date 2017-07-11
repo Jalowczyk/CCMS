@@ -10,6 +10,30 @@ class CsvHandling:
     Simply - csv handling.
     """
     @staticmethod
+    def csv_create_if_non_exist():
+        """
+        Method is started when program cannot find csv files - then creating them.
+        """
+        with open("application/data/assignments.csv", "w") as my_poor_empty_csv:
+            pass
+        with open("application/data/attendance.csv", "w") as my_poor_empty_csv:
+            pass
+        with open("application/data/codecoolers_data.csv", "w") as my_poor_empty_csv:
+            pass
+        with open("application/data/submissions.csv", "w") as my_poor_empty_csv:
+            pass
+
+        print('This is the first run of the program. Default values of manager account are:\n\
+               First name: Admin\n\
+               Last_name: Adminsky\n\
+               email: admin.adminsky@cc.pl\n\
+               password: dupa\n\
+               You can change this date later.\n')
+
+        new_manager = Manager('Admin', 'Adminsky', 'admin.adminsky@cc.pl', 'dupa')
+        new_manager.add_to_managers()
+
+    @staticmethod
     def read_students_from_csv(file_name):
         """
         Create models and fill class lists with data from csv files at the begining of program
