@@ -12,6 +12,9 @@ class TestAssignment(unittest.TestCase):
         with self.assertRaises(ValueError):
             Assignment(*assignment_data)
 
+    def setUp(self):
+        Assignment.assignments = []
+
     def test_if_assignment_init_throws_exception_when_description_empty(self):
         assignment_data = ("title", "", 10)
         with self.assertRaises(ValueError):
