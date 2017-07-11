@@ -2,6 +2,7 @@ from application.menu.menu import *
 from application.read_write_csv.csv_read_write import *
 from application.user_input.user_input import UserInput
 from application.view.view import View
+import os
 
 
 class Application:
@@ -85,7 +86,9 @@ class Application:
         finally:
 
             while self.is_running:
+                os.system("clear")
                 self.handle_login()
+                os.system("clear")
                 self.handle_menu()
 
             CsvHandling.write_codecoolers_to_csv(self.codecooler_data_file_path)

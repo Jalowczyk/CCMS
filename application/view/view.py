@@ -1,18 +1,14 @@
-import texttable
-
 class View:
     """
     Creates View obj.
     """
-    def __init__(self):
-        self.table = TextTable()
-        
     def show_menu_option(self, options):
         """
         Prints menu options.
         Parameters:
         options: list
         """
+        
         for index, option in enumerate(options):
             print("{}. {}".format(index + 1, option))
 
