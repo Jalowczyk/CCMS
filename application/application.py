@@ -73,19 +73,25 @@ class Application:
         Entry method for the main module which read csv file at the beginning
         and write to csv file at the end.
         """
-        read_students_from_csv(self.codecooler_data_file_path)
-        read_attendances_from_csv(self.attendances_data_file_path)
-        read_assignments_from_csv(self.assignments_data_file_path)
-        read_submissions_from_csv(self.submissions_data_file_path)
+        try:
+            CsvHandling.read_students_from_csv(self.codecooler_data_file_path)
+            CsvHandling.read_attendances_from_csv(self.attendances_data_file_path)
+            CsvHandling.read_assignments_from_csv(self.assignments_data_file_path)
+            CsvHandling.read_submissions_from_csv(self.submissions_data_file_path)
 
-        while self.is_running:
-            self.handle_login()
-            self.handle_menu()
+        except FileNotFoundError:
+            CsvHandling.csv_create_if_non_exist()
 
-        write_codecoolers_to_csv(self.codecooler_data_file_path)
-        write_attendance_to_csv(self.attendances_data_file_path)
-        write_assignments_to_csv(self.assignments_data_file_path)
-        write_submissions_to_csv(self.submissions_data_file_path)
+        finally:
+
+            while self.is_running:
+                self.handle_login()
+                self.handle_menu()
+
+            CsvHandling.write_codecoolers_to_csv(self.codecooler_data_file_path)
+            CsvHandling.write_attendance_to_csv(self.attendances_data_file_path)
+            CsvHandling.write_assignments_to_csv(self.assignments_data_file_path)
+            CsvHandling.write_submissions_to_csv(self.submissions_data_file_path)
 
     def log_in(self):
         """
