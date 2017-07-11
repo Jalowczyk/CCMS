@@ -86,7 +86,7 @@ class View:
                                     assignment.get_description()])
 
         print(self.table)
-        
+
 
     def show_message(self, message):
         """
@@ -106,11 +106,16 @@ class View:
         Parameters:
         submissions: list
         """
+        self.table.clear_rows()
+        self.table.field_names = ["Index", "Assignment's title",
+                                  "Student's grade", "Maximum grade"]
 
         for index, submission in enumerate(submissions):
             assignment = submission.get_assignment().get_title()
             if submission.get_grade():
-                print("{}. {}: {}/{}".format(index + 1, assignment, submission.get_grade(),
-                                             submission.get_assignment().get_max_grade()))
+                self.table.add_row([index + 1, assignment, submission.get_grade(),
+                                             submission.get_assignment().get_max_grade()])
             else:
-                print("{}. {}: {}".format(index + 1, assignment, "not graded"))
+                self.table.add_row([index + 1, assignment, "not graded",
+                                    submission.get_assignment().get_max_grade()])
+        print(self.table)
