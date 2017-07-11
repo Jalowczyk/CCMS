@@ -104,3 +104,6 @@ class Assignment:
             assignments = list of assignments class objects
         """
         return cls.assignments
+
+    #def __repr__(self):
+    #    return self.title + '\n' + self.description

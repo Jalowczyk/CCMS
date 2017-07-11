@@ -1,3 +1,5 @@
+import model.assignment.Assignment
+
 class Submission:
     """Represents submissonn object
 
@@ -16,6 +18,8 @@ class Submission:
         Returns
             None
         """
+        if not isinstance(assignment, Assignment):
+            raise TypeError("assignment is not Assignment instance")
         self.student = student
         self.assignment = assignment
         self.grade = None
