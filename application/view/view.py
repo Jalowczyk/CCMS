@@ -1,4 +1,4 @@
-import prettytable
+from prettytable import PrettyTable
 
 class View:
     """
