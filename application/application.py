@@ -74,13 +74,13 @@ class Application:
         and write to csv file at the end.
         """
         try:
-            Program.read_students_from_csv(self.codecooler_data_file_path)
-            Program.read_attendances_from_csv(self.attendances_data_file_path)
-            Program.read_assignments_from_csv(self.assignments_data_file_path)
-            Program.read_submissions_from_csv(self.submissions_data_file_path)
+            CsvHandling.read_students_from_csv(self.codecooler_data_file_path)
+            CsvHandling.read_attendances_from_csv(self.attendances_data_file_path)
+            CsvHandling.read_assignments_from_csv(self.assignments_data_file_path)
+            CsvHandling.read_submissions_from_csv(self.submissions_data_file_path)
 
         except FileNotFoundError:
-            Program.csv_create_if_non_exist()
+            CsvHandling.csv_create_if_non_exist()
 
         finally:
 
@@ -88,10 +88,10 @@ class Application:
                 self.handle_login()
                 self.handle_menu()
 
-            Program.write_codecoolers_to_csv(self.codecooler_data_file_path)
-            Program.write_attendance_to_csv(self.attendances_data_file_path)
-            Program.write_assignments_to_csv(self.assignments_data_file_path)
-            Program.write_submissions_to_csv(self.submissions_data_file_path)
+            CsvHandling.write_codecoolers_to_csv(self.codecooler_data_file_path)
+            CsvHandling.write_attendance_to_csv(self.attendances_data_file_path)
+            CsvHandling.write_assignments_to_csv(self.assignments_data_file_path)
+            CsvHandling.write_submissions_to_csv(self.submissions_data_file_path)
 
     def log_in(self):
         """
