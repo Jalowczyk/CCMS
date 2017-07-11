@@ -35,8 +35,8 @@ class Application:
         self.is_running = True
         self.session = {"logged_user": None}
         self.menu = None
-        self.user_input = UserInput()
         self.view = View()
+        self.user_input = UserInput(self.view)
         self.codecooler_data_file_path = "application/data/codecoolers_data.csv"
         self.attendances_data_file_path = "application/data/attendance.csv"
         self.assignments_data_file_path = "application/data/assignments.csv"

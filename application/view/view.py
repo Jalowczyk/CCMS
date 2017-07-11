@@ -1,8 +1,12 @@
+import texttable
+
 class View:
     """
     Creates View obj.
     """
-
+    def __init__(self):
+        self.table = TextTable()
+        
     def show_menu_option(self, options):
         """
         Prints menu options.
@@ -76,7 +80,7 @@ class View:
         RED = '\033[91m'
         WHITE = '\033[0m'
 
-        print(RED + message + WHITE)
+        print(RED + "\n" + message + "\n" + WHITE)
 
     def show_grades(self, submissions):
         """
