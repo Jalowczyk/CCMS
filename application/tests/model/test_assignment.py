@@ -12,7 +12,6 @@ class TestAssignment(unittest.TestCase):
         with self.assertRaises(ValueError):
             Assignment(*assignment_data)
 
-
     def setUp(self):
         Assignment.assignments = []
 
