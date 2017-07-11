@@ -1,4 +1,3 @@
-import texttable
 
 class View:
     """
@@ -6,7 +5,7 @@ class View:
     """
     def __init__(self):
         self.table = TextTable()
-        
+
     def show_menu_option(self, options):
         """
         Prints menu options.
