@@ -1,4 +1,5 @@
 import getpass
+import re
 
 
 class UserInput:
@@ -53,7 +54,8 @@ class UserInput:
         """
 
         user_input_email = input("Enter your email: ")
-        while not "@cc.pl" in codecooler_email:
+        while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", user_input_email):
+            self.view.show_message("\nWrong mail.\n")
             user_input_email = input("Enter your email: ")
 
         user_input_password = getpass.getpass("Enter your password: ")
@@ -122,8 +124,9 @@ class UserInput:
             codecooler_second_name = input("Enter second name: ")
 
         codecooler_email = input("Enter email: ")
-        while not "@cc.pl" in codecooler_email:
-            self.view.show_message("\nEmail should end with @cc.pl\n")
+        while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", codecooler_email):
+            self.view.show_message(("\nWrong e-mail: e-mail can contain ")
+            + ("following characters: letters, integers, '_', '.', '+', '-'.\n"))
             codecooler_email = input("Enter email: ")
 
         codecooler_password = input("Enter password: ")
