@@ -1,4 +1,4 @@
-import model.assignment.Assignment
+from model.assignment import Assignment
 
 class Submission:
     """Represents submissonn object
