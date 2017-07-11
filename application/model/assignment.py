@@ -20,10 +20,17 @@ class Assignment:
 
         returns: None
         """
+        if title == '':
+            raise ValueError('title can\'t be empty')
+        if description == '':
+            raise ValueError('description can\'t be empty')
+        if max_grade < 0:
+            raise ValueError('max grade must be positive value')
         self.title = title
         self.description = description
         self.max_grade = max_grade
         self.submissions = []
+
 
     @classmethod
     def get_assignments(cls):
