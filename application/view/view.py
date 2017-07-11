@@ -1,7 +1,11 @@
+import prettytable
+
 class View:
     """
     Creates View obj.
     """
+    def __init__(self):
+        self.table = PrettyTable()
 
     def show_menu_option(self, options):
         """
@@ -18,10 +22,13 @@ class View:
         Parameters:
         codecoolers: list
         """
+        self.table.clear_rows()
+        self.table.field_names = ["Index", "First name", "Last name"]
 
         for index, codecooler in enumerate(codecoolers):
-            print("{}.{} {}".format(index + 1, codecooler.get_first_name(),
-                                    codecooler.get_last_name()))
+            self.table.add_row([index + 1, codecooler.get_first_name(),
+                                    codecooler.get_last_name()])
+        
 
     def show_codecooler(self, codecooler):
         """
