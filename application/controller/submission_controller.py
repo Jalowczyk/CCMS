@@ -37,9 +37,9 @@ class SubmissionController:
             submission = Submission(self.session["logged_user"], assignment, solution)
             assignment.add_submission(submission)
             self.session["logged_user"].add_submission(submission)
+            self.view.show_message("Submission completed!")
         else:
-            message = 'There are no assignments.'
-            self.view.show_message(message)
+            self.view.show_message('There are no assignments.')
 
     def set_grade_action(self):
         """Sets grade attribute of submission and set as graded
@@ -59,11 +59,11 @@ class SubmissionController:
         if submissions:
             submission_index = self.user_input.get_index_input(len(submissions))
             submission = submissions[submission_index]
-            message = "How much points you want to assign?"
-            self.view.show_message(message)
+            self.view.show_message("How much points you want to assign?")
             grade = self.user_input.get_grade_input(submission)
             submission.set_grade(grade)
             submission.set_is_graded(True)
+            self.view.show_message("Submission graded!")
         else:
             message = "There are no submissions to grade."
             self.view.show_message(message)
