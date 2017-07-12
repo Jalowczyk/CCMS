@@ -41,7 +41,13 @@ class View:
         print("{} {}: {}".format(codecooler.get_first_name(),
                                  codecooler.get_last_name(), codecooler.get_email()))
 
-
+    def show_attendance_details(self, student):
+        print("\n{} {}:".format(student.get_first_name().upper(), student.get_last_name().upper()))
+        for index, attendance in enumerate(student.get_attendance()):
+            if attendance.get_is_present:
+                print("{}. {}: {}".format(index + 1, attendance.get_date(), "present"))
+            else:
+                print("{}. {}: {}".format(index + 1, attendance.get_date(), "absent"))
 
     def show_assignments(self, assignments):
         """
