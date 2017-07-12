@@ -23,13 +23,6 @@ class CsvHandling:
         with open("application/data/submissions.csv", "w") as my_poor_empty_csv:
             pass
 
-        print('This is the first run of the program. Default values of manager account are:\n\
-               First name: Admin\n\
-               Last_name: Adminsky\n\
-               email: admin.adminsky@cc.pl\n\
-               password: dupa\n\
-               You can change this date later.\n')
-
         new_manager = Manager('Admin', 'Adminsky', 'admin.adminsky@cc.pl', 'dupa')
         new_manager.add_to_managers()
 

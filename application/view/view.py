@@ -101,6 +101,17 @@ class View:
             else:
                 print("{}. {}: {}".format(index + 1, assignment, "not graded"))
 
+    def first_program_usage_message(self):
+        """
+        Prints message after first run of the program.
+        """
+        print(self.colors.RED + 'This is the first run of the program. Default values of manager account are:\n\
+               First name: Admin\n\
+               Last_name: Adminsky\n\
+               email: admin.adminsky@cc.pl\n\
+               password: dupa\n\
+               You can change this date later.' + self.colors.WHITE)
+
 class Colors:
 
     def __init__(self):
@@ -110,3 +121,4 @@ class Colors:
         self.END = '\033[0m'
         self.RED = '\033[91m'
         self.WHITE = '\033[0m'
+
