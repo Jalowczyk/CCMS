@@ -1,5 +1,6 @@
 import re
 
+
 class Codecooler:
     """
     Parent class for Employee and Student class.
