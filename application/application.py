@@ -82,6 +82,8 @@ class Application:
 
         except FileNotFoundError:
             CsvHandling.csv_create_if_non_exist()
+            self.view.first_program_usage_message()
+            self.user_input.get_anykey()
 
         finally:
 
