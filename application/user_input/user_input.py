@@ -19,10 +19,10 @@ class UserInput:
         user_decision: str
         """
 
-        user_input_number = input("\nPick an option (number): ")
+        user_input_number = input("\nEnter menu option: ")
         while not user_input_number.isnumeric() or int(user_input_number) not in range(1, len(options) + 1):
             self.view.show_message("Sorry, your input is incorrect.")
-            user_input_number = input("\nPick an option (number): ")
+            user_input_number = input("\nEnter menu option: ")
         user_decision = options[int(user_input_number) - 1]
         return user_decision
 
@@ -34,10 +34,10 @@ class UserInput:
         boolean: True/False
         """
 
-        user_input_bool = input("\nPick an option (y/n): ").lower()
+        user_input_bool = input("\nEnter bool option (y/n): ").lower()
         while user_input_bool not in ["y", "n"]:
             self.view.show_message("Sorry, your input is incorrect.")
-            user_input_bool = input("\nPick an option (y/n): ").lower()
+            user_input_bool = input("\nEnter bool option (y/n): ").lower()
 
         if user_input_bool == "y":
             return True
