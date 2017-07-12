@@ -105,6 +105,7 @@ class UserInput:
 
     def get_aux_menu_input(self, list_length):
         options = ["show details", "back"]
+        self.view.show_message("What do you want to do?")
         self.view.show_menu_option(options)
         user_decision = self.get_option(options)
 

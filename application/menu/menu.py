@@ -122,7 +122,7 @@ class MentorMenu(EmployeeMenu):
         if user_choice == "add assignment":
             self.assignment_controller.add_assignment_action()
         elif user_choice == "show assignments":
-            self.assignment_controller.show_assignments_details()
+            self.assignment_controller.show_assignments()
         elif user_choice == "grade submission":
             self.submission_controller.set_grade_action()
         elif user_choice == "check attendance":
@@ -140,7 +140,7 @@ class MentorMenu(EmployeeMenu):
         elif user_choice == "log out":
             self.session["logged_user"] = None
 
-        
+
 
 
 class StaffMenu(EmployeeMenu):
@@ -185,7 +185,7 @@ class StudentMenu(Menu):
         if user_choice == "submit assignment":
             self.submission_controller.add_submission_action()
         elif user_choice == "show assignments":
-            self.assignment_controller.show_assignments_details()
+            self.assignment_controller.show_assignments()
         elif user_choice == "show grades":
             self.submission_controller.check_grade_action()
         elif user_choice == "log out":
