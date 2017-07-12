@@ -29,7 +29,7 @@ class CodecoolerController:
             codecoolers = Student.get_students()
 
         self.view.show_codecoolers(codecoolers)
-        user_aux_menu_decision = self.user_input.get_aux_menu_input(len(codecoolers))
+        user_aux_menu_decision = self.user_input.get_aux_menu_input(len(codecoolers), "codecooler's")
 
         if isinstance(user_aux_menu_decision, int):
             choosen_codecooler = codecoolers[user_aux_menu_decision]

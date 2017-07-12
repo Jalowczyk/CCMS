@@ -51,7 +51,7 @@ class AttendanceController:
             percent_attendance = int(100 * (present/len(student.get_attendance())))
             self.view.show_attendance(index + 1, student, percent_attendance)
 
-        user_aux_menu_decision = self.user_input.get_aux_menu_input(len(Student.get_students()))
+        user_aux_menu_decision = self.user_input.get_aux_menu_input(len(Student.get_students(), "student's"))
 
         if isinstance(user_aux_menu_decision, int):
             choosen_student = Student.get_students()[user_aux_menu_decision]

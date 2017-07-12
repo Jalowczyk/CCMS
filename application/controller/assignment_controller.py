@@ -43,7 +43,7 @@ class AssignmentController:
         """
         assignments = Assignment.get_assignments_list()
         self.view.show_assignments(assignments)
-        user_aux_menu_decision = self.user_input.get_aux_menu_input(len(assignments))
+        user_aux_menu_decision = self.user_input.get_aux_menu_input(len(assignments), "assignment's")
 
         if isinstance(user_aux_menu_decision, int):
             choosen_assignment = assignments[user_aux_menu_decision]
