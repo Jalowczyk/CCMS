@@ -47,4 +47,4 @@ class AssignmentController:
 
         if isinstance(user_aux_menu_decision, int):
             choosen_assignment = assignments[user_aux_menu_decision]
-            self.view.show_assignment_details(assignment)
+            self.view.show_assignment_details(choosen_assignment)
