@@ -2,16 +2,13 @@ class View:
     """
     Creates View obj.
     """
-    def __init__(self):
-        self.colors = Colors()
-
     def show_greeting(self, session):
         codecooler = session["logged_user"]
 
-        print(self.colors.BLUE + "Hello {}!".format(codecooler.__class__.__name__))
+        print(Colors.BLUE + "Hello {}!".format(codecooler.__class__.__name__))
         print("You are logged as {} {}.\n".format(codecooler.get_first_name(),
                                                 codecooler.get_last_name()))
-        print(self.colors.WHITE, end = "")
+        print(Colors.WHITE, end = "")
 
     def show_menu_option(self, options):
         """
@@ -84,7 +81,7 @@ class View:
         message: str
         """
 
-        print(self.colors.RED + "\n" + message + "\n" + self.colors.WHITE)
+        print(Colors.RED + "\n" + message + "\n" + Colors.WHITE)
 
     def show_grades(self, submissions):
         """
@@ -105,20 +102,18 @@ class View:
         """
         Prints message after first run of the program.
         """
-        print(self.colors.RED + 'This is the first run of the program. Default values of manager account are:\n\
+        print(Colors.RED + 'This is the first run of the program. Default values of manager account are:\n\
                First name: Admin\n\
                Last_name: Adminsky\n\
                email: admin.adminsky@cc.pl\n\
                password: dupa\n\
-               You can change this date later.' + self.colors.WHITE)
+               You can change this date later.' + Colors.WHITE)
 
 class Colors:
 
-    def __init__(self):
-        self.BLUE = '\033[94m'
-        self.WHITE = '\033[0m'
-        self.BOLD = '\033[1m'
-        self.END = '\033[0m'
-        self.RED = '\033[91m'
-        self.WHITE = '\033[0m'
-
+    BLUE = '\033[94m'
+    WHITE = '\033[0m'
+    BOLD = '\033[1m'
+    END = '\033[0m'
+    RED = '\033[91m'
+    WHITE = '\033[0m'
