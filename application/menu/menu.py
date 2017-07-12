@@ -2,7 +2,7 @@ from application.controller.assignment_controller import AssignmentController
 from application.controller.attendance_controller import AttendanceController
 from application.controller.codecooler_controller import CodecoolerController
 from application.controller.submission_controller import SubmissionController
-
+import os
 
 class Menu:
     """
@@ -84,7 +84,7 @@ class ManagerMenu(EmployeeMenu):
         Parameters:
         user_choice: str
         """
-
+        os.system("clear")
         if user_choice == "view students list":
             self.codecooler_controller.show_codecooler_action("student")
         elif user_choice == "view mentors list":
@@ -108,7 +108,7 @@ class MentorMenu(EmployeeMenu):
     """
 
     options = ["add assignment", "show assignments", "grade submission", "check attendance",
-               "add student", "edit student", "remove student"] + EmployeeMenu.options
+               "view attendance", "add student", "edit student", "remove student"] + EmployeeMenu.options
 
     def handle_menu(self, user_choice):
         """
@@ -118,7 +118,7 @@ class MentorMenu(EmployeeMenu):
         Parameters:
         user_choice: str
         """
-
+        os.system("clear")
         if user_choice == "add assignment":
             self.assignment_controller.add_assignment_action()
         elif user_choice == "show assignments":
@@ -135,8 +135,13 @@ class MentorMenu(EmployeeMenu):
             self.codecooler_controller.remove_codecooler_action("student")
         elif user_choice == "view students list":
             self.codecooler_controller.show_codecooler_action("student")
+        elif user_choice == "view attendance":
+            self.attendance_controller.view_attendance_action()
         elif user_choice == "log out":
             self.session["logged_user"] = None
+
+        enter = input("ENTER!!!") #for testing purposes only (because Szymon hasn't
+                                  #done it yet)
 
 
 class StaffMenu(EmployeeMenu):
@@ -152,7 +157,7 @@ class StaffMenu(EmployeeMenu):
         Parameters:
         user_choice: str
         """
-
+        os.system("clear")
         if user_choice == "view students list":
             self.codecooler_controller.show_codecooler_action("student")
         elif user_choice == "log out":
@@ -177,7 +182,7 @@ class StudentMenu(Menu):
         Parameters:
         user_choice: str
         """
-
+        os.system("clear")
         if user_choice == "submit assignment":
             self.submission_controller.add_submission_action()
         elif user_choice == "show assignments":
