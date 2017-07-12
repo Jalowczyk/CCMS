@@ -42,11 +42,17 @@ class AttendanceController:
 
     def view_attendance_action(self):
 
-        for student in Student.get_students():
+        for index, student in enumerate(Student.get_students()):
             present = 0
             for attendance in student.get_attendance():
                 if attendance.get_is_present():
                     present += 1
 
             percent_attendance = int(100 * (present/len(student.get_attendance())))
-            self.view.show_attendance(student, percent_attendance)
+            self.view.show_attendance(index + 1, student, percent_attendance)
+
+        user_aux_menu_decision = self.user_input.get_aux_menu_input(len(Student.get_students()))
+
+        if isinstance(user_aux_menu_decision, int):
+            choosen_student = Student.get_students()[user_aux_menu_decision]
+            self.view.show_attendance_details(choosen_student)
