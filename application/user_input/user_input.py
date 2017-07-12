@@ -56,12 +56,15 @@ class UserInput:
         user_input_email = input("Enter your email: ")
         while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", user_input_email):
             self.view.show_message("Wrong email.")
-            user_input_email = input("Enter your email: ")
+            user_input_email = input("Enter your email: (or '0', to go back)")
+            if user_input_email == '0':
+                return None
 
         user_input_password = getpass.getpass("Enter your password: ")
         while not user_input_password:
-            user_input_password = getpass.getpass("Enter your password: ")
-
+            user_input_password = getpass.getpass("Enter your password: (or '0', to go back)")
+            if user_input_password == 0:
+                return None
         return user_input_email, user_input_password
 
     def get_assignment_data(self):
