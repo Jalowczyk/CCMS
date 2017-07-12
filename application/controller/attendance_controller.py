@@ -39,3 +39,14 @@ class AttendanceController:
             student.add_attendance(attendance)
 
         self.view.show_message("There are no more students!")
+
+    def view_attendance_action(self):
+
+        for student in Student.get_students():
+            present = 0
+            for attendance in student.get_attendance():
+                if attendance.get_is_present():
+                    present += 1
+
+            percent_attendance = int(100 * (present/len(student.get_attendance())))
+            self.view.show_attendance(student, percent_attendance)
