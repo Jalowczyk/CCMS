@@ -74,6 +74,11 @@ class View:
         print("{}: {}".format("Maximum grade", assignment.get_max_grade()))
         print("{}: {}".format("Description", assignment.get_description()))
 
+    def show_attendance(self, student, percent_attendance):
+
+        print("{} {}: {}%".format(student.get_first_name(),
+                                student.get_last_name(), percent_attendance))
+
     def show_message(self, message):
         """
         Prints message.
