@@ -178,3 +178,9 @@ class UserInput:
         user_input_text = input("Type here: ")
 
         return user_input_text
+
+    def get_anykey(self):
+        """
+        Returns input that waits for anykey.
+        """
+        return input('Press --> ENTER<-- to move forward.')
