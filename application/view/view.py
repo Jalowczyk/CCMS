@@ -103,5 +103,4 @@ class View:
                Last_name: Adminsky\n\
                email: admin.adminsky@cc.pl\n\
                password: dupa\n\
-               You can change this date later.\n\
-              --> Enter anykey to move forward.<--')
+               You can change this date later.')
