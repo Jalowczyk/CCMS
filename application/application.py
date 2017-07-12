@@ -68,6 +68,8 @@ class Application:
             self.menu.display_menu()
             user_choice = self.menu.get_user_input()
             self.menu.handle_menu(user_choice)
+            enter = input("ENTER!!!for testing purposes don't worry (handle_menu method in application jakby ktos chcial wywalic to)")
+            #for testing purposes only (because Szymon has done it yet)
 
     def run(self):
         """
