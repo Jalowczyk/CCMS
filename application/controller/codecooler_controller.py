@@ -14,21 +14,6 @@ class CodecoolerController:
         self.user_input = user_input
         self.view = view
 
-    def show_codecooler_details_action(self, users_list):
-        """Show details of chosen user_input
-
-        Parameters:
-            users_list: list of codecoolers class objects
-        Returns:
-            None
-        """
-        self.view.show_codecoolers(users_list)
-        message = 'Please choose index of user:'
-        self.view.show_message(message)
-        user_index = self.user_input.get_index_input(len(users_list))
-        user = users_list[user_index]
-        self.view.show_codecooler(user)
-
     def show_codecooler_action(self, user_role):
         """Show codecoolers and their details
 
@@ -37,24 +22,18 @@ class CodecoolerController:
         Returns:
             None
         """
-        options = ["show details", "back"]
 
         if user_role == "mentor":
-            mentors = Mentor.get_mentors()
-            self.view.show_codecoolers(mentors)
-            self.view.show_menu_option(options)
-            option = self.user_input.get_option(options)
-
-            if option == options[0]:
-                self.show_codecooler_details_action(mentors)
-
+            codecoolers = Mentor.get_mentors()
         elif user_role == "student":
-            students = Student.get_students()
-            self.view.show_codecoolers(students)
-            self.view.show_menu_option(options)
-            option = self.user_input.get_option(options)
-            if option == options[0]:
-                self.show_codecooler_details_action(students)
+            codecoolers = Student.get_students()
+
+        self.view.show_codecoolers(codecoolers)
+        user_aux_menu_decision = self.user_input.get_aux_menu_input(len(codecoolers))
+
+        if isinstance(user_aux_menu_decision, int):
+            choosen_codecooler = codecoolers[user_aux_menu_decision]
+            self.view.show_codecooler(choosen_codecooler)
 
     def add_codecooler_action(self, person_role):
         """Create and add codecooler object to class list
