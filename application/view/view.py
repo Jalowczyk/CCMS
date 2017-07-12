@@ -41,6 +41,8 @@ class View:
         print("{} {}: {}".format(codecooler.get_first_name(),
                                  codecooler.get_last_name(), codecooler.get_email()))
 
+
+
     def show_assignments(self, assignments):
         """
         Prints assignments information.
@@ -74,9 +76,9 @@ class View:
         print("{}: {}".format("Maximum grade", assignment.get_max_grade()))
         print("{}: {}".format("Description", assignment.get_description()))
 
-    def show_attendance(self, student, percent_attendance):
+    def show_attendance(self, index, student, percent_attendance):
 
-        print("{} {}: {}%".format(student.get_first_name(),
+        print("{}. {} {}: {}%".format(index, student.get_first_name(),
                                 student.get_last_name(), percent_attendance))
 
     def show_message(self, message):
