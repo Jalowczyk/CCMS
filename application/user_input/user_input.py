@@ -88,7 +88,7 @@ class UserInput:
 
         return user_assignment_title, user_assignment_description, int(user_assignment_max_grade)
 
-    def get_index_input(self, list_length):
+    def get_index_input(self, list_length, _type = ""):
         """
         Returns index depending on user input.
 
@@ -96,21 +96,22 @@ class UserInput:
         user_input_index: int
         """
 
-        user_input_index = input("Enter index: ")
+        user_input_index = input("Enter {} index: ".format(_type))
         while not user_input_index.isnumeric() or int(user_input_index) not in range(1, list_length + 1):
             self.view.show_message("Sorry, your input is incorrect.")
             user_input_index = input("Enter index: ")
 
         return int(user_input_index) - 1
 
-    def get_aux_menu_input(self, list_length):
+    def get_aux_menu_input(self, list_length, _type=""):
         options = ["show details", "back"]
         self.view.show_message("What do you want to do?")
         self.view.show_menu_option(options)
         user_decision = self.get_option(options)
 
         if user_decision == "show details":
-            user_index_decision = self.get_index_input(list_length)
+            user_index_decision = self.get_index_input(list_length, _type)
+            print() #new line
             return int(user_index_decision)
 
         #ta metoda zwraca numer osoby/zadania/czegokolwiek, czego detale chce zobaczyć user
