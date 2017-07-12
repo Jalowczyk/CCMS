@@ -5,6 +5,14 @@ class View:
     def __init__(self):
         self.colors = Colors()
 
+    def show_greeting(self, session):
+        codecooler = session["logged_user"]
+
+        print(self.colors.BLUE + "Hello {}!".format(codecooler.__class__.__name__))
+        print("You are logged as {} {}.\n".format(codecooler.get_first_name(),
+                                                codecooler.get_last_name()))
+        print(self.colors.WHITE, end = "")
+
     def show_menu_option(self, options):
         """
         Prints menu options.
