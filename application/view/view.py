@@ -2,6 +2,8 @@ class View:
     """
     Creates View obj.
     """
+    def __init__(self):
+        self.colors = Colors()
 
     def show_menu_option(self, options):
         """
@@ -74,10 +76,7 @@ class View:
         message: str
         """
 
-        RED = '\033[91m'
-        WHITE = '\033[0m'
-
-        print(RED + "\n" + message + "\n" + WHITE)
+        print(self.colors.RED + "\n" + message + "\n" + self.colors.WHITE)
 
     def show_grades(self, submissions):
         """
@@ -93,3 +92,13 @@ class View:
                                              submission.get_assignment().get_max_grade()))
             else:
                 print("{}. {}: {}".format(index + 1, assignment, "not graded"))
+
+    class Colors:
+
+        def __init__(self):
+            self.BLUE = '\033[94m'
+            self.WHITE = '\033[0m'
+            self.BOLD = '\033[1m'
+            self.END = '\033[0m'
+            self.RED = '\033[91m'
+            self.WHITE = '\033[0m'
