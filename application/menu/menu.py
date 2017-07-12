@@ -140,8 +140,7 @@ class MentorMenu(EmployeeMenu):
         elif user_choice == "log out":
             self.session["logged_user"] = None
 
-        enter = input("ENTER!!!") #for testing purposes only (because Szymon hasn't
-                                  #done it yet)
+        
 
 
 class StaffMenu(EmployeeMenu):
