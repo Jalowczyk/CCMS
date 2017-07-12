@@ -47,7 +47,7 @@ class Application:
         """
         Enables to log in or exit program.
         """
-
+        os.system("clear")
         while not self.session["logged_user"]:
             self.view.show_menu_option(self.options)
             user_option = self.user_input.get_option(self.options)
@@ -61,7 +61,7 @@ class Application:
         """
         Directs the user to the proper menu, depending on the user role.
         """
-
+        os.system("clear")
         if self.session["logged_user"]:
             role = self.session["logged_user"].__class__.__name__
             self.menu = self.roles[role](self.session, self.view, self.user_input)
@@ -88,9 +88,7 @@ class Application:
         finally:
 
             while self.is_running:
-                os.system("clear")
                 self.handle_login()
-                os.system("clear")
                 self.handle_menu()
 
             CsvHandling.write_codecoolers_to_csv(self.codecooler_data_file_path)
