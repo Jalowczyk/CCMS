@@ -41,7 +41,7 @@ class Submission:
         Returns
             void:
         """
-        if not grade.isnumeric():
+        if not isinstance(grade, int):
             raise TypeError("Grade has to be numeric")
         self.grade = grade
 
