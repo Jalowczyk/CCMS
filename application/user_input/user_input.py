@@ -103,7 +103,9 @@ class UserInput:
 
         return int(user_input_index) - 1
 
-    def get_codecooler_data(self):
+
+
+    def get_codecooler_data(self, data_type):
         """
         Returns codecooler first name, last name and email depending on user input.
 
@@ -113,28 +115,12 @@ class UserInput:
         codecooler_email: str
         """
 
-        codecooler_first_name = input("Enter first name: ")
-        while not codecooler_first_name:
+        codecooler_data = input("{} {}: ".format("Enter new ", data_type))
+        while not codecooler_data:
             self.view.show_message("This field can't be empty.")
-            codecooler_first_name = input("Enter first name: ")
+            codecooler_data = input("{} {}: ".format("Enter new ", data_type))
 
-        codecooler_second_name = input("Enter second name: ")
-        while not codecooler_second_name:
-            self.view.show_message("This field can't be empty.")
-            codecooler_second_name = input("Enter second name: ")
-
-        codecooler_email = input("Enter email: ")
-        while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", codecooler_email):
-            self.view.show_message(("Wrong e-mail: e-mail can contain ")
-            + ("following characters: letters, integers, '_', '.', '+', '-'."))
-            codecooler_email = input("Enter email: ")
-
-        codecooler_password = input("Enter password: ")
-        while not codecooler_password:
-            self.view.show_message("This field can't be empty.")
-            codecooler_password = input("Enter password: ")
-
-        return codecooler_first_name, codecooler_second_name, codecooler_email, codecooler_password
+        return codecooler_data
 
     def get_grade_input(self, submission):
         """
