@@ -1,3 +1,5 @@
+import os
+
 class View:
     """
     Creates View obj.
@@ -122,6 +124,8 @@ class View:
                password: dupa\n\
                You can change this date later.' + Colors.WHITE)
 
+    def clear(self):
+        os.system("clear")
 class Colors:
 
     BLUE = '\033[94m'
