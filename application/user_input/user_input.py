@@ -62,8 +62,8 @@ class UserInput:
 
         user_input_password = getpass.getpass("Enter your password: ")
         while not user_input_password:
-            user_input_password = getpass.getpass("Enter your password: (or '0', to go back)")
-            if user_input_password == 0:
+            user_input_password = getpass.getpass("Enter your password: (or press 'enter', to go back)")
+            if user_input_password == '':
                 return None
         return user_input_email, user_input_password
 
