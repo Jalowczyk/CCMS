@@ -29,7 +29,8 @@ class CodecoolerController:
             codecoolers = Student.get_students()
 
         self.view.show_codecoolers(codecoolers)
-        user_aux_menu_decision = self.user_input.get_aux_menu_input(len(codecoolers), "codecooler's")
+        group_name = "codecooler's"
+        user_aux_menu_decision = self.user_input.get_aux_menu_input(len(codecoolers), group_name)
 
         if isinstance(user_aux_menu_decision, int):
             choosen_codecooler = codecoolers[user_aux_menu_decision]
@@ -69,7 +70,8 @@ class CodecoolerController:
             codecoolers = Student.get_students()
 
         self.view.show_codecoolers(codecoolers)
-        index_decision = self.user_input.get_index_input(len(codecoolers))
+        group_name = "codecooler's"
+        index_decision = self.user_input.get_index_input(len(codecoolers), group_name)
         codecooler = codecoolers[index_decision]
 
         edit_options = ["Edit first name", "Edit last name",
@@ -101,19 +103,19 @@ class CodecoolerController:
         Returns:
             None
         """
-        message = 'Please choose user to remove:'
-        self.view.show_message(message)
+        group_name = "codecooler's"
+
         if person_role == "mentor":
             mentors = Mentor.get_mentors()
             self.view.show_codecoolers(mentors)
-            option = self.user_input.get_index_input(len(mentors))
+            option = self.user_input.get_index_input(len(mentors), group_name)
             mentor = mentors[option]
             Mentor.remove(mentor)
 
         elif person_role == "student":
             students = Student.get_students()
             self.view.show_codecoolers(students)
-            option = self.user_input.get_index_input(len(students))
+            option = self.user_input.get_index_input(len(students), group_name)
             student = students[option]
             Student.remove(student)
 

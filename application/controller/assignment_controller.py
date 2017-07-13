@@ -32,7 +32,8 @@ class AssignmentController:
         Returns:
             assignment: list of Assignment object
         """
-        index = self.user_input.get_index_input(len(assignments))
+        group_name = "assignment's"
+        index = self.user_input.get_index_input(len(assignments), group_name)
         return assignments[index]
 
     def show_assignments(self):
@@ -43,7 +44,8 @@ class AssignmentController:
         """
         assignments = Assignment.get_assignments_list()
         self.view.show_assignments(assignments)
-        user_aux_menu_decision = self.user_input.get_aux_menu_input(len(assignments), "assignment's")
+        group_name = "assignment's"
+        user_aux_menu_decision = self.user_input.get_aux_menu_input(len(assignments), group_name)
 
         if isinstance(user_aux_menu_decision, int):
             choosen_assignment = assignments[user_aux_menu_decision]
