@@ -46,6 +46,7 @@ class AttendanceController:
 
 
         self.view.show_message("There are no more students!")
+        self.user_input.press_enter_to_continue()
 
     def view_attendance_action(self):
         """
@@ -67,4 +68,6 @@ class AttendanceController:
 
         if isinstance(user_aux_menu_decision, int):
             choosen_student = Student.get_students()[user_aux_menu_decision]
+            self.view.clear()
             self.view.show_attendance_details(choosen_student)
+            self.user_input.press_enter_to_continue()

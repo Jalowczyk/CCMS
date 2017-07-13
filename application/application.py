@@ -68,7 +68,6 @@ class Application:
             self.menu.display_menu()
             user_choice = self.menu.get_user_input()
             self.menu.handle_menu(user_choice)
-            
 
     def run(self):
         """
@@ -107,7 +106,11 @@ class Application:
         codecooler: obj
         None
         """
-        email, password = self.user_input.get_login_input()
+        login_data = self.user_input.get_login_input()
+        if login_data is None:
+            return
+        email = login_data[0]
+        password = login_data[1]
         codecoolers = Manager.get_managers() + Staff.get_staff() + Mentor.get_mentors() + Student.get_students()
         for codecooler in codecoolers:
             if email == codecooler.get_email() and password == codecooler.get_password():
