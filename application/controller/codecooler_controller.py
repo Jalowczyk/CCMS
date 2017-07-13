@@ -44,12 +44,18 @@ class CodecoolerController:
         Returns:
             None
         """
-    
+
         if person_role == "mentor":
-            mentor = Mentor(*self.user_input.get_codecooler_data())
+            mentor_data = self.user_input.get_codecooler_data()
+            if mentor_data is None:
+                return
+            mentor = Mentor(*mentor_data)
             mentor.add_to_mentors()
         elif person_role == "student":
-            student = Student(*self.user_input.get_codecooler_data())
+            student_data = self.user_input.get_codecooler_data()
+            if student_data is None:
+                return
+            student = Student(*student_data)
             student.add_to_students()
 
         self.view.show_message("New Codecooler added!")

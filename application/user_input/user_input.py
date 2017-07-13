@@ -161,6 +161,9 @@ class UserInput:
         Returns codecooler first name, last name and email depending on user input.
 
         Returns:
+        None:
+            If user go back by press enter
+
         codecooler_first_name: str
         codecooler_second_name: str
         codecooler_email: str
@@ -169,23 +172,28 @@ class UserInput:
         codecooler_first_name = input("\nEnter first name: ")
         while not codecooler_first_name:
             self.view.show_message("This field can't be empty.")
-            codecooler_first_name = input("Enter first name again: ")
+            codecooler_first_name = input("Enter first name again: ('Or press enter to go back')")
+            if codecooler_first_name == '':
+                return
 
         codecooler_second_name = input("Enter second name: ")
         while not codecooler_second_name:
             self.view.show_message("This field can't be empty.")
-            codecooler_second_name = input("Enter second name again: ")
+            codecooler_second_name = input("Enter second name again: ('Or press enter to go back')")
+            if codecooler_second_name == '':
+                return
 
         codecooler_email = input("Enter email: ")
         while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", codecooler_email):
             self.view.show_message(("Wrong e-mail: e-mail can contain ")
                                    + ("following characters: letters, integers, '_', '.', '+', '-'."))
-            codecooler_email = input("Enter email again: ")
+            codecooler_email = input("Enter email again: ('Or press enter to go back')")
+            if codecooler_email == '':
+                return
 
-        codecooler_password = input("Enter password: ")
-        while not codecooler_password:
-            self.view.show_message("This field can't be empty.")
-            codecooler_password = input("Enter password again: ")
+        codecooler_password = input("Enter password: ('Or press enter to go back')")
+        if codecooler_password == '':
+            return
 
         return codecooler_first_name, codecooler_second_name, codecooler_email, codecooler_password
 
