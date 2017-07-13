@@ -37,6 +37,7 @@ class SubmissionController:
             assignment.add_submission(submission)
             self.session["logged_user"].add_submission(submission)
             self.view.show_message("Submission completed!")
+            self.user_input.press_enter_to_continue()
         else:
             self.view.show_message('There are no assignments.')
 
@@ -74,6 +75,8 @@ class SubmissionController:
         """
         submissions = self.session["logged_user"].get_submissions()
         self.view.show_grades(submissions)
+
+        self.user_input.press_enter_to_continue()
 
     def get_submissions_from_student(self):
         """Gets submission instance list of Student object
