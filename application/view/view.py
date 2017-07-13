@@ -40,7 +40,7 @@ class View:
         codecooler: Codecooler obj
         """
 
-        print("{} {}: {}".format(codecooler.get_first_name(),
+        print("\n{} {}: {}".format(codecooler.get_first_name(),
                                  codecooler.get_last_name(), codecooler.get_email()))
 
     def show_attendance_details(self, student):
@@ -80,7 +80,7 @@ class View:
         assignment: Assignment obj
         """
 
-        print("{}: {}".format("Title", assignment.get_title()))
+        print("\n{}: {}".format("Title", assignment.get_title()))
         print("{}: {}".format("Maximum grade", assignment.get_max_grade()))
         print("{}: {}".format("Description", assignment.get_description()))
 
