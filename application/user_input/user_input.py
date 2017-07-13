@@ -114,7 +114,7 @@ class UserInput:
             return int(user_index_decision)
 
 
-    def get_codecooler_email(self):
+    def get_codecooler_email_input(self):
 
         codecooler_email = input("Enter new e-mail: ")
         while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", codecooler_email):

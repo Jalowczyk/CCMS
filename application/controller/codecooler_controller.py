@@ -87,7 +87,7 @@ class CodecoolerController:
             password = self.user_input.get_specific_codecooler_data("password")
             codecooler.set_password(password)
         elif edit_decision == "Edit e-mail":
-            email = self.user_input.get_codecooler_email()
+            email = self.user_input.get_codecooler_email_input()
             codecooler.set_email(email)
 
         self.view.show_message("Codecooler's data edited!")
