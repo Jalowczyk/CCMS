@@ -111,10 +111,8 @@ class UserInput:
 
         if user_decision == "show details":
             user_index_decision = self.get_index_input(list_length, _type)
-            print() #new line
             return int(user_index_decision)
 
-        #ta metoda zwraca numer osoby/zadania/czegokolwiek, czego detale chce zobaczyć user
 
     def get_codecooler_email(self):
 
