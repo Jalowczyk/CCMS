@@ -23,7 +23,7 @@ class AssignmentController:
         data = self.user_input.get_assignment_data()
         assignment = Assignment(*data)
         assignment.add_to_assignments()
-        
+
         self.view.show_message("New assignment added!")
 
     def get_assignment(self, assignments):
@@ -32,23 +32,21 @@ class AssignmentController:
         Returns:
             assignment: list of Assignment object
         """
-        index = self.user_input.get_index_input(len(assignments))
+        group_name = "assignment's"
+        index = self.user_input.get_index_input(len(assignments), group_name)
         return assignments[index]
 
-    def show_assignments_details(self):
+    def show_assignments(self):
         """Show details of assignment object
 
         Returns:
             None
         """
-        options = ['To show details', 'back']
         assignments = Assignment.get_assignments_list()
         self.view.show_assignments(assignments)
-        self.view.show_menu_option(options)
-        option = self.user_input.get_index_input(len(options))
-        if option == 0:
-            message = 'Choose assignment:'
-            self.view.show_message(message)
-            self.view.show_assignments(assignments)
-            assignment = self.get_assignment(assignments)
-            self.view.show_assignment_details(assignment)
+        group_name = "assignment's"
+        user_aux_menu_decision = self.user_input.get_aux_menu_input(len(assignments), group_name)
+
+        if isinstance(user_aux_menu_decision, int):
+            choosen_assignment = assignments[user_aux_menu_decision]
+            self.view.show_assignment_details(choosen_assignment)

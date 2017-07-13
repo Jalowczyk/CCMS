@@ -19,10 +19,10 @@ class UserInput:
         user_decision: str
         """
 
-        user_input_number = input("\nPick an option (number): ")
+        user_input_number = input("\nEnter menu option: ")
         while not user_input_number.isnumeric() or int(user_input_number) not in range(1, len(options) + 1):
             self.view.show_message("Sorry, your input is incorrect.")
-            user_input_number = input("\nPick an option (number): ")
+            user_input_number = input("\nEnter menu option again: ")
         user_decision = options[int(user_input_number) - 1]
         return user_decision
 
@@ -34,10 +34,10 @@ class UserInput:
         boolean: True/False
         """
 
-        user_input_bool = input("\nPick an option (y/n): ").lower()
-        while user_input_bool not in ["y", "n"]:
+        user_input_bool = input("\nEnter yes or no: ").lower()
+        while user_input_bool not in ["y", "n", "yes", "no"]:
             self.view.show_message("Sorry, your input is incorrect.")
-            user_input_bool = input("\nPick an option (y/n): ").lower()
+            user_input_bool = input("\nEnter yes or no again: ").lower()
 
         if user_input_bool == "y":
             return True
@@ -77,21 +77,21 @@ class UserInput:
         user_assignment_max_grade: int
         """
 
-        user_assignment_title = input("Enter assignment title: ")
+        user_assignment_title = input("\nEnter assignment title: ")
         while not user_assignment_title:
             self.view.show_message("This field can't be empty.")
-            user_assignment_title = input("Enter assignment title: ")
+            user_assignment_title = input("Enter assignment title again: ")
 
         user_assignment_description = input("Enter assignment description: ")
 
         user_assignment_max_grade = input("Enter assignment maximum grade: ")
         while not user_assignment_max_grade.isnumeric() or int(user_assignment_max_grade) <= 0:
             self.view.show_message("Sorry, your input is incorrect.")
-            user_assignment_max_grade = input("Enter assignment maximum grade: ")
+            user_assignment_max_grade = input("Enter assignment maximum grade again: ")
 
         return user_assignment_title, user_assignment_description, int(user_assignment_max_grade)
 
-    def get_index_input(self, list_length):
+    def get_index_input(self, list_length, group_name):
         """
         Returns index depending on user input.
 
@@ -99,12 +99,50 @@ class UserInput:
         user_input_index: int
         """
 
-        user_input_index = input("Pick a number: ")
+        user_input_index = input("\nEnter {} index: ".format(group_name))
         while not user_input_index.isnumeric() or int(user_input_index) not in range(1, list_length + 1):
             self.view.show_message("Sorry, your input is incorrect.")
-            user_input_index = input("Pick a number: ")
+            user_input_index = input("Enter index again: ")
 
         return int(user_input_index) - 1
+
+    def get_aux_menu_input(self, list_length, group_name):
+        options = ["show details", "back"]
+        self.view.show_message("What do you want to do?")
+        self.view.show_menu_option(options)
+        user_decision = self.get_option(options)
+
+        if user_decision == "show details":
+            user_index_decision = self.get_index_input(list_length, group_name)
+            return int(user_index_decision)
+
+
+    def get_codecooler_email_input(self):
+
+        codecooler_email = input("\nEnter new e-mail: ")
+        while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", codecooler_email):
+            self.view.show_message(("Wrong e-mail: e-mail can contain ")
+            + ("following characters: letters, integers, '_', '.', '+', '-'."))
+            codecooler_email = input("Enter new e-mail again: ")
+
+        return codecooler_email
+
+    def get_specific_codecooler_data(self, data_type):
+        """
+        Returns codecooler first name, last name and email depending on user input.
+
+        Returns:
+        codecooler_first_name: str
+        codecooler_second_name: str
+        codecooler_email: str
+        """
+
+        codecooler_data = input("\n{} {}: ".format("Enter new ", data_type))
+        while not codecooler_data:
+            self.view.show_message("This field can't be empty.")
+            codecooler_data = input("{} {} {}: ".format("Enter new ", data_type, "again"))
+
+        return codecooler_data
 
     def get_codecooler_data(self):
         """
@@ -116,26 +154,26 @@ class UserInput:
         codecooler_email: str
         """
 
-        codecooler_first_name = input("Enter first name: ")
+        codecooler_first_name = input("\nEnter first name: ")
         while not codecooler_first_name:
             self.view.show_message("This field can't be empty.")
-            codecooler_first_name = input("Enter first name: ")
+            codecooler_first_name = input("Enter first name again: ")
 
         codecooler_second_name = input("Enter second name: ")
         while not codecooler_second_name:
             self.view.show_message("This field can't be empty.")
-            codecooler_second_name = input("Enter second name: ")
+            codecooler_second_name = input("Enter second name again: ")
 
         codecooler_email = input("Enter email: ")
         while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", codecooler_email):
             self.view.show_message(("Wrong e-mail: e-mail can contain ")
             + ("following characters: letters, integers, '_', '.', '+', '-'."))
-            codecooler_email = input("Enter email: ")
+            codecooler_email = input("Enter email again: ")
 
         codecooler_password = input("Enter password: ")
         while not codecooler_password:
             self.view.show_message("This field can't be empty.")
-            codecooler_password = input("Enter password: ")
+            codecooler_password = input("Enter password again: ")
 
         return codecooler_first_name, codecooler_second_name, codecooler_email, codecooler_password
 
@@ -147,28 +185,14 @@ class UserInput:
         user_input_grade: int
         """
 
-        user_input_grade = input("Enter a grade: ")
+        user_input_grade = input("\nEnter grade: ")
         while not user_input_grade.isnumeric() or int(user_input_grade) not in range(
                         submission.get_assignment().get_max_grade() + 1):
-            self.view.show_message("\nSorry, your input is incorrect.\n")
-            user_input_grade = input("Enter a number: ")
+            self.view.show_message("Sorry, your input is incorrect.")
+            user_input_grade = input("Enter grade again: ")
 
         return int(user_input_grade)
 
-    def get_numeric_input(self):
-        """
-        Returns integer depending on user input.
-
-        Returns:
-        user_input_number: int
-        """
-
-        user_input_number = input("Enter a number: ")
-        while not user_input_number.isnumeric():
-            self.view.show_message("\nSorry, your input is incorrect.\n")
-            user_input_number = input("Enter a number: ")
-
-        return int(user_input_number)
 
     def get_text_input(self):
         """
@@ -178,6 +202,12 @@ class UserInput:
         user_input_text: str
         """
 
-        user_input_text = input("Type here: ")
+        user_input_text = input("\nType here: ")
 
         return user_input_text
+
+    def get_anykey(self):
+        """
+        Returns input that waits for anykey.
+        """
+        return input('\nPress --> ENTER<-- to move forward.')
