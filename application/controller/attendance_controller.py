@@ -34,9 +34,14 @@ class AttendanceController:
         for student in students:
             self.view.show_codecooler(student)
             is_present = self.user_input.get_boolean_input()
-            attendance = Attendance(today_date, student, is_present)
-            attendance.add_to_attendances()
-            student.add_attendance(attendance)
+            new_attendance = Attendance(today_date, student, is_present)
+            if not any(new_attendance.get_date() == attendance.get_date() for attendance in student.get_attendance()):
+                new_attendance.add_to_attendances()
+                student.add_attendance(new_attendance)
+            else:
+                for attendance in student.get_attendance():
+                     if attendance.get_date() == new_attendance.get_date():
+                         attendance.set_is_present(new_attendance.get_is_present())
 
         self.view.show_message("There are no more students!")
 
