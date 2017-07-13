@@ -22,6 +22,9 @@ class Codecooler:
         last_name: str
         email: str
         password: str
+
+        Raises:
+        ValueError: when any of arguments is empty or e-mail's type is wrong
         """
         if first_name == '':
             raise ValueError("first_name can'be empty")
@@ -38,7 +41,6 @@ class Codecooler:
         self.last_name = last_name
         self.email = email
         self.password = password
-        self.
 
     def get_first_name(self):
         """
@@ -211,6 +213,11 @@ class Staff(Employee):
 
     @classmethod
     def get_staff(cls):
+        """
+        Returns staff list (class attribute).
+        Returns:
+        staff: list
+        """
         return cls.staff
 
 

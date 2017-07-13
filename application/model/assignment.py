@@ -18,7 +18,10 @@ class Assignment:
     def __init__(self, title, description, max_grade):
         """Initialize assignment object
 
-        returns: None
+        Raises:
+        ValueError: when any of arguments is empty
+        
+        Returns: None
         """
         if title == '':
             raise ValueError('title can\'t be empty')
@@ -104,6 +107,3 @@ class Assignment:
             assignments = list of assignments class objects
         """
         return cls.assignments
-
-    #def __repr__(self):
-    #    return self.title + '\n' + self.description

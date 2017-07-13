@@ -104,6 +104,13 @@ class UserInput:
         return int(user_input_index) - 1
 
     def get_aux_menu_input(self, list_length, group_name):
+        """
+        Return index of thing which details user want to see, if
+        user chose to see it.
+
+        Returns:
+        user_index_decision: int
+        """
         options = ["show details", "back"]
         self.view.show_message("What do you want to do?")
         self.view.show_menu_option(options)
@@ -114,7 +121,12 @@ class UserInput:
             return int(user_index_decision)
 
     def get_codecooler_email_input(self):
+        """
+        Returns codecooler e-mail depending on user input.
 
+        Returns:
+        codecooler_email: str
+        """
         codecooler_email = input("\nEnter new e-mail: ")
         while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", codecooler_email):
             self.view.show_message(("Wrong e-mail: e-mail can contain ")
@@ -125,12 +137,10 @@ class UserInput:
 
     def get_specific_codecooler_data(self, data_type):
         """
-        Returns codecooler first name, last name and email depending on user input.
+        Returns codecooler specific data depending on user input.
 
         Returns:
-        codecooler_first_name: str
-        codecooler_second_name: str
-        codecooler_email: str
+        codecooler_data: str
         """
 
         codecooler_data = input("\n{} {}: ".format("Enter new ", data_type))

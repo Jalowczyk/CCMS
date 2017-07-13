@@ -17,6 +17,9 @@ class Submission:
 
         Returns
             None
+
+        Raises:
+            TypeError: when assignment isn't Assignment obj
         """
         if not isinstance(assignment, Assignment):
             raise TypeError("assignment is not Assignment instance")
@@ -37,12 +40,15 @@ class Submission:
     def set_grade(self, grade):
         """Sets grade attribute of instance
 
-
         Returns
             void:
+
+        Raises:
+            TypeError: when grade isn't numeric
         """
         if not isinstance(grade, int):
             raise TypeError("Grade has to be numeric")
+
         self.grade = grade
 
     def set_is_graded(self, is_graded):

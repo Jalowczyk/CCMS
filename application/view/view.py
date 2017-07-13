@@ -7,6 +7,11 @@ class View:
     """
 
     def show_greeting(self, session):
+        """
+        Prints greeting to user whom is actually logged.
+        Parameters:
+        session: dict
+        """
         codecooler = session["logged_user"]
 
         print(Colors.BLUE + "Hello {}!".format(codecooler.__class__.__name__))
@@ -46,6 +51,12 @@ class View:
               codecooler.get_last_name(), codecooler.get_email()))
 
     def show_attendance_details(self, student):
+        """
+        Prints student attendance.
+
+        Parameters:
+        student: Student obj
+        """
         print("\n{} {}:".format(student.get_first_name().upper(), student.get_last_name().upper()))
         for index, attendance in enumerate(student.get_attendance()):
 
@@ -132,6 +143,16 @@ class View:
 
 
 class Colors:
+    """
+    Creates Colors obj.
+    Class attributes:
+    BLUE: str
+    WHITE: str
+    BOLD: str
+    END: str
+    RED: str
+    WHITE: str
+    """
 
     BLUE = '\033[94m'
     WHITE = '\033[0m'
