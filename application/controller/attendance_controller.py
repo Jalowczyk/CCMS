@@ -45,6 +45,7 @@ class AttendanceController:
 
 
         self.view.show_message("There are no more students!")
+        self.user_input.press_enter_to_continue()
 
     def view_attendance_action(self):
 

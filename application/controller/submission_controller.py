@@ -37,9 +37,9 @@ class SubmissionController:
             assignment.add_submission(submission)
             self.session["logged_user"].add_submission(submission)
             self.view.show_message("Submission completed!")
-            self.user_input.press_enter_to_continue()
         else:
             self.view.show_message('There are no assignments.')
+        self.user_input.press_enter_to_continue()
 
     def set_grade_action(self):
         """Sets grade attribute of submission and set as graded
@@ -67,7 +67,7 @@ class SubmissionController:
         else:
             message = "There are no submissions to grade."
             self.view.show_message(message)
-            self.user_input.press_enter_to_continue()
+        self.user_input.press_enter_to_continue()
 
     def check_grade_action(self):
         """Shows grades of user_input

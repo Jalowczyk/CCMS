@@ -60,6 +60,7 @@ class CodecoolerController:
             student.add_to_students()
 
         self.view.show_message("New Codecooler added!")
+        self.user_input.press_enter_to_continue()
 
     def edit_codecooler_action(self, person_role):
         """Edits codecooler object attributes
