@@ -74,7 +74,7 @@ class UserInput:
         user_assignment_max_grade: int
         """
 
-        user_assignment_title = input("Enter assignment title: ")
+        user_assignment_title = input("\nEnter assignment title: ")
         while not user_assignment_title:
             self.view.show_message("This field can't be empty.")
             user_assignment_title = input("Enter assignment title again: ")
@@ -96,7 +96,7 @@ class UserInput:
         user_input_index: int
         """
 
-        user_input_index = input("Enter {} index: ".format(group_name))
+        user_input_index = input("\nEnter {} index: ".format(group_name))
         while not user_input_index.isnumeric() or int(user_input_index) not in range(1, list_length + 1):
             self.view.show_message("Sorry, your input is incorrect.")
             user_input_index = input("Enter index again: ")
@@ -116,7 +116,7 @@ class UserInput:
 
     def get_codecooler_email_input(self):
 
-        codecooler_email = input("Enter new e-mail: ")
+        codecooler_email = input("\nEnter new e-mail: ")
         while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", codecooler_email):
             self.view.show_message(("Wrong e-mail: e-mail can contain ")
             + ("following characters: letters, integers, '_', '.', '+', '-'."))
@@ -134,7 +134,7 @@ class UserInput:
         codecooler_email: str
         """
 
-        codecooler_data = input("{} {}: ".format("Enter new ", data_type))
+        codecooler_data = input("\n{} {}: ".format("Enter new ", data_type))
         while not codecooler_data:
             self.view.show_message("This field can't be empty.")
             codecooler_data = input("{} {} {}: ".format("Enter new ", data_type, "again"))
@@ -151,7 +151,7 @@ class UserInput:
         codecooler_email: str
         """
 
-        codecooler_first_name = input("Enter first name: ")
+        codecooler_first_name = input("\nEnter first name: ")
         while not codecooler_first_name:
             self.view.show_message("This field can't be empty.")
             codecooler_first_name = input("Enter first name again: ")
@@ -182,10 +182,10 @@ class UserInput:
         user_input_grade: int
         """
 
-        user_input_grade = input("Enter grade: ")
+        user_input_grade = input("\nEnter grade: ")
         while not user_input_grade.isnumeric() or int(user_input_grade) not in range(
                         submission.get_assignment().get_max_grade() + 1):
-            self.view.show_message("\nSorry, your input is incorrect.\n")
+            self.view.show_message("Sorry, your input is incorrect.")
             user_input_grade = input("Enter grade again: ")
 
         return int(user_input_grade)
@@ -199,7 +199,7 @@ class UserInput:
         user_input_text: str
         """
 
-        user_input_text = input("Type here: ")
+        user_input_text = input("\nType here: ")
 
         return user_input_text
 
@@ -207,4 +207,4 @@ class UserInput:
         """
         Returns input that waits for anykey.
         """
-        return input('Press --> ENTER<-- to move forward.')
+        return input('\nPress --> ENTER<-- to move forward.')
