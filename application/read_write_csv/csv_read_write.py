@@ -129,7 +129,10 @@ class CsvHandling:
                 day = int(date_to_write[2])
                 date_to_write = date(year, month, day)
 
-                is_present = bool(attendance[2])
+                if attendance[2] == 'True':
+                    is_present = True
+                else:
+                    is_present = False
 
                 email = attendance[1]
 
