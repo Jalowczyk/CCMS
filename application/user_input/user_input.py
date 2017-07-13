@@ -206,8 +206,13 @@ class UserInput:
 
         return user_input_text
 
-    def get_anykey(self):
+    @staticmethod
+    def press_enter_to_continue():
         """
-        Returns input that waits for anykey.
+        Method, which waits and sleep program until user don't press enter
+
+        returns:
+            None
         """
-        return input('\nPress --> ENTER<-- to move forward.')
+        print('\nPress enter to continue')
+        input()
