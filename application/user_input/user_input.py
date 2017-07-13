@@ -253,5 +253,5 @@ class UserInput:
         returns:
             None
         """
-        self.view.show_message('Press enter to continue.')
-        input()
+        enter_input = input('Press enter to continue.')
+        
