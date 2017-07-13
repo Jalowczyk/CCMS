@@ -88,7 +88,7 @@ class UserInput:
 
         return user_assignment_title, user_assignment_description, int(user_assignment_max_grade)
 
-    def get_index_input(self, list_length, _type = ""):
+    def get_index_input(self, list_length, group_name):
         """
         Returns index depending on user input.
 
@@ -96,21 +96,21 @@ class UserInput:
         user_input_index: int
         """
 
-        user_input_index = input("Enter {} index: ".format(_type))
+        user_input_index = input("Enter {} index: ".format(group_name))
         while not user_input_index.isnumeric() or int(user_input_index) not in range(1, list_length + 1):
             self.view.show_message("Sorry, your input is incorrect.")
             user_input_index = input("Enter index again: ")
 
         return int(user_input_index) - 1
 
-    def get_aux_menu_input(self, list_length, _type=""):
+    def get_aux_menu_input(self, list_length, group_name):
         options = ["show details", "back"]
         self.view.show_message("What do you want to do?")
         self.view.show_menu_option(options)
         user_decision = self.get_option(options)
 
         if user_decision == "show details":
-            user_index_decision = self.get_index_input(list_length, _type)
+            user_index_decision = self.get_index_input(list_length, group_name)
             return int(user_index_decision)
 
 
