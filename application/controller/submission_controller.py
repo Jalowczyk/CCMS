@@ -27,9 +27,8 @@ class SubmissionController:
         assignments = Assignment.get_assignments_list()
         self.view.show_assignments(assignments)
         if assignments:
-            message = 'Choose assignment: '
-            self.view.show_message(message)
-            index = self.user_input.get_index_input(len(assignments))
+            group_name = "assignment's"
+            index = self.user_input.get_index_input(len(assignments), group_name)
             assignment = assignments[index]
             message = 'Please provide link to submit:'
             self.view.show_message(message)
@@ -57,9 +56,9 @@ class SubmissionController:
         self.view.show_submissions(submissions)
         print(len(submissions))
         if submissions:
-            submission_index = self.user_input.get_index_input(len(submissions))
+            group_name = "submission's"
+            submission_index = self.user_input.get_index_input(len(submissions), group_name)
             submission = submissions[submission_index]
-            self.view.show_message("How much points you want to assign?")
             grade = self.user_input.get_grade_input(submission)
             submission.set_grade(grade)
             submission.set_is_graded(True)
@@ -84,7 +83,8 @@ class SubmissionController:
         """
         students = Student.get_students()
         self.view.show_codecoolers(students)
-        student_index = self.user_input.get_index_input(len(students))
+        group_name = "student's"
+        student_index = self.user_input.get_index_input(len(students), group_name)
         student = students[student_index]
         submissions = student.get_submissions()
         return submissions
@@ -97,7 +97,8 @@ class SubmissionController:
         """
         assignments = Assignment.get_assignments_list()
         self.view.show_assignments(assignments)
-        assignment_index = self.user_input.get_index_input(len(assignments))
+        group_name = "assignment's"
+        assignment_index = self.user_input.get_index_input(len(assignments), group_name)
         assignment = assignments[assignment_index]
         submissions = assignment.get_submissions()
         return submissions
