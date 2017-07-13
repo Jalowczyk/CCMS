@@ -44,8 +44,7 @@ class CodecoolerController:
         Returns:
             None
         """
-        message = 'Please provide user data:'
-        self.view.show_message(message)
+    
         if person_role == "mentor":
             mentor = Mentor(*self.user_input.get_codecooler_data())
             mentor.add_to_mentors()
