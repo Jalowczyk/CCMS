@@ -116,13 +116,12 @@ class UserInput:
             user_index_decision = self.get_index_input(list_length, group_name)
             return int(user_index_decision)
 
-
     def get_codecooler_email_input(self):
 
         codecooler_email = input("\nEnter new e-mail: ")
         while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", codecooler_email):
             self.view.show_message(("Wrong e-mail: e-mail can contain ")
-            + ("following characters: letters, integers, '_', '.', '+', '-'."))
+                                   + ("following characters: letters, integers, '_', '.', '+', '-'."))
             codecooler_email = input("Enter new e-mail again: ")
 
         return codecooler_email
@@ -167,7 +166,7 @@ class UserInput:
         codecooler_email = input("Enter email: ")
         while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", codecooler_email):
             self.view.show_message(("Wrong e-mail: e-mail can contain ")
-            + ("following characters: letters, integers, '_', '.', '+', '-'."))
+                                   + ("following characters: letters, integers, '_', '.', '+', '-'."))
             codecooler_email = input("Enter email again: ")
 
         codecooler_password = input("Enter password: ")
@@ -192,7 +191,6 @@ class UserInput:
             user_input_grade = input("Enter grade again: ")
 
         return int(user_input_grade)
-
 
     def get_text_input(self):
         """
