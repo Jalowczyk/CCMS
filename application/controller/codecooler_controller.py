@@ -35,6 +35,7 @@ class CodecoolerController:
         if isinstance(user_aux_menu_decision, int):
             choosen_codecooler = codecoolers[user_aux_menu_decision]
             self.view.show_codecooler(choosen_codecooler)
+        self.user_input.press_enter_to_continue()
 
     def add_codecooler_action(self, person_role):
         """Create and add codecooler object to class list
