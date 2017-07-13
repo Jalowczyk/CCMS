@@ -56,3 +56,6 @@ class Attendance:
 
     def get_is_present(self):
         return self.is_present
+
+    def set_is_present(self, is_present):
+        self.is_present = is_present
