@@ -21,6 +21,8 @@ class AssignmentController:
             None
         """
         data = self.user_input.get_assignment_data()
+        if data is None:
+            return
         assignment = Assignment(*data)
         assignment.add_to_assignments()
 
@@ -46,7 +48,8 @@ class AssignmentController:
         self.view.show_assignments(assignments)
         group_name = "assignment's"
         user_aux_menu_decision = self.user_input.get_aux_menu_input(len(assignments), group_name)
-
+        self.view.clear()
         if isinstance(user_aux_menu_decision, int):
             choosen_assignment = assignments[user_aux_menu_decision]
             self.view.show_assignment_details(choosen_assignment)
+        self.user_input.press_enter_to_continue()

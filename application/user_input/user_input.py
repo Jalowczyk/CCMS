@@ -72,22 +72,35 @@ class UserInput:
         Returns assignment title, desctiption od maximum grade depending on user input.
 
         Returns:
+        None:
+            if user break action by enter.
+
         user_assignment_title: str
         user_assignment_description: str
         user_assignment_max_grade: int
+
+
         """
 
-        user_assignment_title = input("\nEnter assignment title: ")
+        user_assignment_title = input("\nEnter assignment title:")
         while not user_assignment_title:
             self.view.show_message("This field can't be empty.")
-            user_assignment_title = input("Enter assignment title again: ")
+            user_assignment_title = input("Enter assignment title again: (or press enter to go back)")
+            if user_assignment_title == '':
+                return
 
-        user_assignment_description = input("Enter assignment description: ")
+        user_assignment_description = input("Enter assignment description: (or press enter to go back)")
+        if user_assignment_description == '':
+            return
 
-        user_assignment_max_grade = input("Enter assignment maximum grade: ")
+        user_assignment_max_grade = input("Enter assignment maximum grade: (or press enter to go back)")
+        if user_assignment_max_grade == '':
+            return
         while not user_assignment_max_grade.isnumeric() or int(user_assignment_max_grade) <= 0:
             self.view.show_message("Sorry, your input is incorrect.")
-            user_assignment_max_grade = input("Enter assignment maximum grade again: ")
+            user_assignment_max_grade = input("Enter assignment maximum grade again: (or press enter to go back)")
+            if user_assignment_title == '':
+                return
 
         return user_assignment_title, user_assignment_description, int(user_assignment_max_grade)
 

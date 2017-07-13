@@ -68,7 +68,6 @@ class Application:
             self.menu.display_menu()
             user_choice = self.menu.get_user_input()
             self.menu.handle_menu(user_choice)
-            
 
     def run(self):
         """
