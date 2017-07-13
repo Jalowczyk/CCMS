@@ -67,6 +67,7 @@ class SubmissionController:
         else:
             message = "There are no submissions to grade."
             self.view.show_message(message)
+            self.user_input.press_enter_to_continue()
 
     def check_grade_action(self):
         """Shows grades of user_input

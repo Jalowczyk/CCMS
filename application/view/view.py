@@ -107,6 +107,8 @@ class View:
         Parameters:
         submissions: list
         """
+        if len(submissions) == 0:
+            print("There is nothing to show")
 
         for index, submission in enumerate(submissions):
             assignment = submission.get_assignment().get_title()

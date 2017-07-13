@@ -54,7 +54,7 @@ class CodecoolerController:
         elif person_role == "student":
             student_data = self.user_input.get_codecooler_data()
             if student_data is None:
-                return  
+                return
             student = Student(*student_data)
             student.add_to_students()
 
