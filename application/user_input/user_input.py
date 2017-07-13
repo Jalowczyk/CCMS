@@ -131,11 +131,15 @@ class UserInput:
 
     def get_codecooler_email_input(self):
 
-        codecooler_email = input("\nEnter new e-mail: ")
+        codecooler_email = input("\nEnter new e-mail: (or press enter to go back)")
+        if codecooler_email == '':
+            return
         while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", codecooler_email):
             self.view.show_message(("Wrong e-mail: e-mail can contain ")
                                    + ("following characters: letters, integers, '_', '.', '+', '-'."))
-            codecooler_email = input("Enter new e-mail again: ")
+            codecooler_email = input("Enter new e-mail again: (or press returrn to go back)")
+            if codecooler_email == '':
+                None
 
         return codecooler_email
 
@@ -151,9 +155,10 @@ class UserInput:
 
         codecooler_data = input("\n{} {}: ".format("Enter new ", data_type))
         while not codecooler_data:
-            self.view.show_message("This field can't be empty.")
+            self.view.show_message("This field can't be empty. Press enter if you want to dicard changes")
             codecooler_data = input("{} {} {}: ".format("Enter new ", data_type, "again"))
-
+            if codecooler_data == '':
+                return
         return codecooler_data
 
     def get_codecooler_data(self):

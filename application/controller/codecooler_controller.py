@@ -80,25 +80,35 @@ class CodecoolerController:
         codecooler = codecoolers[index_decision]
 
         edit_options = ["Edit first name", "Edit last name",
-                        "Edit e-mail", "Edit password"]
+                        "Edit e-mail", "Edit password", "Go back"]
         self.view.show_menu_option(edit_options)
         edit_decision = self.user_input.get_option(edit_options)
 
         if edit_decision == "Edit first name":
             first_name = self.user_input.get_specific_codecooler_data("first name")
+            if first_name is None:
+                return
             codecooler.set_first_name(first_name)
         elif edit_decision == "Edit last name":
             last_name = self.user_input.get_specific_codecooler_data("last name")
+            if last_name is None:
+                return
             codecooler.set_last_name(last_name)
         elif edit_decision == "Edit password":
             password = self.user_input.get_specific_codecooler_data("password")
+            if password is None:
+                return
             codecooler.set_password(password)
         elif edit_decision == "Edit e-mail":
             email = self.user_input.get_codecooler_email_input()
+            if email is None:
+                return
             codecooler.set_email(email)
+        elif edit_decision == "Go back":
+            return
 
         self.view.show_message("Codecooler's data edited!")
-
+        self.user_input.press_enter_to_continue()
 
     def remove_codecooler_action(self, person_role):
         """Remove codecooler object from class list
@@ -125,3 +135,4 @@ class CodecoolerController:
             Student.remove(student)
 
         self.view.show_message("Codecooler removed!")
+        self.user_input.press_enter_to_continue()
