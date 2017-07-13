@@ -9,7 +9,8 @@ class AttendanceController:
     Creates AttendanceController obj.
 
     Instance attributes:
-    user_imput: UserInput obj
+    user_input: UserInput obj
+    view: View obj
     """
 
     def __init__(self, user_input, view):
@@ -48,6 +49,10 @@ class AttendanceController:
         self.user_input.press_enter_to_continue()
 
     def view_attendance_action(self):
+        """
+        View students percetage attendance and, if user wants, view
+        attendance details for choosen student.
+        """
 
         for index, student in enumerate(Student.get_students()):
             present = 0

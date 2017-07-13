@@ -15,6 +15,10 @@ class Attendance:
             student (:obj: 'Student'): Student object
             is_present (bool): True for present, False for absent
 
+        Raises:
+            ValueError: when date isn't Datetime obj
+            ValueError: when student isn't Student obj
+            ValueError: when is_present isn't bool
         Returns:
             void
         """
