@@ -2,7 +2,7 @@ from application.controller.assignment_controller import AssignmentController
 from application.controller.attendance_controller import AttendanceController
 from application.controller.codecooler_controller import CodecoolerController
 from application.controller.submission_controller import SubmissionController
-import os
+
 
 class Menu:
     """
@@ -84,7 +84,7 @@ class ManagerMenu(EmployeeMenu):
         Parameters:
         user_choice: str
         """
-        os.system("clear")
+        self.view.clear()
         if user_choice == "view students list":
             self.codecooler_controller.show_codecooler_action("student")
         elif user_choice == "view mentors list":
@@ -118,7 +118,7 @@ class MentorMenu(EmployeeMenu):
         Parameters:
         user_choice: str
         """
-        os.system("clear")
+        self.view.clear()
         if user_choice == "add assignment":
             self.assignment_controller.add_assignment_action()
         elif user_choice == "show assignments":
@@ -156,7 +156,7 @@ class StaffMenu(EmployeeMenu):
         Parameters:
         user_choice: str
         """
-        os.system("clear")
+        self.view.clear()
         if user_choice == "view students list":
             self.codecooler_controller.show_codecooler_action("student")
         elif user_choice == "log out":
@@ -181,7 +181,7 @@ class StudentMenu(Menu):
         Parameters:
         user_choice: str
         """
-        os.system("clear")
+        self.view.clear()
         if user_choice == "submit assignment":
             self.submission_controller.add_submission_action()
         elif user_choice == "show assignments":
