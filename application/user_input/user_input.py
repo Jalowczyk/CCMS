@@ -34,10 +34,10 @@ class UserInput:
         boolean: True/False
         """
 
-        user_input_bool = input("\nEnter bool option (y/n): ").lower()
-        while user_input_bool not in ["y", "n"]:
+        user_input_bool = input("\nEnter yes or no: ").lower()
+        while user_input_bool not in ["y", "n", "yes", "no"]:
             self.view.show_message("Sorry, your input is incorrect.")
-            user_input_bool = input("\nEnter bool option (y/n): ").lower()
+            user_input_bool = input("\nEnter yes or no: ").lower()
 
         if user_input_bool == "y":
             return True
