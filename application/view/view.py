@@ -1,16 +1,18 @@
 import os
 
+
 class View:
     """
     Creates View obj.
     """
+
     def show_greeting(self, session):
         codecooler = session["logged_user"]
 
         print(Colors.BLUE + "Hello {}!".format(codecooler.__class__.__name__))
         print("You are logged as {} {}.\n".format(codecooler.get_first_name(),
-                                                codecooler.get_last_name()))
-        print(Colors.WHITE, end = "")
+              codecooler.get_last_name()))
+        print(Colors.WHITE, end="")
 
     def show_menu_option(self, options):
         """
@@ -41,12 +43,13 @@ class View:
         """
 
         print("\n{} {}: {}".format(codecooler.get_first_name(),
-                                 codecooler.get_last_name(), codecooler.get_email()))
+              codecooler.get_last_name(), codecooler.get_email()))
 
     def show_attendance_details(self, student):
         print("\n{} {}:".format(student.get_first_name().upper(), student.get_last_name().upper()))
         for index, attendance in enumerate(student.get_attendance()):
-            if attendance.get_is_present:
+
+            if attendance.get_is_present():
                 print("{}. {}: {}".format(index + 1, attendance.get_date(), "present"))
             else:
                 print("{}. {}: {}".format(index + 1, attendance.get_date(), "absent"))
@@ -87,7 +90,7 @@ class View:
     def show_attendance(self, index, student, percent_attendance):
 
         print("{}. {} {}: {}%".format(index, student.get_first_name(),
-                                student.get_last_name(), percent_attendance))
+              student.get_last_name(), percent_attendance))
 
     def show_message(self, message):
         """
@@ -126,6 +129,8 @@ class View:
 
     def clear(self):
         os.system("clear")
+
+
 class Colors:
 
     BLUE = '\033[94m'

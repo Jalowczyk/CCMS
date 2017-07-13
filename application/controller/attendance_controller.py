@@ -43,6 +43,7 @@ class AttendanceController:
                      if attendance.get_date() == new_attendance.get_date():
                          attendance.set_is_present(new_attendance.get_is_present())
 
+
         self.view.show_message("There are no more students!")
 
     def view_attendance_action(self):
