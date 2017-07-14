@@ -2,6 +2,7 @@ from application.menu.menu import *
 from application.read_write_csv.csv_read_write import *
 from application.user_input.user_input import UserInput
 from application.view.view import View
+import os
 
 
 class Application:
@@ -35,8 +36,8 @@ class Application:
         self.is_running = True
         self.session = {"logged_user": None}
         self.menu = None
-        self.user_input = UserInput()
         self.view = View()
+        self.user_input = UserInput(self.view)
         self.codecooler_data_file_path = "application/data/codecoolers_data.csv"
         self.attendances_data_file_path = "application/data/attendance.csv"
         self.assignments_data_file_path = "application/data/assignments.csv"
@@ -46,7 +47,7 @@ class Application:
         """
         Enables to log in or exit program.
         """
-
+        os.system("clear")
         while not self.session["logged_user"]:
             self.view.show_menu_option(self.options)
             user_option = self.user_input.get_option(self.options)
@@ -60,7 +61,7 @@ class Application:
         """
         Directs the user to the proper menu, depending on the user role.
         """
-
+        os.system("clear")
         if self.session["logged_user"]:
             role = self.session["logged_user"].__class__.__name__
             self.menu = self.roles[role](self.session, self.view, self.user_input)
@@ -73,19 +74,27 @@ class Application:
         Entry method for the main module which read csv file at the beginning
         and write to csv file at the end.
         """
-        read_students_from_csv(self.codecooler_data_file_path)
-        read_attendances_from_csv(self.attendances_data_file_path)
-        read_assignments_from_csv(self.assignments_data_file_path)
-        read_submissions_from_csv(self.submissions_data_file_path)
+        try:
+            CsvHandling.read_students_from_csv(self.codecooler_data_file_path)
+            CsvHandling.read_attendances_from_csv(self.attendances_data_file_path)
+            CsvHandling.read_assignments_from_csv(self.assignments_data_file_path)
+            CsvHandling.read_submissions_from_csv(self.submissions_data_file_path)
 
-        while self.is_running:
-            self.handle_login()
-            self.handle_menu()
+        except FileNotFoundError:
+            CsvHandling.csv_create_if_non_exist()
+            self.view.first_program_usage_message()
+            self.user_input.get_anykey()
 
-        write_codecoolers_to_csv(self.codecooler_data_file_path)
-        write_attendance_to_csv(self.attendances_data_file_path)
-        write_assignments_to_csv(self.assignments_data_file_path)
-        write_submissions_to_csv(self.submissions_data_file_path)
+        finally:
+
+            while self.is_running:
+                self.handle_login()
+                self.handle_menu()
+
+            CsvHandling.write_codecoolers_to_csv(self.codecooler_data_file_path)
+            CsvHandling.write_attendance_to_csv(self.attendances_data_file_path)
+            CsvHandling.write_assignments_to_csv(self.assignments_data_file_path)
+            CsvHandling.write_submissions_to_csv(self.submissions_data_file_path)
 
     def log_in(self):
         """
@@ -97,7 +106,11 @@ class Application:
         codecooler: obj
         None
         """
-        email, password = self.user_input.get_login_input()
+        login_data = self.user_input.get_login_input()
+        if login_data is None:
+            return
+        email = login_data[0]
+        password = login_data[1]
         codecoolers = Manager.get_managers() + Staff.get_staff() + Mentor.get_mentors() + Student.get_students()
         for codecooler in codecoolers:
             if email == codecooler.get_email() and password == codecooler.get_password():

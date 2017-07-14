@@ -1,7 +1,23 @@
+import os
+
+
 class View:
     """
     Creates View obj.
     """
+
+    def show_greeting(self, session):
+        """
+        Prints greeting to user whom is actually logged.
+        Parameters:
+        session: dict
+        """
+        codecooler = session["logged_user"]
+
+        print(Colors.BLUE + "Hello {}!".format(codecooler.__class__.__name__))
+        print("You are logged as {} {}.\n".format(codecooler.get_first_name(),
+              codecooler.get_last_name()))
+        print(Colors.WHITE, end="")
 
     def show_menu_option(self, options):
         """
@@ -9,6 +25,7 @@ class View:
         Parameters:
         options: list
         """
+
         for index, option in enumerate(options):
             print("{}. {}".format(index + 1, option))
 
@@ -30,8 +47,23 @@ class View:
         codecooler: Codecooler obj
         """
 
-        print("{} {}: {}".format(codecooler.get_first_name(),
-                                 codecooler.get_last_name(), codecooler.get_email()))
+        print("\n{} {}: {}".format(codecooler.get_first_name(),
+              codecooler.get_last_name(), codecooler.get_email()))
+
+    def show_attendance_details(self, student):
+        """
+        Prints student attendance.
+
+        Parameters:
+        student: Student obj
+        """
+        print("\n{} {}:".format(student.get_first_name().upper(), student.get_last_name().upper()))
+        for index, attendance in enumerate(student.get_attendance()):
+
+            if attendance.get_is_present():
+                print("{}. {}: {}".format(index + 1, attendance.get_date(), "present"))
+            else:
+                print("{}. {}: {}".format(index + 1, attendance.get_date(), "absent"))
 
     def show_assignments(self, assignments):
         """
@@ -62,9 +94,14 @@ class View:
         assignment: Assignment obj
         """
 
-        print("{}: {}".format("Title", assignment.get_title()))
+        print("\n{}: {}".format("Title", assignment.get_title()))
         print("{}: {}".format("Maximum grade", assignment.get_max_grade()))
         print("{}: {}".format("Description", assignment.get_description()))
+
+    def show_attendance(self, index, student, percent_attendance):
+
+        print("{}. {} {}: {}%".format(index, student.get_first_name(),
+              student.get_last_name(), percent_attendance))
 
     def show_message(self, message):
         """
@@ -73,10 +110,7 @@ class View:
         message: str
         """
 
-        RED = '\033[91m'
-        WHITE = '\033[0m'
-
-        print(RED + message + WHITE)
+        print(Colors.RED + "\n" + message + "\n" + Colors.WHITE)
 
     def show_grades(self, submissions):
         """
@@ -84,6 +118,8 @@ class View:
         Parameters:
         submissions: list
         """
+        if len(submissions) == 0:
+            print("There is nothing to show")
 
         for index, submission in enumerate(submissions):
             assignment = submission.get_assignment().get_title()
@@ -92,3 +128,37 @@ class View:
                                              submission.get_assignment().get_max_grade()))
             else:
                 print("{}. {}: {}".format(index + 1, assignment, "not graded"))
+
+    def first_program_usage_message(self):
+        """
+        Prints message after first run of the program.
+        """
+        print(Colors.RED + 'This is the first run of the program. Default values of manager account are:\n\
+               First name: Admin\n\
+               Last_name: Adminsky\n\
+               email: admin.adminsky@cc.pl\n\
+               password: dupa\n\
+               You can change this date later.' + Colors.WHITE)
+
+    def clear(self):
+        os.system("clear")
+
+
+class Colors:
+    """
+    Creates Colors obj.
+    Class attributes:
+    BLUE: str
+    WHITE: str
+    BOLD: str
+    END: str
+    RED: str
+    WHITE: str
+    """
+
+    BLUE = '\033[94m'
+    WHITE = '\033[0m'
+    BOLD = '\033[1m'
+    END = '\033[0m'
+    RED = '\033[91m'
+    WHITE = '\033[0m'

@@ -15,9 +15,19 @@ class Attendance:
             student (:obj: 'Student'): Student object
             is_present (bool): True for present, False for absent
 
+        Raises:
+            ValueError: when date isn't Datetime obj
+            ValueError: when student isn't Student obj
+            ValueError: when is_present isn't bool
         Returns:
             void
         """
+        if date is None:
+            raise ValueError('date should be Datetime object')
+        if student is None:
+            raise ValueError("student should be Student Class object")
+        if is_present is None:
+            raise ValueError("is_present should be boolw")
         self.date = date
         self.student = student
         self.is_present = is_present
@@ -50,3 +60,6 @@ class Attendance:
 
     def get_is_present(self):
         return self.is_present
+
+    def set_is_present(self, is_present):
+        self.is_present = is_present

@@ -14,21 +14,6 @@ class CodecoolerController:
         self.user_input = user_input
         self.view = view
 
-    def show_codecooler_details_action(self, users_list):
-        """Show details of chosen user_input
-
-        Parameters:
-            users_list: list of codecoolers class objects
-        Returns:
-            None
-        """
-        self.view.show_codecoolers(users_list)
-        message = 'Please choose index of user:'
-        self.view.show_message(message)
-        user_index = self.user_input.get_index_input(len(users_list))
-        user = users_list[user_index]
-        self.view.show_codecooler(user)
-
     def show_codecooler_action(self, user_role):
         """Show codecoolers and their details
 
@@ -37,24 +22,20 @@ class CodecoolerController:
         Returns:
             None
         """
-        options = ["show details", "back"]
 
         if user_role == "mentor":
-            mentors = Mentor.get_mentors()
-            self.view.show_codecoolers(mentors)
-            self.view.show_menu_option(options)
-            option = self.user_input.get_option(options)
-
-            if option == options[0]:
-                self.show_codecooler_details_action(mentors)
-
+            codecoolers = Mentor.get_mentors()
         elif user_role == "student":
-            students = Student.get_students()
-            self.view.show_codecoolers(students)
-            self.view.show_menu_option(options)
-            option = self.user_input.get_option(options)
-            if option == options[0]:
-                self.show_codecooler_details_action(students)
+            codecoolers = Student.get_students()
+
+        self.view.show_codecoolers(codecoolers)
+        group_name = "codecooler's"
+        user_aux_menu_decision = self.user_input.get_aux_menu_input(len(codecoolers), group_name)
+
+        if isinstance(user_aux_menu_decision, int):
+            choosen_codecooler = codecoolers[user_aux_menu_decision]
+            self.view.show_codecooler(choosen_codecooler)
+        self.user_input.press_enter_to_continue()
 
     def add_codecooler_action(self, person_role):
         """Create and add codecooler object to class list
@@ -64,14 +45,22 @@ class CodecoolerController:
         Returns:
             None
         """
-        message = 'Please provide user data:'
-        self.view.show_message(message)
+
         if person_role == "mentor":
-            mentor = Mentor(*self.user_input.get_codecooler_data())
+            mentor_data = self.user_input.get_codecooler_data()
+            if mentor_data is None:
+                return
+            mentor = Mentor(*mentor_data)
             mentor.add_to_mentors()
         elif person_role == "student":
-            student = Student(*self.user_input.get_codecooler_data())
+            student_data = self.user_input.get_codecooler_data()
+            if student_data is None:
+                return
+            student = Student(*student_data)
             student.add_to_students()
+
+        self.view.show_message("New Codecooler added!")
+        self.user_input.press_enter_to_continue()
 
     def edit_codecooler_action(self, person_role):
         """Edits codecooler object attributes
@@ -81,31 +70,47 @@ class CodecoolerController:
         Returns:
             None
         """
-        if person_role == "mentor":
-            mentors = Mentor.get_mentors()
-            self.view.show_codecoolers(mentors)
-            option = self.user_input.get_index_input(len(mentors))
-            mentor = mentors[option]
-            message = "Please provide user data"
-            self.view.show_message(message)
-            data = self.user_input.get_codecooler_data()
-            mentor.set_first_name(data[0])
-            mentor.set_last_name(data[1])
-            mentor.set_email(data[2])
-            mentor.set_password(data[3])
 
+        if person_role == "mentor":
+            codecoolers = Mentor.get_mentors()
         elif person_role == "student":
-            students = Student.get_students()
-            self.view.show_codecoolers(students)
-            option = self.user_input.get_index_input(len(students))
-            student = students[option]
-            message = "Please provide user data"
-            self.view.show_message(message)
-            data = self.user_input.get_codecooler_data()
-            student.set_first_name(data[0])
-            student.set_last_name(data[1])
-            student.set_email(data[2])
-            student.set_password(data[3])
+            codecoolers = Student.get_students()
+
+        self.view.show_codecoolers(codecoolers)
+        group_name = "codecooler's"
+        index_decision = self.user_input.get_index_input(len(codecoolers), group_name)
+        codecooler = codecoolers[index_decision]
+
+        edit_options = ["Edit first name", "Edit last name",
+                        "Edit e-mail", "Edit password", "Go back"]
+        self.view.show_menu_option(edit_options)
+        edit_decision = self.user_input.get_option(edit_options)
+
+        if edit_decision == "Edit first name":
+            first_name = self.user_input.get_specific_codecooler_data("first name")
+            if first_name is None:
+                return
+            codecooler.set_first_name(first_name)
+        elif edit_decision == "Edit last name":
+            last_name = self.user_input.get_specific_codecooler_data("last name")
+            if last_name is None:
+                return
+            codecooler.set_last_name(last_name)
+        elif edit_decision == "Edit password":
+            password = self.user_input.get_specific_codecooler_data("password")
+            if password is None:
+                return
+            codecooler.set_password(password)
+        elif edit_decision == "Edit e-mail":
+            email = self.user_input.get_codecooler_email_input()
+            if email is None:
+                return
+            codecooler.set_email(email)
+        elif edit_decision == "Go back":
+            return
+
+        self.view.show_message("Codecooler's data edited!")
+        self.user_input.press_enter_to_continue()
 
     def remove_codecooler_action(self, person_role):
         """Remove codecooler object from class list
@@ -115,18 +120,21 @@ class CodecoolerController:
         Returns:
             None
         """
-        message = 'Please choose user to remove:'
-        self.view.show_message(message)
+        group_name = "codecooler's"
+
         if person_role == "mentor":
             mentors = Mentor.get_mentors()
             self.view.show_codecoolers(mentors)
-            option = self.user_input.get_index_input(len(mentors))
+            option = self.user_input.get_index_input(len(mentors), group_name)
             mentor = mentors[option]
             Mentor.remove(mentor)
 
         elif person_role == "student":
             students = Student.get_students()
             self.view.show_codecoolers(students)
-            option = self.user_input.get_index_input(len(students))
+            option = self.user_input.get_index_input(len(students), group_name)
             student = students[option]
             Student.remove(student)
+
+        self.view.show_message("Codecooler removed!")
+        self.user_input.press_enter_to_continue()

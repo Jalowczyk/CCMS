@@ -9,7 +9,8 @@ class AttendanceController:
     Creates AttendanceController obj.
 
     Instance attributes:
-    user_imput: UserInput obj
+    user_input: UserInput obj
+    view: View obj
     """
 
     def __init__(self, user_input, view):
@@ -34,6 +35,39 @@ class AttendanceController:
         for student in students:
             self.view.show_codecooler(student)
             is_present = self.user_input.get_boolean_input()
-            attendance = Attendance(today_date, student, is_present)
-            attendance.add_to_attendances()
-            student.add_attendance(attendance)
+            new_attendance = Attendance(today_date, student, is_present)
+            if not any(new_attendance.get_date() == attendance.get_date() for attendance in student.get_attendance()):
+                new_attendance.add_to_attendances()
+                student.add_attendance(new_attendance)
+            else:
+                for attendance in student.get_attendance():
+                     if attendance.get_date() == new_attendance.get_date():
+                         attendance.set_is_present(new_attendance.get_is_present())
+
+
+        self.view.show_message("There are no more students!")
+        self.user_input.press_enter_to_continue()
+
+    def view_attendance_action(self):
+        """
+        View students percetage attendance and, if user wants, view
+        attendance details for choosen student.
+        """
+
+        for index, student in enumerate(Student.get_students()):
+            present = 0
+            for attendance in student.get_attendance():
+                if attendance.get_is_present():
+                    present += 1
+
+            percent_attendance = int(100 * (present/len(student.get_attendance())))
+            self.view.show_attendance(index + 1, student, percent_attendance)
+
+        group_name = "student's"
+        user_aux_menu_decision = self.user_input.get_aux_menu_input(len(Student.get_students()), group_name)
+
+        if isinstance(user_aux_menu_decision, int):
+            choosen_student = Student.get_students()[user_aux_menu_decision]
+            self.view.clear()
+            self.view.show_attendance_details(choosen_student)
+            self.user_input.press_enter_to_continue()
