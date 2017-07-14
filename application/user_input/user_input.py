@@ -56,13 +56,13 @@ class UserInput:
         user_input_email = input("Enter your email: ")
         while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", user_input_email):
             self.view.show_message("Wrong email.")
-            user_input_email = input("Enter your email: (or '0', to go back)")
+            user_input_email = input("Enter your email (or '0', to go back): ")
             if user_input_email == '0':
                 return None
 
         user_input_password = getpass.getpass("Enter your password: ")
         while not user_input_password:
-            user_input_password = getpass.getpass("Enter your password: (or press 'enter', to go back)")
+            user_input_password = getpass.getpass("Enter your password (or press 'enter', to go back): ")
             if user_input_password == '':
                 return None
         return user_input_email, user_input_password
@@ -82,23 +82,23 @@ class UserInput:
 
         """
 
-        user_assignment_title = input("\nEnter assignment title:")
+        user_assignment_title = input("\nEnter assignment title: ")
         while not user_assignment_title:
             self.view.show_message("This field can't be empty.")
-            user_assignment_title = input("Enter assignment title again: (or press enter to go back)")
+            user_assignment_title = input("Enter assignment title again (or press enter to go back): ")
             if user_assignment_title == '':
                 return
 
-        user_assignment_description = input("Enter assignment description: (or press enter to go back)")
+        user_assignment_description = input("Enter assignment description (or press enter to go back): ")
         if user_assignment_description == '':
             return
 
-        user_assignment_max_grade = input("Enter assignment maximum grade: (or press enter to go back)")
+        user_assignment_max_grade = input("Enter assignment maximum grade (or press enter to go back): ")
         if user_assignment_max_grade == '':
             return
         while not user_assignment_max_grade.isnumeric() or int(user_assignment_max_grade) <= 0:
             self.view.show_message("Sorry, your input is incorrect.")
-            user_assignment_max_grade = input("Enter assignment maximum grade again: (or press enter to go back)")
+            user_assignment_max_grade = input("Enter assignment maximum grade again (or press enter to go back): ")
             if user_assignment_title == '':
                 return
 
@@ -154,7 +154,7 @@ class UserInput:
         while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", codecooler_email):
             self.view.show_message(("Wrong e-mail: e-mail can contain ")
                                    + ("following characters: letters, integers, '_', '.', '+', '-'."))
-            codecooler_email = input("Enter new e-mail again: (or press returrn to go back)")
+            codecooler_email = input("Enter new e-mail again: (or press returrn to go back): ")
             if codecooler_email == '':
                 None
 
@@ -170,7 +170,7 @@ class UserInput:
 
         codecooler_data = input("\n{} {}: ".format("Enter new ", data_type))
         while not codecooler_data:
-            self.view.show_message("This field can't be empty. Press enter if you want to dicard changes")
+            self.view.show_message("This field can't be empty. Press enter if you want to dicard changes.")
             codecooler_data = input("{} {} {}: ".format("Enter new ", data_type, "again"))
             if codecooler_data == '':
                 return
@@ -192,14 +192,14 @@ class UserInput:
         codecooler_first_name = input("\nEnter first name: ")
         while not codecooler_first_name:
             self.view.show_message("This field can't be empty.")
-            codecooler_first_name = input("Enter first name again: ('Or press enter to go back')")
+            codecooler_first_name = input("Enter first name again ('Or press enter to go back'): ")
             if codecooler_first_name == '':
                 return
 
         codecooler_second_name = input("Enter second name: ")
         while not codecooler_second_name:
             self.view.show_message("This field can't be empty.")
-            codecooler_second_name = input("Enter second name again: ('Or press enter to go back')")
+            codecooler_second_name = input("Enter second name again ('Or press enter to go back'): ")
             if codecooler_second_name == '':
                 return
 
@@ -207,11 +207,11 @@ class UserInput:
         while not re.search(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", codecooler_email):
             self.view.show_message(("Wrong e-mail: e-mail can contain ")
                                    + ("following characters: letters, integers, '_', '.', '+', '-'."))
-            codecooler_email = input("Enter email again: ('Or press enter to go back')")
+            codecooler_email = input("Enter email again ('Or press enter to go back'): ")
             if codecooler_email == '':
                 return
 
-        codecooler_password = input("Enter password: ('Or press enter to go back')")
+        codecooler_password = input("Enter password ('Or press enter to go back'): ")
         if codecooler_password == '':
             return
 
@@ -253,5 +253,5 @@ class UserInput:
         returns:
             None
         """
-        enter_input = input('Press enter to continue.')
-        
+
+        enter_input = input('\nPress ENTER to continue.')
